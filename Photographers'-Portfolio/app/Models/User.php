@@ -13,14 +13,24 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * Setting primary key
+     * 
+     * @var int
+     */
+    protected $primaryKey = 'u_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
+        'username',
         'email',
         'password',
+        'profile_image',
+        'bio',
     ];
 
     /**
@@ -41,4 +51,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the photos of the user
+     */
+    public function photos(){
+        return $this->hasMany(Photos::class,'u_id'); 
+    }
+
+    /**
+     * Get the blogs of the user
+     */
+    public function blogs(){
+        return $this->hasMany(Blogs::class,'u_id'); 
+    }
+
+
+    public function userLikes(){
+        return $this->belongstoMany(User::class)->using(PhotoLikes::class);
+    }
+
+    public function userComments(){
+        return $this->belongstoMany(User::class)->using(PhotoComments::class);
+    }
 }
