@@ -37,7 +37,13 @@
      ```bash
      cp .env.example .env
      ```
+     
 - Generate an app encryption key.Run the following command in cmd-
   ```bash
   php artisan key:generate
+  ```
+  
+- Generate database migrations-
+  ```bash
+  php artisan migrate
   ```
