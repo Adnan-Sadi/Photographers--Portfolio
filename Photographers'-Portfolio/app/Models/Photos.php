@@ -10,6 +10,11 @@ class Photos extends Model
     use HasFactory;
 
     /**
+     * Setting table name
+     */
+    protected $table = 'photos';
+
+    /**
      * Setting primary key
      */
     protected $primaryKey = 'p_id';
@@ -18,6 +23,7 @@ class Photos extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        'u_id',
         'caption',
         'photo_path',
     ];
@@ -29,10 +35,16 @@ class Photos extends Model
         return $this->belongsTo(User::class,'u_id'); 
     }
 
+    /**
+     * Get all users who liked the photo
+     */
     public function photoLikes(){
         return $this->belongstoMany(User::class)->using(PhotoLikes::class);
     }
 
+    /**
+     * Get all users who commented on the photo
+     */
     public function photoComments(){
         return $this->belongstoMany(User::class)->using(PhotoComments::class);
     }

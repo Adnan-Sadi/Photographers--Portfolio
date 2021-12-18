@@ -66,12 +66,31 @@ class User extends Authenticatable
         return $this->hasMany(Blogs::class,'u_id'); 
     }
 
-
+    /**
+     * Get all the photos liked by the user
+     */
     public function userLikes(){
-        return $this->belongstoMany(User::class)->using(PhotoLikes::class);
+        return $this->belongstoMany(Photos::class)->using(PhotoLikes::class);
     }
 
+    /**
+     * Get all the photos commented on by the user
+     */
     public function userComments(){
-        return $this->belongstoMany(User::class)->using(PhotoComments::class);
+        return $this->belongstoMany(Photos::class)->using(PhotoComments::class);
+    }
+
+    /**
+     * Get all the blogs liked by the user
+     */
+    public function blogLikes(){
+        return $this->belongstoMany(Blogs::class)->using(BlogLikes::class);
+    }
+
+    /**
+     * Get all the blogs commented on by the user
+     */
+    public function blogComments(){
+        return $this->belongstoMany(Blogs::class)->using(BlogComments::class);
     }
 }

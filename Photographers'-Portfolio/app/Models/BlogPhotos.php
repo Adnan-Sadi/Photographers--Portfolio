@@ -5,34 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PhotoComments extends Model
+class BlogPhotos extends Model
 {
     use HasFactory;
 
     /**
      * Setting table name
      */
-    protected $table = 'photo_comments';
-     /**
-     * Indicates that the pivot model has an auto-incrementing primary key
-     *
-     * @var bool
-     */
-    public $incrementing = true;
+    protected $table = 'blog_photos';
 
     /**
      * Setting primary key
      * 
      * @var int
      */
-    protected $primaryKey = 'photo_comment_id';
+    protected $primaryKey = 'blog_photo_id';
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        'u_id',
-        'p_id',
-        'text',
+        'b_id',
+        'path',
     ];
+
+    /**
+     * Get the blog that contains the photo
+     */
+    public function blogs(){
+        return $this->belongsTo(Blogs::class,'b_id'); 
+    }
 }
