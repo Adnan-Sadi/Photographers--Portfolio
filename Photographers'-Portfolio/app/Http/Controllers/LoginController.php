@@ -7,27 +7,26 @@ use App\Models\User;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\Email;
-require '../vendor/autoload.php';
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
     public function Login()
     {
         $auth = "";
-        return view('home.login', ["auth" => $auth]);
+        return view('auth.login', ["auth" => $auth]);
     }
 
     public function Mahin()
     {
-        return view('home.mahinigga');
+        return view('auth.mahinigga');
     }
 
 
     public function Registration()
     {
-        return view('home.registration');
+        return view('auth.registration');
     }
 
     public function Register(Request $req)
@@ -40,8 +39,8 @@ class HomeController extends Controller
         ]);
         
         if ($validator->fails()) {
-            //return view('home.registration', ["ch" => $ch]);
-            return redirect()->route('home.registration')->with('errors',$validator->errors())->withInput();
+            //return view('auth.registration', ["ch" => $ch]);
+            return redirect()->route('auth.registration')->with('errors',$validator->errors())->withInput();
         }else{
             $user = new User();
             $user->username                       = $req->username;
@@ -53,7 +52,7 @@ class HomeController extends Controller
 
 
         if ($user->save()){
-            return redirect()->route('home.login');
+            return redirect()->route('auth.login');
         }
         else{
             echo "Server Error";
@@ -68,7 +67,7 @@ class HomeController extends Controller
         ]);
         
         if($validator->fails()){
-            return redirect()->route('home.login')->with('errors',$validator->errors())->withInput();
+            return redirect()->route('auth.login')->with('errors',$validator->errors())->withInput();
         } else {
 
             $auth = "";
@@ -82,11 +81,11 @@ class HomeController extends Controller
                 $req->session()->put('email', $user->email);
                 $req->session()->put('username', $user->username);
 
-                return redirect()->route('home.mahinigga');
+                return redirect()->route('newsfeed.index');
             }
             else{
                 $auth = "Unauthorized";
-                return view('home.login', ["auth" => $auth]);
+                return view('auth.login', ["auth" => $auth]);
             }
         }
     }
@@ -94,6 +93,6 @@ class HomeController extends Controller
 
     public function Logout(Request $req){
     	$req->session()->flush();
-    	return redirect()->route('home.login');
+    	return redirect()->route('auth.login');
     }
 }

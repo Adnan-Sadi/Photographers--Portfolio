@@ -20,7 +20,7 @@ class VerifySession
             return $next($request);
        }else{
            $request->session()->flash('msg', 'Invalid Resource Request, Please Login First.');
-           return redirect()->route('home.login');
+           return redirect()->route('auth.login');
        }
     }
     

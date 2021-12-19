@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class NewsfeedController extends Controller
 {
+
+    
     /**
      * Display the view of the Newsfeed.
      *

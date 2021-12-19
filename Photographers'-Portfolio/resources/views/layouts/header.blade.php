@@ -9,9 +9,19 @@
                 <div class="collapse navbar-collapse navbar-left" id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Profile</a></li>
+
+                        @if (Session::get('u_id'))
+                        <li><a href="#">{{ Session::get('username') }}</a></li> 
+                        @endif
+                         
                     </ul>
-                    <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a> <a class="btn btn-default action-button" role="button" href="/registration">Sign Up</a></p>
+
+                    @if (!Session::get('u_id'))
+                        <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a> <a class="btn btn-default action-button" role="button" href="/registration">Sign Up</a></p>   
+                    @else
+                    <p class="navbar-text navbar-right actions"><a class="btn btn-default action-button" role="button" href="/logout">Logout</a></p>   
+                    @endif
+                    
                     <ul class="wrap">
                         <div class="search">
                            <input type="text" class="searchTerm" placeholder="Search By Username...">

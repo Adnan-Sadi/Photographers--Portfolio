@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +16,15 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/registration', [HomeController::class, 'Registration'])->name('home.registration');
-Route::post('/registration',[HomeController::class, 'Register']);
+Route::get('/registration', [LoginController::class, 'Registration'])->name('auth.registration');
+Route::post('/registration',[LoginController::class, 'Register']);
 
-Route::get('/login',[HomeController::class, 'Login'])->name('home.login');
-Route::post('/login',[HomeController::class, 'ValidateLogin'])->name('home.ValidateLogin');
+Route::get('/login',[LoginController::class, 'Login'])->name('auth.login');
+Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.ValidateLogin');
 
-
-Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
 Route::get('/photo', [PhotoController::class, 'index'])->name('photo.index');
-Route::get('/logout',[HomeController::class, 'Logout']);
+Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::group(['middleware'=>['session']], function(){
-    Route::get('/mahin',[HomeController::class, 'Mahin'])->name('home.mahinigga');
+    Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
 });
