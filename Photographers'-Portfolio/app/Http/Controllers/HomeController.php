@@ -38,13 +38,13 @@ class HomeController extends Controller
             //return view('home.registration', ["ch" => $ch]);
             return redirect()->route('home.registration')->with('errors',$validator->errors())->withInput();
         }else{
-        $user = new User();
-        $user->username                       = $req->username;
-        $user->full_name                       = $req->full_name;
-        $user->email                        = $req->email;
-        $user->created_at                = Carbon::now();
-        $user->updated_at                = Carbon::now();
-        $user->password                 = $req->password;
+            $user = new User();
+            $user->username                       = $req->username;
+            $user->full_name                       = $req->full_name;
+            $user->email                        = $req->email;
+            $user->created_at                = Carbon::now();
+            $user->updated_at                = Carbon::now();
+            $user->password                 = $req->password;
 
 
         if ($user->save()){
@@ -57,22 +57,32 @@ class HomeController extends Controller
 }
     public function ValidateLogin(Request $req)
     {
-        $auth = "";
-        $user  = User::where('email', $req->email)
-                        ->where('password', $req->password)
-                        ->first();
+        $validator = Validator::make($req->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        if($validator->fails()){
+            return redirect()->route('home.login')->with('errors',$validator->errors())->withInput();
+        } else {
 
-        if($user)
-        {
-            $req->session()->put('u_id', $user->u_id);
-            $req->session()->put('email', $user->email);
-            $req->session()->put('username', $user->username);
+            $auth = "";
+            $user  = User::where('email', $req->email)
+                            ->where('password', $req->password)
+                            ->first();
 
-            return redirect()->route('newsfeed.index');
-        }
-        else{
-            $auth = "Unauthorized";
-            return view('home.login', ["auth" => $auth]);
+            if($user)
+            {
+                $req->session()->put('u_id', $user->u_id);
+                $req->session()->put('email', $user->email);
+                $req->session()->put('username', $user->username);
+
+                return redirect()->route('newsfeed.index');
+            }
+            else{
+                $auth = "Unauthorized";
+                return view('home.login', ["auth" => $auth]);
+            }
         }
     }
 

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('log/css/login.css')); ?>">
+	<link href="<?php echo e(asset('dex/js/toastr.min.css')); ?>" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -76,7 +77,17 @@
                 "hideMethod": "fadeOut"
             }
             let msg = "<?php echo e($auth); ?>";
-            if (msg != "") {
+
+			let check = <?php echo json_encode($errors, 15, 512) ?>;
+
+			if(check.email)
+			{
+			toastr["error"](check.email); 
+			}
+			else if(check.password)
+			{
+			toastr["error"](check.password); 
+			} else if (msg != "") {	
                 toastr["error"](msg);
             }
         })

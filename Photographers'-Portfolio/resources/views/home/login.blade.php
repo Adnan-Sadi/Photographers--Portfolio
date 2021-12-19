@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('log/css/login.css') }}">
+	<link href="{{ asset('dex/js/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -76,7 +77,17 @@
                 "hideMethod": "fadeOut"
             }
             let msg = "{{ $auth}}";
-            if (msg != "") { 	
+
+			let check = @json($errors);
+
+			if(check.email)
+			{
+			toastr["error"](check.email); 
+			}
+			else if(check.password)
+			{
+			toastr["error"](check.password); 
+			} else if (msg != "") {	
                 toastr["error"](msg);
             }
         })
