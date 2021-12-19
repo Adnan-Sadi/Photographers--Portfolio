@@ -125,9 +125,9 @@
                 "hideMethod": "fadeOut"
             }
         let check = @json($errors);
-        if(check.name)
+        if(check.username)
         {
-           toastr["error"](check.name); 
+           toastr["error"](check.username); 
         }
         if(check.name)
         {

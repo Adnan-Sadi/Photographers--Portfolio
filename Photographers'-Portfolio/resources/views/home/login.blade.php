@@ -20,8 +20,8 @@
 			<div class="card-header">
 				<h3>Sign In</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><a href="/facebook"><i class="fab fa-facebook-square"></i></a></span>
-					<span><a href=""><i class="fab fa-google-plus-square"></i></a></span>
+					<!-- <span><a href="/facebook"><i class="fab fa-facebook-square"></i></a></span>
+					<span><a href=""><i class="fab fa-google-plus-square"></i></a></span> -->
 				</div>
 			</div>
 			<div class="card-body">
@@ -38,7 +38,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input name="password" type="password" class="form-control" placeholder="password">
+						<input name="password" type="password" class="form-control" placeholder="Password">
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
