@@ -19,6 +19,11 @@ class HomeController extends Controller
         return view('home.login', ["auth" => $auth]);
     }
 
+    public function Mahin()
+    {
+        return view('home.mahinigga');
+    }
+
 
     public function Registration()
     {
@@ -77,7 +82,7 @@ class HomeController extends Controller
                 $req->session()->put('email', $user->email);
                 $req->session()->put('username', $user->username);
 
-                return redirect()->route('newsfeed.index');
+                return redirect()->route('home.mahinigga');
             }
             else{
                 $auth = "Unauthorized";

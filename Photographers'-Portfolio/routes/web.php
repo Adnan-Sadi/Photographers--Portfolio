@@ -25,7 +25,8 @@ Route::post('/login',[HomeController::class, 'ValidateLogin'])->name('home.Valid
 
 Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
 Route::get('/photo', [PhotoController::class, 'index'])->name('photo.index');
+Route::get('/logout',[HomeController::class, 'Logout']);
 
 Route::group(['middleware'=>['session']], function(){
-
+    Route::get('/mahin',[HomeController::class, 'Mahin'])->name('home.mahinigga');
 });
