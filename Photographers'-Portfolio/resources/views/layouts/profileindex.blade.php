@@ -49,7 +49,7 @@
 
                     <div class="profile-bio">
 
-                        <p><span class="profile-real-name"  >  {{ $user-> bio}}     > </span>  </p>
+                        <p><span class="profile-real-name"  >  {{ $user->bio}}     > </span>  </p>
 
                     </div>
 
