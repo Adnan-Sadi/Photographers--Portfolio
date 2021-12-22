@@ -22,7 +22,8 @@ Route::post('/registration',[LoginController::class, 'Register']);
 Route::get('/login',[LoginController::class, 'Login'])->name('auth.login');
 Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.ValidateLogin');
 
-Route::get('/photo', [PhotoController::class, 'index'])->name('photo.index');
+Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.index');
+Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
 Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::group(['middleware'=>['session']], function(){
