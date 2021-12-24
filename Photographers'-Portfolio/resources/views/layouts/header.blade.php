@@ -14,11 +14,13 @@
 
                         <!-- Checking if user is logged in -->
                         @if (Session::get('u_id'))
-                        <li><a href="#">{{ Session::get('username') }}</a></li> 
+                        <li><a href="{{ asset('profileindex.blade.php') }}">{{ Session::get('username') }}</a></li> 
                         @endif
                         <!-- Checking if user is logged in -->
 
+                        <li><a href="{{ asset('gallery.blade.php') }}">Gallery</a></li>
                     </ul>
+
                     <!-- Checking if user is not logged in -->
                     @if (!Session::get('u_id'))
                         <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a> 

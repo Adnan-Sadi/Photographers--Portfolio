@@ -11,11 +11,12 @@
     <title>Photographer's Portfolio Gallery</title>
 
     <!-- Favicon -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/gb.css') }}">
+
 </head>
 
 <body>
@@ -30,8 +31,6 @@
                     <!-- Classy Menu -->
                     <nav class="classy-navbar justify-content-between" id="alimeNav">
 
-                        <!-- Logo -->
-                        <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -89,7 +88,7 @@
                         <h2 class="page-title">Gallery</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="#"><i class="icon_user_alt"></i> Profile</a></li>
+                                <li class="breadcrumb-item"><a href="{{ asset('profileindex.blade.php') }} ">{{ Session::get('username') }} </a><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Gallery</li>
                             </ol>
                         </nav>
@@ -162,15 +161,15 @@
 
     <!-- **** All JS Files ***** -->
     <!-- jQuery 2.2.4 -->
-    <script src="js/jquery.min.js"></script>
+    <script src="{{ asset('js/gbjs/jquery.min.js') }}"></script>
     <!-- Popper -->
-    <script src="js/popper.min.js"></script>
+    <script src="{{ asset('js/gbjs/popper.min.js') }}"></script>
     <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/gbjs/bootstrap.min.js') }}"></script>
     <!-- All Plugins -->
-    <script src="js/alime.bundle.js"></script>
+    <script src="{{ asset('js/gbjs/alime.bundle.js') }}"></script>
     <!-- Active -->
-    <script src="js/default-assets/active.js"></script>
+    <script src="{{ asset('js/gbjs/default-assets/active.js') }}"></script>
 
 </body>
 
