@@ -1,0 +1,134 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "d0c57265-b441-43b7-b386-605a4aee1ee1",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "PhotoController class",
+            "description": "\nThe methods inside this class are used for uploading or \nviewing a single photo on this web application.",
+            "item": [
+                {
+                    "name": "index(): Display the view of an individual photo.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "photo\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/photo\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ut",
+                                    "description": "The ID of the photo."
+                                },
+                                {
+                                    "id": "photoId",
+                                    "key": "photoId",
+                                    "value": "9",
+                                    "description": "The ID of the photo"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This method takes the parameter '$photoId' from the route url.\nThe '$photoId' is used to find the particular photo with the same photoId from the database.\nAll the data about that photo is stored inside the '$photo' variable.<br>\nFinally, the function returns a view of the 'photopage' with the '$photo' variable.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"p_id\": 4,\n \"u_id\": 2,\n \"caption\": \"This is an example caption\",\n \"photo_path\": \"example-photo.jpg\",\n \"created_at\": \"2021-12-22 08:58:02\",\n \"updated_at\": \"2021-12-22 08:58:0\",\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "photoUpload(): Store a newly uplaoded photo in database.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "photo-upload",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/photo-upload"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "caption",
+                                    "value": "est",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "This method takes a form request parameter '$request' as a method parameter.\nThe '$request' parameter contains two parameters which contains the values that were submitted with\nthe 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>\nHere, the method validates the form data received from the '$request' variable and returns error messages\nif the request fails to validate.\nThe uploaded image file is given a new name and stored in the storage.<br>\nNext, the method stores the necesary informations about the photo in the database by creating a\nnew row in the 'photos' table within the database.<br>\nFinally, it redirects the user to the page of the photo that was uploaded.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\": photo is uploaded}",
+                            "name": "success"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\": form data failed to validate}",
+                            "name": "failure"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

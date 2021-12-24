@@ -1,0 +1,104 @@
+name: 'PhotoController class'
+description: |-
+
+  The methods inside this class are used for uploading or 
+  viewing a single photo on this web application.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'photo/{id}'
+    metadata:
+      title: 'index(): Display the view of an individual photo.'
+      description: |-
+        This method takes the parameter '$photoId' from the route url.
+        The '$photoId' is used to find the particular photo with the same photoId from the database.
+        All the data about that photo is stored inside the '$photo' variable.<br>
+        Finally, the function returns a view of the 'photopage' with the '$photo' variable.
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the photo.'
+        required: true
+        example: ut
+        type: string
+        custom: []
+      photoId:
+        name: photoId
+        description: 'The ID of the photo'
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "p_id": 4,
+           "u_id": 2,
+           "caption": "This is an example caption",
+           "photo_path": "example-photo.jpg",
+           "created_at": "2021-12-22 08:58:02",
+           "updated_at": "2021-12-22 08:58:0",
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: photo-upload
+    metadata:
+      title: 'photoUpload(): Store a newly uplaoded photo in database.'
+      description: |-
+        This method takes a form request parameter '$request' as a method parameter.
+        The '$request' parameter contains two parameters which contains the values that were submitted with
+        the 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>
+        Here, the method validates the form data received from the '$request' variable and returns error messages
+        if the request fails to validate.
+        The uploaded image file is given a new name and stored in the storage.<br>
+        Next, the method stores the necesary informations about the photo in the database by creating a
+        new row in the 'photos' table within the database.<br>
+        Finally, it redirects the user to the page of the photo that was uploaded.
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      caption:
+        name: caption
+        description: 'The caption of the photo.'
+        required: false
+        example: est
+        type: string
+        custom: []
+      photo:
+        name: photo
+        description: 'The uploaded image file'
+        required: true
+        example: null
+        type: file
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"message": photo is uploaded}'
+        headers: []
+        description: '200, success'
+      -
+        status: 200
+        content: '{"message": form data failed to validate}'
+        headers: []
+        description: '200, failure'
+    responseFields: []
