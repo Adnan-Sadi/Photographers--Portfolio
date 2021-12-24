@@ -961,7 +961,6 @@ input:required {
 /* :: 12.0 Breadcrumb CSS */
 .breadcrumb-area {
   position: relative;
-  background-color: bisque;
   z-index: 1;
   height: 370px; }
   @media only screen and (max-width: 767px) {

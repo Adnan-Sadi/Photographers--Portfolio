@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Photographer's Portfolio Gallery</title>
+    <title>Gallery | Photographer's Portfolio</title>
 
     <!-- Favicon -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -30,7 +30,8 @@
                 <div class="container">
                     <!-- Classy Menu -->
                     <nav class="classy-navbar justify-content-between" id="alimeNav">
-
+                        <!-- Logo -->
+                        <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -46,29 +47,24 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li><a href="./index.html">Home</a></li> 
+                                    <li><a href="{{ asset('newsfeed') }}">Home</a></li> 
+                                    
                                     <!-- Checking if user is logged in -->
                                     @if (Session::get('u_id'))
                                     <li><a href="#">{{ Session::get('username') }}</a></li>
                                     @endif
                                      <!-- Checking if user is logged in -->
-                                    <li class="active"><a href="./gallery.html">Gallery</a></li>
-                                </ul>
-                                <!-- Checking if user is not logged in -->
-                                @if (!Session::get('u_id'))
-                                <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a>
-                                <a class="btn btn-default action-button" role="button" href="/registration">Sign Up</a></p>
-                                @else
-                                <!-- Checking if user is not logged in -->
-                                <p class="navbar-text navbar-right actions"><a class="btn btn-default action-button" role="button" href="/logout">Logout</a></p>
-                                @endif
-                                <ul class="wrap">
-                                    <div class="search">
-                                        <input type="text" class="searchTerm" placeholder="Search By Username...">
-                                        <button type="submit" class="searchButton">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
+                                    
+                                    
+                                    <li class="active"><a href="{{ asset('gallery') }}">Gallery</a></li>
+                                    <!-- Checking if user is not logged in -->
+                                    @if (!Session::get('u_id'))
+                                    <li><a class="navbar-link login" href="/login">Log In</a></li>
+                                    <li><a class="btn action-button" role="button" href="/registration">Sign Up</a></p></li>
+                                    @else
+                                    <!-- Checking if user is not logged in -->
+                                    <li><a class="btn action-button" role="button" href="/logout">Logout</a></li>
+                                    @endif
                                 </ul>
                             <!-- Nav End -->
                         </div>
@@ -170,7 +166,11 @@
     <script src="{{ asset('js/gbjs/alime.bundle.js') }}"></script>
     <!-- Active -->
     <script src="{{ asset('js/gbjs/default-assets/active.js') }}"></script>
-
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
 </body>
 
 </html>
