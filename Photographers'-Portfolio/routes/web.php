@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,7 @@ Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::group(['middleware'=>['session']], function(){
     Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
+    Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
+    Route::get('/follow/{user}', [FollowController::class, 'followUser'])->name('follow.follow_user');
+    Route::get('/unfollow/{user}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
 });
