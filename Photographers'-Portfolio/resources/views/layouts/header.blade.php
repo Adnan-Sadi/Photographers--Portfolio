@@ -4,21 +4,30 @@
         <nav class="navbar navbar-default navigation-clean-button">
             <div class="container">
                 <div class="navbar-header"><a class="navbar-brand" href="#">Photographers' Porfolio</a>
-                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
                 </div>
                 <div class="collapse navbar-collapse navbar-left" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ asset('newsfeed') }}">Home</a></li>
 
+                        <!-- Checking if user is logged in -->
                         @if (Session::get('u_id'))
-                        <li><a href="#">{{ Session::get('username') }}</a></li> 
+                        <li><a href="{{ asset('profileindex') }}">{{ Session::get('username') }}</a></li> 
                         @endif
-                         
+                        <!-- Checking if user is logged in -->
+
+                        <li><a href="{{ asset('gallery') }}">Gallery</a></li>
                     </ul>
 
+                    <!-- Checking if user is not logged in -->
                     @if (!Session::get('u_id'))
-                        <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a> <a class="btn btn-default action-button" role="button" href="/registration">Sign Up</a></p>   
+                        <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login">Log In</a> 
+                        <a class="btn btn-default action-button" role="button" href="/registration">Sign Up</a></p>   
                     @else
+                    <!-- Checking if user is not logged in -->
+
                     <p class="navbar-text navbar-right actions"><a class="btn btn-default action-button" role="button" href="/logout">Logout</a></p>   
                     @endif
                     

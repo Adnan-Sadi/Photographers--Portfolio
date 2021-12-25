@@ -23,21 +23,20 @@
 
     <!-- Photo Section -->
     <div>
-       <img src="{{ asset('photos/123.png') }}" alt="">
+       <img src="{{ asset('photos/photo-uploads/'. $photo->photo_path) }}" alt="">
     </div>
 
     <div class="details"> 
-       <a href=""><span class="blog-owner">username</span></a> 
+       <a href=""><span class="blog-owner">{{ $photo->user->username }}</span></a> 
        <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
        <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
-       <span class="photo-date">27.12.2017</span> 
+       <span class="photo-date">{{ $photo->created_at }}</span> 
    </div>
 
    <div class="rounded"></div>
 
    <div class="photo-caption">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+       {{ $photo->caption }}
    </div>
    <!-- Photo Section-->
 
