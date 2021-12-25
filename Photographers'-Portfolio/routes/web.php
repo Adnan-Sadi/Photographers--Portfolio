@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogpostController;
 
