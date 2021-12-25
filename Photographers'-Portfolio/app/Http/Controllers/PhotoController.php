@@ -45,6 +45,18 @@ class PhotoController extends Controller
         return view('photopage')->with('photo',$photo);
     }
 
+
+    /**
+      * photoUploadPage(): Display the view of the photo upload page.
+      * 
+      * This method returns the view of the photo upload page where the users can
+      * upload photos.
+      */
+    public function photoUploadPage()
+    {
+        return view('photouploadpage');
+    }
+
     /**
      * photoUpload(): Store a newly uplaoded photo in database.
      *
@@ -79,7 +91,7 @@ class PhotoController extends Controller
 
         //return error if exists
         if ($error->fails()) {
-            return redirect('/')->withErrors($error)->withInput();
+            return redirect('/photo-upload-page')->withErrors($error)->withInput();
         }
         
         //getting userId and userName from session

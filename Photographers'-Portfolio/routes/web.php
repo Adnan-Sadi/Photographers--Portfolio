@@ -25,6 +25,7 @@ Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.Vali
 
 Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.index');
 Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
+Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::group(['middleware'=>['session']], function(){

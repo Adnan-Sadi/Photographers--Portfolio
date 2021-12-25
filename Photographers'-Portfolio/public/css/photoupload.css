@@ -1,10 +1,59 @@
+
+body{
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+
+/* Form Body CSS*/
+.form-body{
+    background: white;
+    display: flex;
+    padding: 50px;
+    overflow: hidden;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    color: #333;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+/* Form Body CSS*/
+
+
+/* Form Title CSS*/
+.form-title{
+  background: black;
+  color: white;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  max-width: 1000px;
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+  text-decoration: none;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+/* Form Title CSS*/
+
+/* Error section CSS*/
+.error{
+  margin: auto;
+  max-width: 1000px;
+}
+/* Error section CSS*/
+
 /*** Upload File CSS ***/
   
 .file-upload {
     background-color: #ffffff;
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding-bottom: 20px;
   }
   
   .file-upload-btn {
