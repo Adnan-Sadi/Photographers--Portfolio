@@ -16,7 +16,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/photoupload.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/gb.css') }}">
 
@@ -89,6 +88,18 @@
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="{{ asset('profileindex.blade.php') }} ">{{ Session::get('username') }} </a><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="breadcrumb-content text-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li>
+                                        <a class="btn btn-danger upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a>
+                                </li>
+                                <li>
+                                        <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
+                                </li>
                             </ol>
                         </nav>
                     </div>
