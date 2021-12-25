@@ -1,0 +1,51 @@
+
+
+body{
+    background-color: #485461;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  }
+
+h3{
+    font-weight: bold;
+}
+  
+  /* Form Body CSS*/
+  .list-body{
+      background: white;
+      display: flex;
+      padding: 50px;
+      position:relative;
+      overflow: hidden;
+      max-width: 800px;
+      margin: auto;
+      color: #333;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      margin-bottom: 50px;
+      text-decoration: none;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+  }
+  /* Form Body CSS*/
+
+  .follower-list{
+      width: 50%;
+  }
+
+  .following-list{
+    width: 50%;
+    padding-left: 20px;
+}
+
+.rounded {
+    width: 5px;
+    height: 80%;
+    position: absolute;
+    left: 50%;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #25aae1, #40e495);
+    /* background: #2bb769; */
+    margin-left: 0;
+    margin-top: 20px;
+}
+

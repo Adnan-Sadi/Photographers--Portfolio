@@ -14,13 +14,13 @@
     @if ($followsUser == true)
 
     <div align="center">
-        <a type="button" class="btn btn-danger" href="/unfollow/2">Unfollow User</a>
+        <a type="button" class="btn btn-danger" href="/unfollow/{{ $userId }}">Unfollow User</a>
     </div>
 
     @else
 
     <div align="center">
-        <a type="button" class="btn btn-success" href="/follow/2">Follow User</a>
+        <a type="button" class="btn btn-success" href="/follow/{{ $userId }}">Follow User</a>
     </div>
 
     @endif

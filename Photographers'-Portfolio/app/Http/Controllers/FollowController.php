@@ -7,6 +7,14 @@ use App\Models\User;
 use App\Models\FollowerList;
 use Session;
 
+/**
+ * @group FollowController class
+ *
+ * The methods inside this class are used for implemententing 
+ * features such as 'follow user', 'unfollow user' and 'display follower
+ * and following List' 
+ * 
+ */
 class FollowController extends Controller
 {
 
@@ -31,6 +39,44 @@ class FollowController extends Controller
         return view('testfollow')->with('userId',$userId)->with('followsUser',$followsUser);
     }
 
+
+
+    /**
+     * followerPage(): Displays a page containing the follower and following list of an user
+     * 
+     * 
+     * @urlParam userId integer required User Id of the user whos follower and following list is being displayed
+     */
+    public function followerPage($userId)
+    {
+        //getting the userIds of the followers
+        $followerList = FollowerList::select('follower_uid')
+                   ->where('following_uid','=',$userId)
+                   ->get();
+
+        //plucking only the userIds as an array from the $followerList collection
+        $followerIds = $followerList->pluck('follower_uid');            
+
+        //getting the follower's data from user table
+        $followers = User::whereIn('u_id',$followerIds)
+                     ->orderBy('username','asc')->get();
+
+        //getting the userIds of the users being followed
+        $followingList = FollowerList::select('following_uid')
+                   ->where('follower_uid','=',$userId)
+                   ->get();
+
+        //plucking only the userIds as an array from the $followingList collection
+        $followingIds = $followingList->pluck('following_uid'); 
+        
+        //getting the follower's data from user table
+        $followings = User::whereIn('u_id',$followingIds)
+                     ->orderBy('username','asc')->get();
+                   
+        
+        return view('followerpage')->with('followers',$followers)->with('followings',$followings);
+    }
+
     /**
      * followUser(): Allows a user to the follow another user.
      * 
@@ -41,7 +87,7 @@ class FollowController extends Controller
      * table of the database by using the 'FollowerList' model.<br>
      * Finally, the user gets redirected to the profile page of the user he just followed.
      * 
-     * @urlParam $followingUserId integer required The Id of the user who is being followed.
+     * @urlParam followingUserId integer required The Id of the user who is being followed.
      * 
      * @response scenario=success {"message": User is successfully followed}
      * 
@@ -72,7 +118,7 @@ class FollowController extends Controller
      * is deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>
      * Finally, the user gets redirected to the profile page of the user he just unfollowed.
      * 
-     * @urlParam $followingUserId integer required The Id of the user who is being unfollowed.
+     * @urlParam unfollowingUserId integer required The Id of the user who is being unfollowed.
      * 
      * @response scenario=success {"message": User is successfully unfollowed}
      * 
