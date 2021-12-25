@@ -20,13 +20,27 @@
  <!---  Blogs --->   
 <div class="blog-item">
 
+    
+    <!-- View Photo Upload Errors if any-->
+    @if ($errors->any())
+    <div class="alert alert-danger alert-block">
+    <strong>Error:</strong><br>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+
+    @foreach ($errors->all() as $error)
+        <span>{{$error}}</span><br>
+    @endforeach
+    </div>
+    @endif
+    <!-- View Photo Upload Errors if any-->
+
     <!-- Photo Upload Button -->
     <div class="upload-photo">
         <a class="btn btn-default upload-button" data-target="#basicModal" data-toggle="modal"><i class="fas fa-upload"></i> Upload Photo</a></p>
     </div>
 
   <!-- Photo Uplaod Modal -->
-  <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -35,34 +49,40 @@
           <h4 class="modal-title" id="myModalLabel">Upload Photo</h4>
         </div>
 
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="caption-text" class="col-form-label">Caption</label>
-            <textarea class="form-control" id="caption-text" rows="3" name="description"></textarea>
-          </div>
-        </div>
-        <div class="modal-body">
-            <div class="file-upload">
-                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-              
-                <div class="image-upload-wrap">
-                  <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-                  <div class="drag-text">
-                    <h3>Drag and drop a file or select add Image</h3>
-                  </div>
+        <form action="/photo-upload" method="POST" enctype="multipart/form-data">
+        @csrf
+
+            <div class="modal-body">
+            <div class="form-group">
+                <label for="caption-text" class="col-form-label" >Caption</label>
+                <textarea class="form-control" id="caption-text" rows="3" name="caption"></textarea>
+            </div>
+            </div>
+        
+            <div class="modal-body">
+                <div class="file-upload">
+                    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+                
+                    <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="photo" />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                    </div>
+                    <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image" />
+                    <div class="image-title-wrap">
+                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                    </div>
+                    </div>
                 </div>
-                <div class="file-upload-content">
-                  <img class="file-upload-image" src="#" alt="your image" />
-                  <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                  </div>
-                </div>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Upload</button>
-        </div>
+            </div>
+
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>   
       </div>
     </div>
   </div>
@@ -127,7 +147,7 @@
 
 <!-- Photo -->
 <div class="photo-item">
-    <div onclick="location.href='/photo'">
+    <div onclick="location.href='/photo/1'">
        <img src="{{ asset('photos/123.png') }}" alt="">
     </div>
 
@@ -179,7 +199,7 @@
 
 <div class="photo-item">
     <div>
-       <img src="{{ asset('photos/123.png') }}" alt="">
+       <img src="{{ asset('photos/photo-uploads/1640164651-adnansadi.jpg') }}" alt="">
     </div>
 
     <div class="details"> 
