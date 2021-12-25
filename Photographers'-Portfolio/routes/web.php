@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\FollowController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogpostController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +30,12 @@ Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.ind
 Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
 Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 Route::get('/logout',[LoginController::class, 'Logout']);
+
+Route::get('/gallery',[GalleryController::class, 'gallery']);
+
+Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
+Route::post('/blogpost',[BlogpostController::class, 'blogpost']);
+
 
 Route::group(['middleware'=>['session']], function(){
     Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
