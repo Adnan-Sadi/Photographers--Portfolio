@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogpostController;
 
 
 /*
@@ -29,6 +30,9 @@ Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('pho
 Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::get('/gallery',[GalleryController::class, 'gallery']);
+
+Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
+Route::post('/blogpost',[BlogpostController::class, 'blogpost']);
 
 
 Route::group(['middleware'=>['session']], function(){

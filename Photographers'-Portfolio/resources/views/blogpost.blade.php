@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Gallery | Photographer's Portfolio</title>
+    <title>Post a Blog | Photographer's Portfolio</title>
 
     <!-- Favicon -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">{{ Session::get('username') }}'s Gallery</h2>
+                        <h2 class="page-title">{{ Session::get('username') }}'s Blog</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="{{ asset('profileindex.blade.php') }} ">{{ Session::get('username') }} </a><i class="fa fa-user" aria-hidden="true"></i></a></li>
@@ -98,40 +98,46 @@
     </section>
     <!-- Breadcrumb Area End -->
 
-    <!-- Gallery Area Start -->
-    <div class="alime-portfolio-area section-padding-80 clearfix">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Projects Menu -->
-                    <div class="alime-projects-menu wow fadeInUp" data-wow-delay="100ms">
-                        <div class="portfolio-menu text-center">
-                            <button class="btn active" data-filter="*">All</button>
-                            <button class="btn" data-filter=".photo">Photo</button>
-                            <button class="btn" data-filter=".blogs">Blog</button>
+    <!-- Post Create Area Start -->
+
+    <div class="container flex justify-center">
+        <header class="text-center">
+            <div class="alime-contact-form mt-50">
+                <!-- Form -->
+                <form action="blogpost" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="title" class="form-control mb-30" placeholder="Blog Title">
                         </div>
+                        <div class="col-12">
+                            <textarea name="text_writings" class="form-control mb-30" placeholder="Write Text Here"></textarea>
+                        </div>
+                    </div>
+                </header>
+                <div class="row py-4">
+                    <div class="col-lg-6 mx-auto">
+                        <!-- Upload image input-->
+                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                            <input id="upload" name="cover_photo" type="file" onchange="readURL(this);" class="form-control border-0">
+                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                            <div class="input-group-append">
+                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                            </div>
+                        </div>
+                        <!-- Uploaded image area-->
+                        <p class="font-italic text-center">Upload a Cover Image for your blog.</p>
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
                     </div>
                 </div>
             </div>
-
-            <div class="row alime-portfolio alime-blog-area section-padding-80-0 mb-70">
-                <!-- Single Gallery Item -->
-                <div class="photo blog photo-card col-12 col-sm-6 col-lg-3 single_gallery_item">
-
-                    <a href="#" class="post-thumbnail"><img class="card-img-top card-img" src="img/bg-img/10.jpg" alt="Card image cap"></a>
-                    <div class="card-body post-content">
-                        <div class="post-meta">
-                            <a href="#"><i class="ti-star" aria-hidden="true"></i></a>
-                            <a href="#">3 Comments</a>
-                        </div>
-                        <h5 class="card-title post-title">Post title</h5>
-                        <a href="#" class="post-title">Captions</a>                            
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.....</p>
-                        <a href="#" class="btn post-catagory">...See More</a>
-                    </div>
-                </div>
+            <div class="col-12">
+                <button type="submit" class="btn alime-btn btn-2 mt-15">Post</button>
             </div>
-        </div>
+        </form>
     </div>
-    <!-- Gallery Area End -->
+
+    <!-- Post Create Area End -->
+
+    
     @include('layouts.footer')
