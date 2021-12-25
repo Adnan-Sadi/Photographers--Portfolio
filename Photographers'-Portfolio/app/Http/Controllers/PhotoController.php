@@ -23,7 +23,7 @@ class PhotoController extends Controller
      * 
      * This method takes the parameter '$photoId' from the route url.
      * The '$photoId' is used to find the particular photo with the same photoId from the database.
-     * All the data about that photo is stored inside the '$photo' variable. 
+     * All the data about that photo is stored inside the '$photo' variable.<br> 
      * Finally, the function returns a view of the 'photopage' with the '$photo' variable.
      *
      * @urlParam photoId integer required The ID of the photo
@@ -45,17 +45,30 @@ class PhotoController extends Controller
         return view('photopage')->with('photo',$photo);
     }
 
+
+    /**
+      * photoUploadPage(): Display the view of the photo upload page.
+      * 
+      * This method returns the view of the photo upload page where the users can
+      * upload photos.
+      */
+    public function photoUploadPage()
+    {
+        return view('photouploadpage');
+    }
+
     /**
      * photoUpload(): Store a newly uplaoded photo in database.
      *
      * This method takes a form request parameter '$request' as a method parameter.
      * The '$request' parameter contains two parameters which contains the values that were submitted with
-     * the 'photo upload form'.These two parameters are 'caption' and 'photo'.
+     * the 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>
      * Here, the method validates the form data received from the '$request' variable and returns error messages 
      * if the request fails to validate.
-     * The image file is given a new name and stored in the storage. 
-     * Finally, the methods stores the necesary informations about the photo in the database by creating a 
-     * new row in the 'photos' table within the database.
+     * The uploaded image file is given a new name and stored in the storage.<br>   
+     * Next, the method stores the necesary informations about the photo in the database by creating a 
+     * new row in the 'photos' table within the database.<br>  
+     * Finally, it redirects the user to the page of the photo that was uploaded.
      * 
      * 
      * @bodyParam caption string The caption of the photo.
@@ -78,7 +91,7 @@ class PhotoController extends Controller
 
         //return error if exists
         if ($error->fails()) {
-            return redirect('/')->withErrors($error)->withInput();
+            return redirect('/photo-upload-page')->withErrors($error)->withInput();
         }
         
         //getting userId and userName from session

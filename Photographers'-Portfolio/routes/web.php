@@ -8,6 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogpostController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,7 @@ Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.Vali
 
 Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.index');
 Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
+Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::get('/gallery',[GalleryController::class, 'gallery']);
@@ -37,4 +39,7 @@ Route::post('/blogpost',[BlogpostController::class, 'blogpost']);
 
 Route::group(['middleware'=>['session']], function(){
     Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
+    Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
+    Route::get('/follow/{user}', [FollowController::class, 'followUser'])->name('follow.follow_user');
+    Route::get('/unfollow/{user}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
 });
