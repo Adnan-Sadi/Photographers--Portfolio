@@ -23,164 +23,68 @@
     <div class="upload-photo">
         <a class="btn btn-default upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a></p>
     </div>
+  
 
+    @foreach ( $allPostsSorted as $post )
 
- <!---  Blogs --->  
-    <div class="blog-body">
-        <div class="icon">
-            <img src="{{ asset('photos/123.png') }}" alt="">
-        </div>
-        <div class="content">
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
-                <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+    @if (isset($post->b_id))
+            <!---  Blogs --->  
+        <div class="blog-body">
+            <div class="icon">
+                <img src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="">
             </div>
-            
-            <div class="title">Lorem Ipsum, dizgi ve bask  <span class="blog-date">27.12.2017</span></div>
-            <div class="rounded"></div>
 
-            <p>
+            <div class="content">
+                <div class="details"> 
+                    <a href="#"><span class="blog-owner">{{ $post->user->full_name }}</span></a> 
+                    <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
+                    <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+                </div>
                 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-            </p>
-        </div>
+                <div class="title">{{ $post->title }}  
+                <span class="blog-date">{{ $post->created_at }}</span></div>
+                <div class="rounded"></div>
 
-        <div class="item-arrow">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </div>
-    </div>
-
-</div>
- <!---  Blogs --->   
-
-<div class="blog-item">
-    <div class="blog-body">
-        <div class="icon">
-            <img src="{{ asset('photos/123.png') }}" alt="">
-        </div>
-        <div class="content">
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
-                <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>  
+                <p>
+                   {{ Str::limit($post->text_writings,300,'...') }}
+                </p>
             </div>
 
-            <div class="title">Lorem Ipsum, dizgi ve bask <span class="blog-date">27.12.2017</span></div>
-            <div class="rounded"></div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-            </p>
-        </div>
-
-        <div class="item-arrow">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </div>
-    </div>
-
-</div>
-
-<!-- Photo -->
-<div class="photo-item">
-    <div onclick="location.href='/photo/1'">
-       <img src="{{ asset('photos/123.png') }}" alt="">
-    </div>
-
-    <div class="details"> 
-       <a href=""><span class="blog-owner">username</span></a> 
-       <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-       <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
-       <span class="photo-date">27.12.2017</span> 
-   </div>
-
-   <div class="rounded"></div>
-
-   <div class="photo-caption">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-   </div>
-</div>
-<!-- Photo -->
-
-
-<div class="blog-item">
-    <div class="blog-body">
-        <div class="icon">
-            <img src="{{ asset('photos/123.png') }}" alt="">
-        </div>
-        <div class="content">
-
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
-                <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+            <div class="item-arrow">
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
-
-            <div class="title">Lorem Ipsum, dizgi  <span class="blog-date">27.12.2017</span></div>
-            <div class="rounded"></div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-            </p>
         </div>
 
-        <div class="item-arrow">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+       
+       <!---  Blogs --->
+       
+    
+    @else
+  
+     <!-- Photo -->
+    <div class="photo-item">
+        <div onclick="location.href='/photo/{{ $post->p_id }}'">
+           <img src="{{ asset('photos/photo-uploads/'.$post->photo_path) }}" alt="">
         </div>
+    
+        <div class="details"> 
+           <a href=""><span class="blog-owner">{{ $post->user->full_name }}</span></a> 
+           <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
+           <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
+           <span class="photo-date">{{ $post->created_at }}</span> 
+       </div>
+    
+       <div class="rounded"></div>
+    
+       <div class="photo-caption">
+           {{ $post->caption }}
+       </div>
     </div>
+    <!-- Photo -->
 
-</div>
-
-<div class="photo-item">
-    <div>
-       <img src="{{ asset('photos/photo-uploads/1640164651-adnansadi.jpg') }}" alt="">
-    </div>
-
-    <div class="details"> 
-        <a href=""><span class="blog-owner">username</span></a> 
-        <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-        <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
-        <span class="photo-date">27.12.2017</span> 
-   </div>
-
-   <div class="rounded"></div>
-
-   <div class="photo-caption">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-   </div>
-</div>
-
-<div class="blog-item">
-    <div class="blog-body">
-        <div class="icon">
-            <img src="{{ asset('photos/123.png') }}" alt="">
-        </div>
-        <div class="content">
-
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
-                <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
-            </div>
-
-            <div class="title">Lorem Ipsum, dizgi ve bask  <span class="blog-date">27.12.2017</span></div>
-            <div class="rounded"></div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
-            </p>
-        </div>
-
-        <div class="item-arrow">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </div>
-    </div>
+    @endif
+        
+    @endforeach
 </div>
 
 <div class="see-more" align="center">

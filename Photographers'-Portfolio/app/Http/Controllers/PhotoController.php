@@ -23,8 +23,9 @@ class PhotoController extends Controller
      * 
      * This method takes the parameter '$photoId' from the route url.
      * The '$photoId' is used to find the particular photo with the same photoId from the database.
-     * All the data about that photo is stored inside the '$photo' variable.<br> 
-     * Finally, the function returns a view of the 'photopage' with the '$photo' variable.
+     * All the data about that photo is stored inside a laravel 'Collection Object'.<br> 
+     * Finally, the function returns a view of the 'photopage' along with the 'Collection Object'
+     * which contains the photo data.
      *
      * @urlParam photoId integer required The ID of the photo
      * 

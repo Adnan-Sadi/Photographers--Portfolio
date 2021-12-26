@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    public function gallery (){
+    public function gallery ($userId){
+
         return view('gallery');
     } 
 }
