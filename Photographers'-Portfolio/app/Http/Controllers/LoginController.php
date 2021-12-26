@@ -81,7 +81,7 @@ class LoginController extends Controller
                 $req->session()->put('email', $user->email);
                 $req->session()->put('username', $user->username);
 
-                return redirect()->route('newsfeed.index');
+                return redirect('/newsfeed');
             }
             else{
                 $auth = "Unauthorized";
