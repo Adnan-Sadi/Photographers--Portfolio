@@ -16,7 +16,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/photoupload.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/gb.css') }}">
 
@@ -223,4 +222,4 @@
     <!-- Comment Area End -->
 
 
-    @include('layouts.footer')
+    @include('layouts.gbfooter')

@@ -16,7 +16,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/photoupload.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/gb.css') }}">
 
@@ -34,7 +33,7 @@
                     <!-- Classy Menu -->
                     <nav class="classy-navbar justify-content-between" id="alimeNav">
                         <!-- Logo -->
-                        <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
+                        <a class="nav-brand" href="{{ asset('newsfeed') }}"><img src="./img/core-img/logo.png" alt=""><i>Photographer's Portfolio</i></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -54,7 +53,7 @@
                                     
                                     <!-- Checking if user is logged in -->
                                     @if (Session::get('u_id'))
-                                    <li><a href="#">{{ Session::get('username') }}</a></li>
+                                    <li><a href="{{ asset('profileindex') }}">{{ Session::get('username') }}</a></li>
                                     @endif
                                      <!-- Checking if user is logged in -->
                                     
@@ -134,4 +133,4 @@
         </div>
     </div>
     <!-- Gallery Area End -->
-    @include('layouts.footer')
+    @include('layouts.gbfooter')
