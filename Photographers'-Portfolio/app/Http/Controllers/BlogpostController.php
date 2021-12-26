@@ -8,7 +8,7 @@ use App\Models\Blogs;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-use session;
+use Session;
 
 class BlogpostController extends Controller
 {
@@ -39,15 +39,16 @@ class BlogpostController extends Controller
      */
 
 
-    public function store(CreateValidationRequest $request){
+    public function store(Request $request){
         
-
-        $request->validate([
+        //setting validation rules
+        $rules = array(
             'title '=> 'required',
             'text_writings' => 'required',
             'cover_photo' => 'required|mimes:jpg,png,jpeg|max:5048'
-        ]);
+        );
 
+        $error= Validator::make($request->all(), $rules);
 
         //getting userId and userName from session
         $userId = Session::get('u_id');

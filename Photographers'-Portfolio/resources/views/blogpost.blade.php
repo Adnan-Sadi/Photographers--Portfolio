@@ -104,7 +104,7 @@
         <header class="text-center">
             <div class="alime-contact-form mt-50">
                 <!-- Form -->
-                <form action="blogpost" method="POST" enctype="multipart/form-data">
+                <form action="/blogpost" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-12 col-md-6">

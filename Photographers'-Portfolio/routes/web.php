@@ -35,7 +35,7 @@ Route::get('/logout',[LoginController::class, 'Logout']);
 Route::get('/gallery',[GalleryController::class, 'gallery']);
 
 Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
-Route::post('/blogpost',[BlogpostController::class, 'blogpost']);
+Route::post('/blogpost',[BlogpostController::class, 'store']);
 
 
 Route::group(['middleware'=>['session']], function(){
