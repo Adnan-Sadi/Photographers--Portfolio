@@ -7,8 +7,7 @@
                     <div class="footer-content d-flex align-items-center justify-content-between">
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
-                            <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Photographer's Portfolio</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Photographer's Portfolio</a></p>
                         </div>
                         <!-- Footer Logo -->
                         <div class="footer-logo">
