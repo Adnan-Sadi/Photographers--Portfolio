@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.20.0.js"></script>
+
+    <script src="../docs/js/theme-default-3.20.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                                                                            <ul id="tocify-header-0" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                                            
+                                                                    </ul>
+                                                <ul id="tocify-header-1" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="authenticating-requests">
+                        <a href="#authenticating-requests">Authenticating requests</a>
+                    </li>
+                                            
+                                                </ul>
+                    
+                    <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="photocontroller-class">
+                    <a href="#photocontroller-class">PhotoController class</a>
+                </li>
+                                    <ul id="tocify-subheader-photocontroller-class" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="photocontroller-class-GETphoto--id-">
+                        <a href="#photocontroller-class-GETphoto--id-">index(): Display the view of an individual photo.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="photocontroller-class-POSTphoto-upload">
+                        <a href="#photocontroller-class-POSTphoto-upload">photoUpload(): Store a newly uplaoded photo in database.</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+        
+                        
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: December 24 2021</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://localhost</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="photocontroller-class">PhotoController class</h1>
+
+    <p>The methods inside this class are used for uploading or
+viewing a single photo on this web application.</p>
+
+            <h2 id="photocontroller-class-GETphoto--id-">index(): Display the view of an individual photo.</h2>
+
+<p>
+</p>
+
+<p>This method takes the parameter '$photoId' from the route url.
+The '$photoId' is used to find the particular photo with the same photoId from the database.
+All the data about that photo is stored inside the '$photo' variable.<br>
+Finally, the function returns a view of the 'photopage' with the '$photo' variable.</p>
+
+<span id="example-requests-GETphoto--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/photo/ut" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/photo/ut"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETphoto--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+ &quot;p_id&quot;: 4,
+ &quot;u_id&quot;: 2,
+ &quot;caption&quot;: &quot;This is an example caption&quot;,
+ &quot;photo_path&quot;: &quot;example-photo.jpg&quot;,
+ &quot;created_at&quot;: &quot;2021-12-22 08:58:02&quot;,
+ &quot;updated_at&quot;: &quot;2021-12-22 08:58:0&quot;,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETphoto--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETphoto--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETphoto--id-"></code></pre>
+</span>
+<span id="execution-error-GETphoto--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETphoto--id-"></code></pre>
+</span>
+<form id="form-GETphoto--id-" data-method="GET"
+      data-path="photo/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETphoto--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETphoto--id-"
+                    onclick="tryItOut('GETphoto--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETphoto--id-"
+                    onclick="cancelTryOut('GETphoto--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETphoto--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>photo/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="GETphoto--id-"
+               value="ut"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the photo.</p>
+            </p>
+                    <p>
+                <b><code>photoId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="photoId"
+               data-endpoint="GETphoto--id-"
+               value="9"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the photo</p>
+            </p>
+                    </form>
+
+            <h2 id="photocontroller-class-POSTphoto-upload">photoUpload(): Store a newly uplaoded photo in database.</h2>
+
+<p>
+</p>
+
+<p>This method takes a form request parameter '$request' as a method parameter.
+The '$request' parameter contains two parameters which contains the values that were submitted with
+the 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>
+Here, the method validates the form data received from the '$request' variable and returns error messages
+if the request fails to validate.
+The uploaded image file is given a new name and stored in the storage.<br>
+Next, the method stores the necesary informations about the photo in the database by creating a
+new row in the 'photos' table within the database.<br>
+Finally, it redirects the user to the page of the photo that was uploaded.</p>
+
+<span id="example-requests-POSTphoto-upload">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/photo-upload" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "caption=est" \
+    --form "photo=@C:\Users\adnan\AppData\Local\Temp\phpF871.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/photo-upload"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('caption', 'est');
+body.append('photo', document.querySelector('input[name="photo"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTphoto-upload">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{&quot;message&quot;: photo is uploaded}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{&quot;message&quot;: form data failed to validate}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTphoto-upload" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTphoto-upload"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTphoto-upload"></code></pre>
+</span>
+<span id="execution-error-POSTphoto-upload" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTphoto-upload"></code></pre>
+</span>
+<form id="form-POSTphoto-upload" data-method="POST"
+      data-path="photo-upload"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTphoto-upload', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTphoto-upload"
+                    onclick="tryItOut('POSTphoto-upload');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTphoto-upload"
+                    onclick="cancelTryOut('POSTphoto-upload');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTphoto-upload" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>photo-upload</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>caption</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="caption"
+               data-endpoint="POSTphoto-upload"
+               value="est"
+               data-component="body" hidden>
+    <br>
+<p>The caption of the photo.</p>
+        </p>
+                <p>
+            <b><code>photo</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="photo"
+               data-endpoint="POSTphoto-upload"
+               value=""
+               data-component="body" hidden>
+    <br>
+<p>The uploaded image file</p>
+        </p>
+        </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

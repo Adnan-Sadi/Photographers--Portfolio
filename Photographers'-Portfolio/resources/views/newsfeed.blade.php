@@ -41,7 +41,7 @@
     </div>
 
   <!-- Photo Uplaod Modal -->
-  <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 

@@ -23,7 +23,11 @@ class PhotoController extends Controller
      *
      * This method takes the parameter '$photoId' from the route url.
      * The '$photoId' is used to find the particular photo with the same photoId from the database.
+<<<<<<< HEAD
      * All the data about that photo is stored inside the '$photo' variable.
+=======
+     * All the data about that photo is stored inside the '$photo' variable.<br> 
+>>>>>>> 369aa340dc6201dfd9b0f0ebd3669f83e3693bfb
      * Finally, the function returns a view of the 'photopage' with the '$photo' variable.
      *
      * @urlParam photoId integer required The ID of the photo
@@ -50,6 +54,7 @@ class PhotoController extends Controller
      *
      * This method takes a form request parameter '$request' as a method parameter.
      * The '$request' parameter contains two parameters which contains the values that were submitted with
+<<<<<<< HEAD
      * the 'photo upload form'.These two parameters are 'caption' and 'photo'.
      * Here, the method validates the form data received from the '$request' variable and returns error messages
      * if the request fails to validate.
@@ -58,6 +63,17 @@ class PhotoController extends Controller
      * new row in the 'photos' table within the database.
      *
      *
+=======
+     * the 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>
+     * Here, the method validates the form data received from the '$request' variable and returns error messages 
+     * if the request fails to validate.
+     * The uploaded image file is given a new name and stored in the storage.<br>   
+     * Next, the method stores the necesary informations about the photo in the database by creating a 
+     * new row in the 'photos' table within the database.<br>  
+     * Finally, it redirects the user to the page of the photo that was uploaded.
+     * 
+     * 
+>>>>>>> 369aa340dc6201dfd9b0f0ebd3669f83e3693bfb
      * @bodyParam caption string The caption of the photo.
      * @bodyParam photo file required The uploaded image file
      *

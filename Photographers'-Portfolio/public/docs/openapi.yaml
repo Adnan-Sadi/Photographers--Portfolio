@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  '/photo/{id}':
+    get:
+      summary: 'index(): Display the view of an individual photo.'
+      description: "This method takes the parameter '$photoId' from the route url.\nThe '$photoId' is used to find the particular photo with the same photoId from the database.\nAll the data about that photo is stored inside the '$photo' variable.<br>\nFinally, the function returns a view of the 'photopage' with the '$photo' variable."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"p_id\": 4,\n \"u_id\": 2,\n \"caption\": \"This is an example caption\",\n \"photo_path\": \"example-photo.jpg\",\n \"created_at\": \"2021-12-22 08:58:02\",\n \"updated_at\": \"2021-12-22 08:58:0\",\n}"
+      tags:
+        - 'PhotoController class'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the photo.'
+        example: ut
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: photoId
+        description: 'The ID of the photo'
+        example: 9
+        required: true
+        schema:
+          type: integer
+  /photo-upload:
+    post:
+      summary: 'photoUpload(): Store a newly uplaoded photo in database.'
+      description: "This method takes a form request parameter '$request' as a method parameter.\nThe '$request' parameter contains two parameters which contains the values that were submitted with\nthe 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>\nHere, the method validates the form data received from the '$request' variable and returns error messages\nif the request fails to validate.\nThe uploaded image file is given a new name and stored in the storage.<br>\nNext, the method stores the necesary informations about the photo in the database by creating a\nnew row in the 'photos' table within the database.<br>\nFinally, it redirects the user to the page of the photo that was uploaded."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: failure
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{"message": form data failed to validate}'
+      tags:
+        - 'PhotoController class'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                caption:
+                  type: string
+                  description: 'The caption of the photo.'
+                  example: est
+                photo:
+                  type: string
+                  format: binary
+                  description: 'The uploaded image file'
+              required:
+                - photo
+      security: []
+tags:
+  -
+    name: 'PhotoController class'
+    description: "\nThe methods inside this class are used for uploading or \nviewing a single photo on this web application."
