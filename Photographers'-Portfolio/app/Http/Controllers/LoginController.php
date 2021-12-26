@@ -18,9 +18,9 @@ class LoginController extends Controller
         return view('auth.login', ["auth" => $auth]);
     }
 
-    public function Mahin()
+    public function Marin()
     {
-        return view('auth.mahinigga');
+        return view('auth.machining');
     }
 
 
@@ -34,10 +34,10 @@ class LoginController extends Controller
         $validator = Validator::make($req->all(), [
             'username' => 'required|min:4|unique:users|min:4',
             'email' => 'required|email|unique:users',
-            'password' => 'required|same:confirmpass',
-            'confirmpass' => 'required'
+            'password' => 'required|same:confirms',
+            'confirms' => 'required'
         ]);
-        
+
         if ($validator->fails()) {
             //return view('auth.registration', ["ch" => $ch]);
             return redirect()->route('auth.registration')->with('errors',$validator->errors())->withInput();
@@ -57,7 +57,7 @@ class LoginController extends Controller
         else{
             echo "Server Error";
         }
-    }  
+    }
 }
     public function ValidateLogin(Request $req)
     {
@@ -65,7 +65,7 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        
+
         if($validator->fails()){
             return redirect()->route('auth.login')->with('errors',$validator->errors())->withInput();
         } else {
@@ -81,7 +81,7 @@ class LoginController extends Controller
                 $req->session()->put('email', $user->email);
                 $req->session()->put('username', $user->username);
 
-                return redirect()->route('newsfeed.index');
+                return redirect()->route('Profile');
             }
             else{
                 $auth = "Unauthorized";

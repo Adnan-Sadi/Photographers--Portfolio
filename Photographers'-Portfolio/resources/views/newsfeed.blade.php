@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/photoupload.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+
 </head>
 
 @include('layouts.header')
 
 <body>
- 
- <!---  Blogs --->   
+
+ <!---  Blogs --->
 <div class="blog-item">
 
-    
+
     <!-- View Photo Upload Errors if any-->
     @if ($errors->any())
     <div class="alert alert-danger alert-block">
@@ -58,11 +59,11 @@
                 <textarea class="form-control" id="caption-text" rows="3" name="caption"></textarea>
             </div>
             </div>
-        
+
             <div class="modal-body">
                 <div class="file-upload">
                     <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-                
+
                     <div class="image-upload-wrap">
                     <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="photo" />
                     <div class="drag-text">
@@ -82,7 +83,7 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Upload</button>
             </div>
-        </form>   
+        </form>
       </div>
     </div>
   </div>
@@ -93,19 +94,19 @@
             <img src="{{ asset('photos/123.png') }}" alt="">
         </div>
         <div class="content">
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
+            <div class="details">
+                <a href="#"><span class="blog-owner">username</span></a>
                 <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
             </div>
-            
+
             <div class="title">Lorem Ipsum, dizgi ve bask  <span class="blog-date">27.12.2017</span></div>
             <div class="rounded"></div>
 
             <p>
-                
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
             </p>
         </div>
 
@@ -115,7 +116,7 @@
     </div>
 
 </div>
- <!---  Blogs --->   
+ <!---  Blogs --->
 
 <div class="blog-item">
     <div class="blog-body">
@@ -123,18 +124,18 @@
             <img src="{{ asset('photos/123.png') }}" alt="">
         </div>
         <div class="content">
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
+            <div class="details">
+                <a href="#"><span class="blog-owner">username</span></a>
                 <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>  
+                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
             </div>
 
             <div class="title">Lorem Ipsum, dizgi ve bask <span class="blog-date">27.12.2017</span></div>
             <div class="rounded"></div>
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
             </p>
         </div>
 
@@ -151,18 +152,18 @@
        <img src="{{ asset('photos/123.png') }}" alt="">
     </div>
 
-    <div class="details"> 
-       <a href=""><span class="blog-owner">username</span></a> 
+    <div class="details">
+       <a href=""><span class="blog-owner">username</span></a>
        <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
        <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
-       <span class="photo-date">27.12.2017</span> 
+       <span class="photo-date">27.12.2017</span>
    </div>
 
    <div class="rounded"></div>
 
    <div class="photo-caption">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
    </div>
 </div>
 <!-- Photo -->
@@ -175,18 +176,18 @@
         </div>
         <div class="content">
 
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
+            <div class="details">
+                <a href="#"><span class="blog-owner">username</span></a>
                 <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
             </div>
 
             <div class="title">Lorem Ipsum, dizgi  <span class="blog-date">27.12.2017</span></div>
             <div class="rounded"></div>
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
             </p>
         </div>
 
@@ -202,18 +203,18 @@
        <img src="{{ asset('photos/photo-uploads/1640164651-adnansadi.jpg') }}" alt="">
     </div>
 
-    <div class="details"> 
-        <a href=""><span class="blog-owner">username</span></a> 
+    <div class="details">
+        <a href=""><span class="blog-owner">username</span></a>
         <a href=""><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
         <a href=""><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
-        <span class="photo-date">27.12.2017</span> 
+        <span class="photo-date">27.12.2017</span>
    </div>
 
    <div class="rounded"></div>
 
    <div class="photo-caption">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+       Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
    </div>
 </div>
 
@@ -224,18 +225,18 @@
         </div>
         <div class="content">
 
-            <div class="details"> 
-                <a href="#"><span class="blog-owner">username</span></a> 
+            <div class="details">
+                <a href="#"><span class="blog-owner">username</span></a>
                 <a href="#"><span class="blog-likes"><i class="far fa-thumbs-up"></i> Likes</span></a>
-                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a> 
+                <a href="#"><span class="blog-comments"><i class="far fa-comment"></i> Comments</span></a>
             </div>
 
             <div class="title">Lorem Ipsum, dizgi ve bask  <span class="blog-date">27.12.2017</span></div>
             <div class="rounded"></div>
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus. 
-                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis felis vel ante venenatis faucibus.
+                Vivamus ac tellus turpis. Nulla laoreet ut risus eu malesuada. Sed eu lectus ac ex rutrum congue vel in eros. Nunc iaculis quis tellus at feugiat.
             </p>
         </div>
 
@@ -249,7 +250,7 @@
     <a class="btn btn-default see-more-button" href="#">See More</a></p>
 </div>
 
- 
+
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

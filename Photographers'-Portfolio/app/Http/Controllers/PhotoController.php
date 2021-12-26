@@ -12,7 +12,7 @@ use Session;
 /**
  * @group PhotoController class
  *
- * The methods inside this class are used for uploading or 
+ * The methods inside this class are used for uploading or
  * viewing a single photo on this web application.
  */
 
@@ -20,14 +20,14 @@ class PhotoController extends Controller
 {
     /**
      * index(): Display the view of an individual photo.
-     * 
+     *
      * This method takes the parameter '$photoId' from the route url.
      * The '$photoId' is used to find the particular photo with the same photoId from the database.
-     * All the data about that photo is stored inside the '$photo' variable. 
+     * All the data about that photo is stored inside the '$photo' variable.
      * Finally, the function returns a view of the 'photopage' with the '$photo' variable.
      *
      * @urlParam photoId integer required The ID of the photo
-     * 
+     *
      * @response {
      *  "p_id": 4,
      *  "u_id": 2,
@@ -51,18 +51,18 @@ class PhotoController extends Controller
      * This method takes a form request parameter '$request' as a method parameter.
      * The '$request' parameter contains two parameters which contains the values that were submitted with
      * the 'photo upload form'.These two parameters are 'caption' and 'photo'.
-     * Here, the method validates the form data received from the '$request' variable and returns error messages 
+     * Here, the method validates the form data received from the '$request' variable and returns error messages
      * if the request fails to validate.
-     * The image file is given a new name and stored in the storage. 
-     * Finally, the methods stores the necesary informations about the photo in the database by creating a 
+     * The image file is given a new name and stored in the storage.
+     * Finally, the methods stores the necesary informations about the photo in the database by creating a
      * new row in the 'photos' table within the database.
-     * 
-     * 
+     *
+     *
      * @bodyParam caption string The caption of the photo.
      * @bodyParam photo file required The uploaded image file
-     * 
+     *
      * @response scenario=success {"message": photo is uploaded}
-     * 
+     *
      * @response scenario=failure {"message": form data failed to validate}
      */
     public function photoUpload(Request $request)
@@ -80,9 +80,9 @@ class PhotoController extends Controller
         if ($error->fails()) {
             return redirect('/')->withErrors($error)->withInput();
         }
-        
+
         //getting userId and userName from session
-        $userId = Session::get('u_id');
+        $userId  =Session::get('u_id');
         $userName = Session::get('username');
 
         $newImageName = time(). '-'. $userName .'-'.Str::random(3).'.'. $request->photo->extension();
@@ -93,9 +93,9 @@ class PhotoController extends Controller
         'caption'    => $request->input('caption'),
         'photo_path' => $newImageName,
         ]);
-        
+
         return redirect('/photo/'. $photo->p_id);
     }
 
-    
+
 }
