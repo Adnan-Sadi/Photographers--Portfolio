@@ -5,12 +5,8 @@ use Intervention\Image\Facades\Image;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
-<<<<<<< HEAD
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Profile;
-=======
-use App\Http\Controllers\FollowController;
->>>>>>> 369aa340dc6201dfd9b0f0ebd3669f83e3693bfb
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +27,8 @@ Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.Vali
 
 // Profile routes
 Route::get ('/user/{user}', [Profile::class, 'index'])->name('user.index') ;
-Route::get('/ user/{user}/edit', 'ProfilesController@edit')->name('user.edit');
-Route::patch('/ user/{user}/update', 'ProfilesController@update')->name('user.update');
+Route::get('/ user/{user}/edit', [Profile::class, 'index']  )->name('user.edit');
+Route::patch('/ user/{user}/update', [Profile::class, 'index'] )->name('user.update');
 
 
 
@@ -46,11 +42,4 @@ Route::get('/gallery',[GalleryController::class, 'gallery']);
 
 Route::group(['middleware'=>['session']], function(){
     Route::get('/', [NewsfeedController::class, 'index'])->name('newsfeed.index');
-<<<<<<< HEAD
 });
-=======
-    Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
-    Route::get('/follow/{user}', [FollowController::class, 'followUser'])->name('follow.follow_user');
-    Route::get('/unfollow/{user}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
-});
->>>>>>> 369aa340dc6201dfd9b0f0ebd3669f83e3693bfb
