@@ -91,6 +91,19 @@
                             </ol>
                         </nav>
                     </div>
+                    <div class="breadcrumb-content text-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li>
+                                    <a class="btn btn-danger upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
+                                </li>
+                            </ol>
+                        </nav>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,20 +128,41 @@
 
             <div class="row alime-portfolio alime-blog-area section-padding-80-0 mb-70">
                 <!-- Single Gallery Item -->
-                <div class="photo blog photo-card col-12 col-sm-6 col-lg-3 single_gallery_item">
 
-                    <a href="#" class="post-thumbnail"><img class="card-img-top card-img" src="img/bg-img/10.jpg" alt="Card image cap"></a>
+                @foreach ( $allPostsSorted as $post )
+                @if (isset($post->b_id))
+
+                <div class="blogs photo-card col-12 col-sm-6 col-lg-3 single_gallery_item">
+
+                    <a href="{{ $post->b_id }}" class="post-thumbnail"><img class="card-img-top card-img" src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="Card image cap"></a>
                     <div class="card-body post-content">
                         <div class="post-meta">
-                            <a href="#"><i class="ti-star" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-star" aria-hidden="true">{{ $post->created_at }}</i></a>
                             <a href="#">3 Comments</a>
                         </div>
-                        <h5 class="card-title post-title">Post title</h5>
-                        <a href="#" class="post-title">Captions</a>                            
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.....</p>
-                        <a href="#" class="btn post-catagory">...See More</a>
+                        <h5 class="card-title post-title">{{ $post->user->full_name }}</h5>
+                        <a href="#" class="post-title">{{ $post->title }}</a>                            
+                        <p class="card-text">{{ Str::limit($post->text_writings,300,'...') }}</p>
+                        <a href="{{ $post->b_id }}" class="btn post-catagory">...See More</a>
                     </div>
                 </div>
+
+                @else
+                <!-- Photo -->
+                <div class="photo photo-card col-12 col-sm-6 col-lg-3 single_gallery_item" onclick="location.href='/photo/{{ $post->p_id }}'">
+
+                    <a href="{{ asset('photos/photo-uploads/'.$post->photo_path) }}" class="post-thumbnail"><img class="card-img-top card-img" src="img/bg-img/10.jpg" alt="Card image cap"></a>
+                    <div class="card-body post-content">
+                        <div class="post-meta">
+                            <a href="#"><i class="ti-star" aria-hidden="true">{{ $post->created_at }}</i></a>
+                            <a href="#">3 Comments</a>
+                        </div>
+                        <h5 class="card-title post-title">{{ $post->user->full_name }}</h5>
+                        <a href="#" class="post-title">{{ $post->caption }}</a>                            
+                    </div>
+                </div>
+                @endif
+                @endforeach
             </div>
         </div>
     </div>
