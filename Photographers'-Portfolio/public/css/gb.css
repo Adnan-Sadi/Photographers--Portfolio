@@ -1741,12 +1741,14 @@ form input {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+  justify-content: space-between
 }
 
 .photo-card{
-	flex: 0 1 270px;
+	flex: 0 1 260px;
   padding: 4px;
   border: #161715;
+  margin: 2px;
   background-color:cornsilk;
 }
 
