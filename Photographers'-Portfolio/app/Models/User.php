@@ -14,12 +14,10 @@ class User extends Authenticatable
 
     /**
      * Setting primary key
-     *
+     * 
      * @var int
      */
     protected $primaryKey = 'u_id';
-    protected $user;
-
 
     /**
      * The attributes that are mass assignable.
@@ -54,39 +52,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($user){
-            $user->profile()->create([
-                'title' => $user->full_name
-            ]);
-
-
-        });
-
-    }
-
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
-
-
     /**
      * Get the photos of the user
      */
     public function photos(){
-        return $this->hasMany(Photos::class,'u_id');
+        return $this->hasMany(Photos::class,'u_id'); 
     }
 
     /**
      * Get the blogs of the user
      */
     public function blogs(){
-        return $this->hasMany(Blogs::class,'u_id');
+        return $this->hasMany(Blogs::class,'u_id'); 
     }
 
     /**
@@ -109,9 +86,6 @@ class User extends Authenticatable
     public function blogLikes(){
         return $this->belongstoMany(Blogs::class)->using(BlogLikes::class);
     }
-
-
-
 
     /**
      * Get all the blogs commented on by the user

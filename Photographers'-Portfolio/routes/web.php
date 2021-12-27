@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Intervention\Image\Facades\Image;
 use App\Http\Controllers\NewsfeedController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LoginController;
@@ -10,7 +9,6 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogpostController;
 
 
-use App\Http\Controllers\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +27,6 @@ Route::post('/registration',[LoginController::class, 'Register']);
 Route::get('/login',[LoginController::class, 'Login'])->name('auth.login');
 Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.ValidateLogin');
 
-// Profile routes
-Route::get ('/user/{user}', [Profile::class, 'index'])->name('user.index') ;
-Route::get('/ user/{user}/edit', [Profile::class, 'index']  )->name('user.edit');
-Route::patch('/ user/{user}/update', [Profile::class, 'index'] )->name('user.update');
-
-
-
 Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.index');
 Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
 Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
@@ -45,7 +36,6 @@ Route::get('/gallery/{user}',[GalleryController::class, 'gallery']);
 
 Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
 Route::post('/blogpost',[BlogpostController::class, 'store']);
-
 
 
 Route::group(['middleware'=>['session']], function(){

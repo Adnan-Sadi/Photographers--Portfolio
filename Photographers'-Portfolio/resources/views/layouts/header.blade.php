@@ -14,7 +14,7 @@
 
                         <!-- Checking if user is logged in -->
                         @if (Session::get('u_id'))
-                        <li><a href="{{ asset('user') }}">{{ Session::get('username') }}</a></li> 
+                        <li><a href="{{ asset('profileindex') }}">{{ Session::get('username') }}</a></li> 
                         @endif
                         <!-- Checking if user is logged in -->
 
