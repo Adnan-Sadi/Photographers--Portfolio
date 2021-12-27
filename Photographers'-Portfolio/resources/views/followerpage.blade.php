@@ -22,18 +22,17 @@
     <!-- List of followers a certain user has -->
       <div class='follower-list'>
 
-        <h3>Followers</h3>
+        <h3>Followers({{ $followers->count() }})</h3>
 
         @foreach ($followers as $follower )
 
         <div class="media">
             <div class="media-left">
-                <img class="mr-3" src="{{ asset('photos/123.png') }}" alt="Generic placeholder image" height=64 width=64>
+                <img class="mr-3" src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" height=64 width=64>
             </div>
             
             <div class="media-body">
               <h4 class="media-heading">{{ $follower->username}}</h4>
-              <button type="button" class="btn btn-success">follow</button>
             </div>
         </div>
 
@@ -50,18 +49,17 @@
       <!-- List of the users a certain user is Following -->
       <div class='following-list'>
 
-        <h3>Following</h3>
+        <h3>Following({{ $followings->count() }})</h3>
 
         @foreach ($followings as $following)
 
         <div class="media">
             <div class="media-left">
-                <img class="mr-3" src="{{ asset('photos/123.png') }}" alt="Generic placeholder image" height=64 width=64>
+                <img class="mr-3" src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" height=64 width=64>
             </div>
             
             <div class="media-body">
               <h4 class="media-heading">{{ $following->username }}</h4>
-              <button type="button" class="btn btn-danger">Unfollow</button>
             </div>
         </div>
             

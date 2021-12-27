@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/8aa2fd0685.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/photopage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
     
 </head>
@@ -90,7 +91,9 @@
 <!-- Comment Section -->
 
 </div><br><br>
-    
+
+@include('layouts.footer')
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

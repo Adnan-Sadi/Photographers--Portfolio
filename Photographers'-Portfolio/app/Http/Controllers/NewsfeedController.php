@@ -9,6 +9,13 @@ use App\Models\Blogs;
 use App\Models\FollowerList;
 use Session;
 
+/**
+ * @group NewsfeedController class
+ *
+ * The methods inside this class are used displaying the
+ * newsfeed of an user.
+ */
+
 class NewsfeedController extends Controller
 {
 
@@ -35,9 +42,10 @@ class NewsfeedController extends Controller
         $followingList = FollowerList::select('following_uid')
                                        ->where('follower_uid','=',$userId)
                                        ->get();
-
+        
         //plucking only the userIds as an array from the $followingList collection
-        $followingUserIds = $followingList->pluck('following_uid'); 
+        $followingUserIds = $followingList->pluck('following_uid');
+        $followingUserIds->push($userId);
 
         //getting the photos uploaded from users who are followed by the current logged in user.
         //the query results are generated in descending order of upload date
@@ -50,7 +58,7 @@ class NewsfeedController extends Controller
 
         //merges all blogs and photos together
         $allPosts = $newsfeedPhotos->concat($blogs);
-
+   
         //Sorts all posts in descending order of upload date
         $allPostsSorted = $allPosts->sortByDesc('created_at');
 

@@ -10,7 +10,7 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-left" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/newsfeed/{{ Session::get('u_id') }}">Home</a></li>
+                        <li><a href="/newsfeed">Home</a></li>
 
                         <!-- Checking if user is logged in -->
                         @if (Session::get('u_id'))
@@ -19,6 +19,7 @@
                         <!-- Checking if user is logged in -->
 
                         <li><a href="/gallery/{{ Session::get('u_id') }}">Gallery</a></li>
+                        <li><a href="/follower-page/{{ Session::get('u_id') }}">Followers/Following</a></li>
                     </ul>
 
                     <!-- Checking if user is not logged in -->

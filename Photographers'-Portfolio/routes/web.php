@@ -27,7 +27,7 @@ Route::post('/registration',[LoginController::class, 'Register']);
 Route::get('/login',[LoginController::class, 'Login'])->name('auth.login');
 Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.ValidateLogin');
 
-Route::get('/photo/{photo}', [PhotoController::class, 'index'])->name('photo.index');
+Route::get('/photo/{photoId}', [PhotoController::class, 'index'])->name('photo.index');
 Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
 Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 Route::get('/logout',[LoginController::class, 'Logout']);
@@ -42,7 +42,7 @@ Route::group(['middleware'=>['session']], function(){
     Route::get('/');
     Route::get('/newsfeed', [NewsfeedController::class, 'index'])->name('newsfeed.index');
     Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
-    Route::get('/follow/{user}', [FollowController::class, 'followUser'])->name('follow.follow_user');
-    Route::get('/unfollow/{user}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
+    Route::get('/follow/{followingUserId}', [FollowController::class, 'followUser'])->name('follow.follow_user');
+    Route::get('/unfollow/{unfollowingUserId}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
     Route::get('/follower-page/{user}', [FollowController::class, 'followerPage'])->name('follow.follower_page');
 });

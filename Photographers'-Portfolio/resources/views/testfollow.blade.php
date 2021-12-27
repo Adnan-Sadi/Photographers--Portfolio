@@ -11,6 +11,7 @@
 </head>
 <body>
     <br><br>
+    <div align="center">Follow user {{ $userId }}</div>
     @if ($followsUser == true)
 
     <div align="center">

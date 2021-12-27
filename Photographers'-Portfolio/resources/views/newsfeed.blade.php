@@ -16,19 +16,27 @@
 
 <body>
  
- <!---  Blogs --->   
+  
 <div class="blog-item">
 
     <!-- Photo Upload Button -->
     <div class="upload-photo">
         <a class="btn btn-default upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a></p>
     </div>
+
+    @if ($allPostsSorted->isEmpty())
+    
+      <h3 class="text-center" style="color:white;"><strong> Please follow other users to View Newsfeed. </strong></h3>
+        
+    @endif
   
 
     @foreach ( $allPostsSorted as $post )
 
+    <!-- Generating blog cards if the post is a blog -->
     @if (isset($post->b_id))
-            <!---  Blogs --->  
+
+        <!---  Blogs --->  
         <div class="blog-body">
             <div class="icon">
                 <img src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="">
@@ -53,12 +61,10 @@
             <div class="item-arrow">
                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             </div>
-        </div>
-
-       
+        </div>    
        <!---  Blogs --->
        
-    
+    <!-- Generating photo cards if the post is a photo -->
     @else
   
      <!-- Photo -->
@@ -81,15 +87,10 @@
        </div>
     </div>
     <!-- Photo -->
-
     @endif
         
-    @endforeach
-</div>
-
-<div class="see-more" align="center">
-    <a class="btn btn-default see-more-button" href="#">See More</a></p>
-</div>
+   @endforeach
+</div><br><br>
 
    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

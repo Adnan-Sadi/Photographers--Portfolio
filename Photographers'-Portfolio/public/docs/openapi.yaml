@@ -7,10 +7,40 @@ servers:
   -
     url: 'http://localhost'
 paths:
-  '/photo/{id}':
+  /newsfeed:
     get:
-      summary: 'index(): Display the view of an individual photo.'
-      description: "This method takes the parameter '$photoId' from the route url.\nThe '$photoId' is used to find the particular photo with the same photoId from the database.\nAll the data about that photo is stored inside the '$photo' variable.<br>\nFinally, the function returns a view of the 'photopage' with the '$photo' variable."
+      summary: 'index(): Displays the view of the Newsfeed.'
+      description: "This method returns the view of the newsfeed an user.<br>\nFirst, it finds the 'userId' of the logged in user from the Session variable.\nThen, that 'userId' is used to find all the users that user is following.\nUsing the list of users that were followed, this function retrieves\nall photos and blogs that were posted by those users. Data about about all the\nphotos and blogs are stored inside a laravel 'Collection Object'.<br>\nFinally, the method return the view of the 'newsfeed' page along with the 'Collection\nObject' which contains data about photos and blogs."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='http://localhost/login'\" />\n\n        <title>Redirecting to http://localhost/login</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"http://localhost/login\">http://localhost/login</a>.\n    </body>\n</html>"
+      tags:
+        - 'NewsfeedController class'
+      security: []
+  '/follow/{followingUserId}':
+    get:
+      summary: 'followUser(): Allows a user to the follow another user.'
+      description: "This method takes the parameter '$followingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being followed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'\ntable of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just followed."
       parameters:
         -
           in: header
@@ -28,28 +58,59 @@ paths:
             type: string
       responses:
         200:
-          description: ''
+          description: failure
           content:
             text/plain:
               schema:
                 type: string
-                example: "{\n \"p_id\": 4,\n \"u_id\": 2,\n \"caption\": \"This is an example caption\",\n \"photo_path\": \"example-photo.jpg\",\n \"created_at\": \"2021-12-22 08:58:02\",\n \"updated_at\": \"2021-12-22 08:58:0\",\n}"
+                example: '{unable to follow user}'
       tags:
-        - 'PhotoController class'
+        - 'FollowController class'
       security: []
     parameters:
       -
         in: path
-        name: id
-        description: 'The ID of the photo.'
-        example: ut
+        name: followingUserId
+        description: 'The Id of the user who is being followed.'
+        example: 16
         required: true
         schema:
-          type: string
+          type: integer
+  '/unfollow/{unfollowingUserId}':
+    get:
+      summary: 'unfollowUser(): Allows a user to the unfollow another user.'
+      description: "This method takes the parameter '$unfollowingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being unfollowed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe row containing the user Id of the unfollower and the user Id of user who is being unfollowed\nis deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just unfollowed."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: failure
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{unable to unfollow user}'
+      tags:
+        - 'FollowController class'
+      security: []
+    parameters:
       -
         in: path
-        name: photoId
-        description: 'The ID of the photo'
+        name: unfollowingUserId
+        description: 'The Id of the user who is being unfollowed.'
         example: 9
         required: true
         schema:
@@ -93,7 +154,7 @@ paths:
                 caption:
                   type: string
                   description: 'The caption of the photo.'
-                  example: est
+                  example: cum
                 photo:
                   type: string
                   format: binary
@@ -101,7 +162,82 @@ paths:
               required:
                 - photo
       security: []
+  '/photo/{photoId}':
+    get:
+      summary: 'index(): Display the view of an individual photo.'
+      description: "This method takes the parameter '$photoId' from the route url.\nThe '$photoId' is used to find the particular photo with the same photoId from the database.\nAll the data about that photo is stored inside a laravel 'Collection Object'.<br>\nFinally, the function returns a view of the 'photopage' along with the 'Collection Object'\nwhich contains the photo data."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"p_id\": 4,\n \"u_id\": 2,\n \"caption\": \"This is an example caption\",\n \"photo_path\": \"example-photo.jpg\",\n \"created_at\": \"2021-12-22 08:58:02\",\n \"updated_at\": \"2021-12-22 08:58:0\",\n}"
+      tags:
+        - 'PhotoController class'
+      security: []
+    parameters:
+      -
+        in: path
+        name: photoId
+        description: 'The ID of the photo'
+        example: 20
+        required: true
+        schema:
+          type: integer
+  /photo-upload-page:
+    get:
+      summary: 'photoUploadPage(): Display the view of the photo upload page.'
+      description: "This method returns the view of the photo upload page where the users can\nupload photos."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Upload Photo</title>\r\n\r\n    <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n    <link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css\" rel=\"stylesheet\">\r\n    <script src=\"https://kit.fontawesome.com/8aa2fd0685.js\" crossorigin=\"anonymous\"></script>\r\n    <link rel=\"stylesheet\" href=\"http://localhost/css/photoupload.css\">\r\n    <link rel=\"stylesheet\" href=\"http://localhost/css/header.css\">\r\n    <link rel=\"stylesheet\" href=\"http://localhost/css/footer.css\">\r\n</head>\r\n<body>\r\n\r\n<!---  Header   -->\r\n<Header>\r\n    <div>\r\n        <nav class=\"navbar navbar-default navigation-clean-button\">\r\n            <div class=\"container\">\r\n                <div class=\"navbar-header\"><a class=\"navbar-brand\" href=\"#\">Photographers' Porfolio</a>\r\n                    <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-1\">\r\n                    <span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span>\r\n                    <span class=\"icon-bar\"></span></button>\r\n                </div>\r\n                <div class=\"collapse navbar-collapse navbar-left\" id=\"navcol-1\">\r\n                    <ul class=\"nav navbar-nav\">\r\n                        <li><a href=\"/newsfeed\">Home</a></li>\r\n\r\n                        <!-- Checking if user is logged in -->\r\n                                                <!-- Checking if user is logged in -->\r\n\r\n                        <li><a href=\"/gallery/\">Gallery</a></li>\r\n                    </ul>\r\n\r\n                    <!-- Checking if user is not logged in -->\r\n                                            <p class=\"navbar-text navbar-right actions\"><a class=\"navbar-link login\" href=\"/login\">Log In</a> \r\n                        <a class=\"btn btn-default action-button\" role=\"button\" href=\"/registration\">Sign Up</a></p>   \r\n                                        \r\n                    <ul class=\"wrap\">\r\n                        <div class=\"search\">\r\n                           <input type=\"text\" class=\"searchTerm\" placeholder=\"Search By Username...\">\r\n                           <button type=\"submit\" class=\"searchButton\">\r\n                             <i class=\"fa fa-search\"></i>\r\n                          </button>\r\n                        </div>\r\n                    </ul>\r\n                </div>\r\n                \r\n            </div>\r\n        </nav>\r\n    </div>\r\n</Header>\r\n<!---  Header   -->\r\n<!-- Photo Uplaod Form -->\r\n\r\n    <h4 class=\"form-title\">Upload Photo</h4>\r\n\r\n    <!-- View Photo Upload Errors if any-->\r\n              <!-- View Photo Upload Errors if any-->\r\n\r\n    <div class=\"form-body\">\r\n\r\n        <form action=\"/photo-upload\" method=\"POST\" enctype=\"multipart/form-data\">\r\n        <input type=\"hidden\" name=\"_token\" value=\"yT5JSl1j3wN8EFn4fEM0X4jnpauaJgeIu1IZQDlM\">    \r\n            <div class=\"form-group\">\r\n                <label for=\"caption-text\" class=\"col-form-label\" >Caption</label>\r\n                <textarea class=\"form-control\" id=\"caption-text\" rows=\"5\" name=\"caption\"></textarea>\r\n            </div>\r\n            \r\n        \r\n            \r\n                <div class=\"file-upload\">\r\n                    <button class=\"file-upload-btn\" type=\"button\" onclick=\"$('.file-upload-input').trigger( 'click' )\">Add Image</button>\r\n                \r\n                    <div class=\"image-upload-wrap\">\r\n                    <input class=\"file-upload-input\" type='file' onchange=\"readURL(this);\" accept=\"image/*\" name=\"photo\" />\r\n                    <div class=\"drag-text\">\r\n                        <h3>Drag and drop a file or select add Image</h3>\r\n                    </div>\r\n                    </div>\r\n                    <div class=\"file-upload-content\">\r\n                    <img class=\"file-upload-image\" src=\"#\" alt=\"your image\" />\r\n                    <div class=\"image-title-wrap\">\r\n                        <button type=\"button\" onclick=\"removeUpload()\" class=\"remove-image\">Remove <span class=\"image-title\">Uploaded Image</span></button>\r\n                    </div>\r\n                    </div>\r\n                </div>\r\n           \r\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n            <button type=\"submit\" class=\"btn btn-primary\">Upload</button>\r\n            <br><br><br>\r\n        </form>\r\n    </div>   \r\n \r\n <!-- Photo Upload Form -->\r\n <!-- Footer Area Start -->\r\n    <footer class=\"footer-area\">\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"footer-content d-flex align-items-center justify-content-between\">\r\n                        <!-- Copywrite Text -->\r\n                        <div class=\"copywrite-text\">\r\n                            <p> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i> by <a href=\"#\" target=\"_blank\">Photographer's Portfolio</a></p>\r\n                        </div>\r\n                        <!-- Footer Logo -->\r\n                        <div class=\"footer-logo\">\r\n                            <a href=\"#\"><img src=\"img/core-img/logo2.png\" alt=\"\"></a>\r\n                        </div>\r\n                        <!-- Social Info -->\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </footer>\r\n    <!-- Footer Area End -->\r\n\r\n</body>\r\n\r\n</html>\r\n   <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\" integrity=\"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=\" crossorigin=\"anonymous\"></script>\r\n   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>\r\n   <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\r\n   <script src=\"http://localhost/js/photoupload.js\"></script>\r\n</body>\r\n</html>"
+      tags:
+        - 'PhotoController class'
+      security: []
 tags:
+  -
+    name: 'NewsfeedController class'
+    description: "\nThe methods inside this class are used displaying the\nnewsfeed of an user."
+  -
+    name: 'FollowController class'
+    description: "\nThe methods inside this class are used for implemententing \nfeatures such as 'follow user', 'unfollow user' and 'display follower\nand following List'"
   -
     name: 'PhotoController class'
     description: "\nThe methods inside this class are used for uploading or \nviewing a single photo on this web application."
