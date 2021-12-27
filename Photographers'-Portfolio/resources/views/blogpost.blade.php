@@ -95,17 +95,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li>
-<<<<<<< HEAD
                                     <a class="btn btn-danger upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a>
                                 </li>
                                 <li>
                                     <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
-=======
-                                        <a class="btn btn-danger upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a>
-                                </li>
-                                <li>
-                                        <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
->>>>>>> 9a16faba81c917628984e91a07f6839cff8ca0cc
                                 </li>
                             </ol>
                         </nav>
