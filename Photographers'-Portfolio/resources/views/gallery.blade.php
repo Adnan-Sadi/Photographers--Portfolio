@@ -129,7 +129,7 @@
             <div class="row alime-portfolio alime-blog-area section-padding-80-0 mb-70">
                 <!-- Single Gallery Item -->
 
-                @foreach ( $allPostsSorted as $post )
+                @foreach ( $allGalleryPostsSorted as $post )
                 @if (isset($post->b_id))
 
                 <div class="blogs photo-card col-12 col-sm-6 col-lg-3 single_gallery_item">

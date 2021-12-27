@@ -151,4 +151,4 @@
     <!-- Post Create Area End -->
 
     
-    @include('layouts.footer')
+    @include('layouts.gbfooter')
