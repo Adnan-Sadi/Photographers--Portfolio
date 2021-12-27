@@ -15,19 +15,20 @@ class GalleryController extends Controller
 
         //getting the userId of the logged in user
         $userId = Session::get('u_id');
+        $userId = [$userId];
 
 
         //getting the photos uploaded from users who are followed by the current logged in user.
         //the query results are generated in descending order of upload date
-        $photo= Photos::where('u_id',$userId);
+        $photos= Photos::whereIn('u_id',$userId)->orderBy('created_at','desc')->get();
 
-        $blogs = Blogs::where('u_id',$userId);
+        $blogs = Blogs::whereIn('u_id',$userId)->orderBy('created_at','desc')->get();
 
         //merges all blogs and photos together
-        $allGalleryPosts = $photo->concat($blogs);
+        $allGalleryPosts = $photos->concat($blogs);
 
         //Sorts all posts in descending order of upload date
         $allGalleryPostsSorted = $allGalleryPosts->sortByDesc('created_at');
-        return view('gallery')>with('allPostsSorted',$allGalleryPostsSorted);
+        return view('gallery')->with('allPostsSorted',$allGalleryPostsSorted);
     } 
 }

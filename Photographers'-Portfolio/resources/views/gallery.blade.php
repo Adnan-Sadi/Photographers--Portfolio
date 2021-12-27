@@ -126,13 +126,13 @@
                 </div>
             </div>
 
-            <div class="row alime-portfolio alime-blog-area section-padding-80-0 mb-70">
+            <div class="row alime-portfolio alime-blog-area photo-container">
                 <!-- Single Gallery Item -->
 
-                @foreach ( $allGalleryPostsSorted as $post )
+                @foreach ( $allPostsSorted as $post )
                 @if (isset($post->b_id))
 
-                <div class="blogs photo-card col-12 col-sm-6 col-lg-3 single_gallery_item">
+                <div class="blogs  col-12 col-sm-6 col-lg-3 single_gallery_item photo-card">
 
                     <a href="{{ $post->b_id }}" class="post-thumbnail"><img class="card-img-top card-img" src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="Card image cap"></a>
                     <div class="card-body post-content">
@@ -149,9 +149,9 @@
 
                 @else
                 <!-- Photo -->
-                <div class="photo photo-card col-12 col-sm-6 col-lg-3 single_gallery_item" onclick="location.href='/photo/{{ $post->p_id }}'">
+                <div class="photo  col-12 col-sm-6 col-lg-3 single_gallery_item photo-card" onclick="location.href='/photo/{{ $post->p_id }}'">
 
-                    <a href="{{ asset('photos/photo-uploads/'.$post->photo_path) }}" class="post-thumbnail"><img class="card-img-top card-img" src="img/bg-img/10.jpg" alt="Card image cap"></a>
+                    <a href="{{ asset('photos/photo-uploads/'.$post->photo_path) }}" class="post-thumbnail"><img class="card-img-top card-img" src="{{ asset('photos/photo-uploads/'.$post->photo_path) }}" alt="Card image cap"></a>
                     <div class="card-body post-content">
                         <div class="post-meta">
                             <a href="#"><i class="ti-star" aria-hidden="true">{{ $post->created_at }}</i></a>
