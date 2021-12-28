@@ -48,7 +48,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li><a href="{{ asset('newsfeed') }}">Home</a></li> 
+                                    <li><a href="/newsfeed">Home</a></li> 
                                     
                                     <!-- Checking if user is logged in -->
                                     @if (Session::get('u_id'))
@@ -57,7 +57,8 @@
                                      <!-- Checking if user is logged in -->
                                     
                                     
-                                    <li class="active"><a href="{{ asset('gallery') }}">Gallery</a></li>
+                                    <li class="active"><a href="/gallery/{{ Session::get('u_id') }}">Gallery</a></li>
+                                    <li><a href="/follower-page/{{ Session::get('u_id') }}">Followers/Following</a></li>
                                     <!-- Checking if user is not logged in -->
                                     @if (!Session::get('u_id'))
                                     <li><a class="navbar-link login" href="/login">Log In</a></li>
@@ -66,7 +67,11 @@
                                     <!-- Checking if user is not logged in -->
                                     <li><a class="btn btn-outline-light action-button" role="button" href="/logout">Logout</a></li>
                                     @endif
+                                    
+
                                 </ul>
+
+
                             <!-- Nav End -->
                         </div>
                     </nav>

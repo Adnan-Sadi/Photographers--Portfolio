@@ -10,6 +10,11 @@ use Session;
 
 class GalleryController extends Controller
 {
+    /**
+     * @param mixed $userId
+     * 
+     * @return [type]
+     */
     public function gallery ($userId){
 
 

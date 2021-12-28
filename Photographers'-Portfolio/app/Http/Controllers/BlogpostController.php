@@ -16,11 +16,11 @@ class BlogpostController extends Controller
 
 
     /**
-     * Displays a listing of the resource.
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * 
+     * @return [type]
      */
-
-
+    
     public function blogpost (Request $request){
         
         return view('blogpost');
