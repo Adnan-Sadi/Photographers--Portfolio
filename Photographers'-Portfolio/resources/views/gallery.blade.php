@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="row alime-portfolio alime-blog-area photo-container">
+            <div class="row alime-portfolio alime-blog-area section-padding-80-0 mb-70 photo-container">
                 <!-- Single Gallery Item -->
 
                 @foreach ( $allPostsSorted as $post )
@@ -143,7 +143,8 @@
                         <h5 class="card-title post-title">{{ $post->user->full_name }}</h5>
                         <a href="#" class="post-title">{{ $post->title }}</a>                            
                         <p class="card-text">{{ Str::limit($post->text_writings,300,'...') }}</p>
-                        <a href="{{ $post->b_id }}" class="btn post-catagory">...See More</a>
+                        
+                        <a href="/single-blog/{{ $post->b_id }}" class="btn post-catagory">...See More</a>
                     </div>
                 </div>
 

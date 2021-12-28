@@ -16,77 +16,30 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/gb.css') }}">
+    
 
 </head>
 
 <body>
     
-
     <!-- Header Area Start -->
-    <header class="header-area">
-        <!-- Main Header Start -->
-        <div class="main-header-area">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Classy Menu -->
-                    <nav class="classy-navbar justify-content-between" id="alimeNav">
-                        <!-- Logo -->
-                        <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-                            <!-- Menu Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul id="nav">
-                                    <li><a href="{{ asset('newsfeed') }}">Home</a></li> 
-                                    
-                                    <!-- Checking if user is logged in -->
-                                    @if (Session::get('u_id'))
-                                    <li><a href="#">{{ Session::get('username') }}</a></li>
-                                    @endif
-                                     <!-- Checking if user is logged in -->
-                                    
-                                    
-                                    <li class="active"><a href="{{ asset('gallery') }}">Gallery</a></li>
-                                    <!-- Checking if user is not logged in -->
-                                    @if (!Session::get('u_id'))
-                                    <li><a class="navbar-link login" href="/login">Log In</a></li>
-                                    <li><a class="btn action-button" role="button" href="/registration">Sign Up</a></p></li>
-                                    @else
-                                    <!-- Checking if user is not logged in -->
-                                    <li><a class="btn btn-outline-light action-button" role="button" href="/logout">Logout</a></li>
-                                    @endif
-                                </ul>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    @include('layouts.header')
     <!-- Header Area End -->
 
     <!-- Breadcrumb Area Start -->
-    <section class="breadcrumb-area blog bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/18.jpg);">
+    <section class="breadcrumb-area blog bg-img bg-overlay jarallax" style="background-image: url(../../photos/cover-images/.$blog->cover_photo);">
+
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Sunset over Cantal, France</h2>
+                        <h2 class="page-title">{{ $blog->title}}</h2>
                         <div class="post-meta">
-                            <a href="#" class="post-author">By Jared Padilla</a>
-                            <a href="#" class="post-date">July 15, 2019</a>
+                            <a href="#" class="post-author">By {{ $blog->user->full_name }}</a>
+                            <a href="#" class="post-date">{{ $blog->created_at}}</a>
                             <a href="#" class="post-comments">No Comments</a>
                         </div>
                     </div>
@@ -103,6 +56,7 @@
                 <div class="col-12 col-lg-10">
                     <!-- Blog Details Text -->
                     <div class="blog-details-text">
+                        {{ $blog->text_writings }}
                     </div>
 
                     <!-- Post Author Area -->
@@ -128,7 +82,7 @@
                 <div class="col-6">
                     <div class="previous bg-img" style="background-image: url(img/bg-img/5.jpg);">
                         <div class="overlay-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="post-title">Lorem</a>
+                            <a href="#" class="post-title">Previous Post</a>
                             <a href="#" class="previous-link"><i class="arrow_left"></i></a>
                         </div>
                     </div>
@@ -137,7 +91,7 @@
                 <div class="col-6">
                     <div class="next bg-img" style="background-image: url(img/bg-img/49.jpg);">
                         <div class="overlay-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="post-title">Ipsum</a>
+                            <a href="#" class="post-title">Next Post</a>
                             <a href="#" class="next-link"><i class="arrow_right"></i></a>
                         </div>
                     </div>

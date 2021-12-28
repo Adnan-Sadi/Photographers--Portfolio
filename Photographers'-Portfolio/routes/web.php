@@ -38,6 +38,8 @@ Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
 Route::post('/blogpost',[BlogpostController::class, 'store']);
 
 
+Route::get('/single-blog/{blogId}', [BlogpostController::class, 'blog'])->name('blog.single-blog');
+
 Route::group(['middleware'=>['session']], function(){
     Route::get('/');
     Route::get('/newsfeed', [NewsfeedController::class, 'index'])->name('newsfeed.index');
