@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Photos;
-
+use Intervention\Image\Facades\Image as Image;
 use Illuminate\Http\Request;
 use Session;
 
@@ -38,6 +38,9 @@ class PhotoController extends Controller
      *  "updated_at": "2021-12-22 08:58:0",
      * }
      */
+
+    
+
     public function index($photoId)
     {
         //finding data about the photo with the particular $photoId
@@ -79,6 +82,21 @@ class PhotoController extends Controller
      * 
      * @response scenario=failure {"message": form data failed to validate}
      */
+
+    public function textOnImage($newImageName, $userName)  
+    {  
+       $img = Image::make(public_path('photos/photo-uploads/'.$newImageName));  
+       $img->text($userName, 120, 100, function($font) {  
+          $font->file(public_path('css/css/fonts/MajorMonoDisplay-Regular.ttf'));  
+          $font->size(70);  
+          $font->color('#ffffff');  
+          $font->align('left');  
+          $font->valign('bottom');  
+          $font->angle(0);  
+      });  
+       $img->save(public_path('photos/photo-uploads/'.$newImageName));  
+    }
+
     public function photoUpload(Request $request)
     {
         //setting validation rules
@@ -100,13 +118,19 @@ class PhotoController extends Controller
         $userName = Session::get('username');
 
         $newImageName = time(). '-'. $userName .'-'.Str::random(3).'.'. $request->photo->extension();
+
         $request->photo->move(public_path('photos/photo-uploads'),$newImageName); //store image to storage
+
+
 
         $photo = Photos::create([
         'u_id'       => $userId,
         'caption'    => $request->input('caption'),
         'photo_path' => $newImageName,
         ]);
+
+        $this->textOnImage($newImageName, $userName);
+
         
         return redirect('/photo/'. $photo->p_id);
     }
