@@ -1745,7 +1745,7 @@ form input {
 }
 
 .photo-card{
-	flex: 0 1 260px;
+	flex: 0 1 270px;
   padding: 4px;
   border: #161715;
   margin: 2px;
@@ -1768,7 +1768,8 @@ form input {
 .image-area {
   border: 2px dashed rgba(255, 255, 255, 0.7);
   padding: 1rem;
-  position: relative;
+  position: absolute;
+  overflow: none;
 }
 
 .image-area::before {
@@ -1793,6 +1794,7 @@ form input {
 .foorer-area{
   background-color: white;
 }
+
 
 
 /*
