@@ -23,7 +23,6 @@
 
 <body>
     
-
     <!-- Header Area Start -->
     <header class="header-area">
         <!-- Main Header Start -->
@@ -49,7 +48,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li><a href="{{ asset('newsfeed') }}">Home</a></li> 
+                                    <li><a href="/newsfeed">Home</a></li> 
                                     
                                     <!-- Checking if user is logged in -->
                                     @if (Session::get('u_id'))
@@ -58,7 +57,8 @@
                                      <!-- Checking if user is logged in -->
                                     
                                     
-                                    <li class="active"><a href="{{ asset('gallery') }}">Gallery</a></li>
+                                    <li class="active"><a href="/gallery/{{ Session::get('u_id') }}">Gallery</a></li>
+                                    <li><a href="/follower-page/{{ Session::get('u_id') }}">Followers/Following</a></li>
                                     <!-- Checking if user is not logged in -->
                                     @if (!Session::get('u_id'))
                                     <li><a class="navbar-link login" href="/login">Log In</a></li>
@@ -67,7 +67,11 @@
                                     <!-- Checking if user is not logged in -->
                                     <li><a class="btn btn-outline-light action-button" role="button" href="/logout">Logout</a></li>
                                     @endif
+                                    
+
                                 </ul>
+
+
                             <!-- Nav End -->
                         </div>
                     </nav>
@@ -78,16 +82,22 @@
     <!-- Header Area End -->
 
     <!-- Breadcrumb Area Start -->
-    <section class="breadcrumb-area blog bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/18.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Sunset over Cantal, France</h2>
-                        <div class="post-meta">
-                            <a href="#" class="post-author">By Jared Padilla</a>
-                            <a href="#" class="post-date">July 15, 2019</a>
-                            <a href="#" class="post-comments">No Comments</a>
+    <section class="breadcrumb-area blog bg-img bg-overlay jarallax">
+        <div class="card mb-3">
+            <img class="bg-img" src="{{ asset('photos/cover-images/'.$blog->cover_photo) }}" style="opacity: 0.9; position: absolute; z-index: -1; height: 550px;" alt="Card image">
+            <div class="card-img-overlay">
+                <div class="container h-100 card-body">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="breadcrumb-content text-center">
+                                <br>
+                                <h2 class="page-title card-title">{{ $blog->title}}</h2>
+                                <div class="post-meta card-text">
+                                    <a href="#" class="post-author">By {{ $blog->user->full_name }}</a>
+                                    <a href="#" class="post-date">{{ $blog->created_at}}</a>
+                                    <a href="#" class="post-comments">No Comments</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -95,15 +105,18 @@
         </div>
     </section>
     <!-- Breadcrumb Area End -->
-
     <!-- Blog Details Area Start -->
-    <div class="alime--blog-area section-padding-80">
+    <div class="alime-blog-area section-padding-80">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <!-- Blog Details Text -->
                     <div class="blog-details-text">
+                        {{ $blog->text_writings }}
                     </div>
+
+
+                    <span><br><br><br><br><br><br></span>
 
                     <!-- Post Author Area -->
                     <div class="post-author-area mt-50 d-flex align-items-center justify-content-between">                      
@@ -118,34 +131,11 @@
             </div>
         </div>
     </div>
+
+    
     <!-- Blog Details Area End -->
 
-    <!-- Pager Area Start -->
-    <div class="alime-pager-area section-padding-0-80">
-        <div class="container">
-            <div class="row no-gutters">
-                <!-- Previous -->
-                <div class="col-6">
-                    <div class="previous bg-img" style="background-image: url(img/bg-img/5.jpg);">
-                        <div class="overlay-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="post-title">Lorem</a>
-                            <a href="#" class="previous-link"><i class="arrow_left"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Next -->
-                <div class="col-6">
-                    <div class="next bg-img" style="background-image: url(img/bg-img/49.jpg);">
-                        <div class="overlay-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="post-title">Ipsum</a>
-                            <a href="#" class="next-link"><i class="arrow_right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pager Area End -->
+    
 
     <!-- Comment Area Start -->
     <div class="comment-area section-padding-80">

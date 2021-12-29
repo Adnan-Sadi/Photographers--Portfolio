@@ -121,7 +121,7 @@
                         <div class="col-12 col-md-6">
                             <input type="text" name="title" class="form-control mb-30" placeholder="Blog Title">
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" id="editor">
                             <textarea name="text_writings" class="form-control mb-30" placeholder="Write Text Here"></textarea>
                         </div>
                     </div>
@@ -150,5 +150,55 @@
 
     <!-- Post Create Area End -->
 
-    
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="js/gbjs/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="js/gbjs/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/gbjs/bootstrap.min.js"></script>
+    <!-- All Plugins -->
+    <script src="js/gbjs/alime.bundle.js"></script>
+    <!-- Active -->
+    <script src="js/gbjs/default-assets/active.js"></script>
+    <script src="js/gbjs/imgup.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <script src="js/gbjs/editor.js"></script>
+    <script src="js/blogpost.js"></script>
     @include('layouts.gbfooter')
+    <script>InlineEditor
+        .create( document.querySelector( '.editor' ), {
+            
+        toolbar: {
+            items: [
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                '|',
+                'blockQuote',
+                'undo',
+                'redo'
+            ]
+        },
+        language: 'en',
+            licenseKey: '',
+            
+            
+            
+        } )
+        .then( editor => {
+            window.editor = editor;
+    
+            
+            
+            
+        } )
+        .catch( error => {
+            console.error( 'Oops, something went wrong!' );
+            console.warn( 'Build id: cwk5o12i2hk6-x3c272qvao68' );
+            console.error( error );
+        } );
+</script>
