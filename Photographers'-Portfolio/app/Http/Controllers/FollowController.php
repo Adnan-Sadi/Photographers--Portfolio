@@ -44,8 +44,17 @@ class FollowController extends Controller
     /**
      * followerPage(): Displays a page containing the follower and following list of an user
      * 
+     * This method takes '$userId' as a parameter from the URL.This user id is of the user whos
+     * follower/following page is being viewed.<br>
+     * This is 'userId' is then used to find which user are following that userId and also to find
+     * which users are being followed by that userId.<br>
+     * Finally, the function returns a view of the 'followerpage' along with two collection
+     * objects which contains the list of followers and the list of user being followed by 
+     * that particular userId.
      * 
-     * @urlParam userId integer required User Id of the user whos follower and following list is being displayed
+     * @urlParam userId integer required User Id of the user whos follower and following list is being displayed.
+     * 
+     * @response { return \Illuminate\View\View }
      */
     public function followerPage($userId)
     {
@@ -89,9 +98,7 @@ class FollowController extends Controller
      * 
      * @urlParam followingUserId integer required The Id of the user who is being followed.
      * 
-     * @response scenario=success {"message": User is successfully followed}
-     * 
-     * @response scenario=failure {unable to follow user}
+     * @response { return \Illuminate\View\View }
      *
      */
 
@@ -120,9 +127,7 @@ class FollowController extends Controller
      * 
      * @urlParam unfollowingUserId integer required The Id of the user who is being unfollowed.
      * 
-     * @response scenario=success {"message": User is successfully unfollowed}
-     * 
-     * @response scenario=failure {unable to unfollow user}
+     * @response scenario=success { return \Illuminate\View\View }
      *
      */
 

@@ -17,7 +17,7 @@
     <div align="center">
         <a type="button" class="btn btn-danger" href="/unfollow/{{ $userId }}">Unfollow User</a>
     </div>
-
+  
     @else
 
     <div align="center">
@@ -25,6 +25,15 @@
     </div>
 
     @endif
+
+    <ul>
+        <li>
+            <a class="btn btn-success upload-button" href="/follow/{{ $userId }}"><i class="fas fa-user-plus"></i> Follow </a>
+        </li>
+        <li>
+            <a class="btn btn-danger upload-button" href="/"><i class="fas fa-user-minus"></i> Unfollow </a>
+        </li>
+    </ul>
     
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
