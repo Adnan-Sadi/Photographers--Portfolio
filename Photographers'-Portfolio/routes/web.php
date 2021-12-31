@@ -44,7 +44,7 @@ Route::group(['middleware'=>['session']], function(){
     Route::get('/newsfeed', [NewsfeedController::class, 'index'])->name('newsfeed.index');
 
     //Routes Related to FollowController Class
-    Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
+    Route::get('/is-following', [FollowController::class, 'isFollowing'])->name('follow.is_following');
     Route::get('/follow/{followingUserId}', [FollowController::class, 'followUser'])->name('follow.follow_user');
     Route::get('/unfollow/{unfollowingUserId}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
     Route::get('/follower-page/{user}', [FollowController::class, 'followerPage'])->name('follow.follower_page');

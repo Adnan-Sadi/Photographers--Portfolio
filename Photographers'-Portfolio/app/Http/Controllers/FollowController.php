@@ -17,8 +17,20 @@ use Session;
  */
 class FollowController extends Controller
 {
+    /**
+     * isFollowing(): Checks if the logged-in user is following a certain user.
+     * 
+     * This methods takes '$userId' as a parameter and checks if the logged in user
+     * is following that particular 'userId'. The function returns true if the logged-in
+     * user is following a certain user and returns false if the user is not following
+     * that certain user.
+     * 
+     * @bodyParam $userId integer required The user of a particular user.
+     * 
+     * @response { return Boolean }
+     */
 
-    public function index($userId)
+    public function isFollowing($userId)
     {
         $followerUserId = Session::get('u_id');
 
@@ -36,7 +48,7 @@ class FollowController extends Controller
             $followsUser = True;
         }
 
-        return view('testfollow')->with('userId',$userId)->with('followsUser',$followsUser);
+        return $followsUser;
     }
 
 
@@ -94,7 +106,7 @@ class FollowController extends Controller
      * current logged in user is saved in the variable '$followerUserId'.<br> 
      * The user Id of the follower and the user Id of user who is being followed are added to the 'follower_list' 
      * table of the database by using the 'FollowerList' model.<br>
-     * Finally, the user gets redirected to the profile page of the user he just followed.
+     * Finally, the user gets redirected to the page from which the follow request came from.
      * 
      * @urlParam followingUserId integer required The Id of the user who is being followed.
      * 
@@ -111,7 +123,7 @@ class FollowController extends Controller
         "following_uid" =>$followingUserId,
         ]);
 
-        return redirect('/test-follow/'.$followingUserId);
+        return redirect()->back();
 
     }
 
@@ -123,7 +135,7 @@ class FollowController extends Controller
      * current logged in user is saved in the variable '$followerUserId'.<br> 
      * The row containing the user Id of the unfollower and the user Id of user who is being unfollowed 
      * is deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>
-     * Finally, the user gets redirected to the profile page of the user he just unfollowed.
+     * Finally, the user gets redirected to the page from which the unfollow request came from.
      * 
      * @urlParam unfollowingUserId integer required The Id of the user who is being unfollowed.
      * 
@@ -140,6 +152,6 @@ class FollowController extends Controller
 
         $unfollow->delete();
 
-        return redirect('/test-follow/'.$unfollowingUserId);
+        return redirect()->back();
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Photos;
 use App\Models\Blogs;
+use App\Http\Controllers\FollowController;
 use Session;
 
 class GalleryController extends Controller
@@ -16,8 +17,6 @@ class GalleryController extends Controller
      * @return [type]
      */
     public function gallery ($userId){
-
-
 
         $user = User::find($userId);
 
@@ -34,7 +33,11 @@ class GalleryController extends Controller
         //Sorts all posts in descending order of upload date
         $allGalleryPostsSorted = $allGalleryPosts->sortByDesc('created_at');
 
-        return view('gallery')->with('allPostsSorted',$allGalleryPostsSorted)->with('user',$user);
+        //checking if the viewer is following the user whos gallery is being viewed
+        $isFollowing = (new FollowController)->isFollowing($userId);
+
+        return view('gallery')->with('allPostsSorted',$allGalleryPostsSorted)
+                              ->with('user',$user)->with('isFollowing',$isFollowing);
         
     } 
 }

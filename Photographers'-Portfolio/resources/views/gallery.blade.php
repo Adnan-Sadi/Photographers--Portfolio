@@ -100,6 +100,25 @@
                                 <li>
                                     <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
                                 </li>
+                                 
+                                 @if($user->u_id != Session::get('u_id'))
+                                    
+                                    @if($isFollowing != true)
+
+                                    <li>
+                                        <a class="btn btn-success upload-button" href="/follow/{{ $user->u_id }}"><i class="fas fa-user-plus"></i> Follow </a>
+                                    </li>
+
+                                    @else
+
+                                    <li>
+                                        <a class="btn btn-danger upload-button" href="/unfollow/{{ $user->u_id }}"><i class="fas fa-user-minus"></i> Unfollow </a>
+                                    </li>
+
+                                    @endif
+
+                                @endif
+
                             </ol>
                         </nav>
 
