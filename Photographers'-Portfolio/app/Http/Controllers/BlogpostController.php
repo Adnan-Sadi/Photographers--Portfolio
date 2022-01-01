@@ -13,13 +13,6 @@ use Session;
 class BlogpostController extends Controller
 {
 
-
-
-    /**
-     * @param Request $request
-     * 
-     * @return [type]
-     */
     
     public function blogpost (Request $request){
         
