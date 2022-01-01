@@ -83,10 +83,10 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">{{ Session::get('username') }}'s Gallery</h2>
+                        <h2 class="page-title">{{ $user->username }}'s Gallery</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="{{ asset('profileindex.blade.php') }} ">{{ Session::get('username') }} </a><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ asset('profileindex.blade.php') }} ">{{ $user->username }} </a><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Gallery</li>
                             </ol>
                         </nav>
@@ -100,6 +100,25 @@
                                 <li>
                                     <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
                                 </li>
+                                 
+                                 @if($user->u_id != Session::get('u_id'))
+                                    
+                                    @if($isFollowing != true)
+
+                                    <li>
+                                        <a class="btn btn-success upload-button" href="/follow/{{ $user->u_id }}"><i class="fas fa-user-plus"></i> Follow </a>
+                                    </li>
+
+                                    @else
+
+                                    <li>
+                                        <a class="btn btn-danger upload-button" href="/unfollow/{{ $user->u_id }}"><i class="fas fa-user-minus"></i> Unfollow </a>
+                                    </li>
+
+                                    @endif
+
+                                @endif
+
                             </ol>
                         </nav>
 
@@ -134,14 +153,14 @@
 
                 <div class="blogs  col-12 col-sm-6 col-lg-3 single_gallery_item photo-card">
 
-                    <a href="{{ $post->b_id }}" class="post-thumbnail"><img class="card-img-top card-img" src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="Card image cap"></a>
+                    <a href="/single-blog/{{ $post->b_id }}" class="post-thumbnail"><img class="card-img-top card-img" src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="Card image cap"></a>
                     <div class="card-body post-content">
                         <div class="post-meta">
-                            <a href="#"><i class="ti-star" aria-hidden="true">{{ $post->created_at }}</i></a>
-                            <a href="#">3 Comments</a>
+                            <a href="/single-blog/{{ $post->b_id }}"><i class="ti-star" aria-hidden="true">{{ $post->created_at }}</i></a>
+                            <a href="/single-blog/{{ $post->b_id }}">3 Comments</a>
                         </div>
                         <h5 class="card-title post-title">{{ $post->user->full_name }}</h5>
-                        <a href="#" class="post-title">{{ $post->title }}</a>                            
+                        <a href="/single-blog/{{ $post->b_id }}" class="post-title">{{ $post->title }}</a>                            
                         <p class="card-text">{{ Str::limit($post->text_writings,300,'...') }}</p>
                         
                         <a href="/single-blog/{{ $post->b_id }}" class="btn post-catagory">...See More</a>

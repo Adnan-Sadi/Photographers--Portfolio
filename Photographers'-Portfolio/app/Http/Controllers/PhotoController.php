@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Photos;
 use Intervention\Image\Facades\Image as Image;
 use Illuminate\Http\Request;
+use File;
 use Session;
 
 /**
@@ -38,15 +39,23 @@ class PhotoController extends Controller
      *  "updated_at": "2021-12-22 08:58:0",
      * }
      */
-
-    
-
     public function index($photoId)
     {
         //finding data about the photo with the particular $photoId
         $photo = Photos::find($photoId);
+        //getting userId from session
+        $userId = Session::get('u_id');
 
-        return view('photopage')->with('photo',$photo);
+        if($photo->u_id == $userId)
+        {
+            $showDeleteButton=true;
+        }
+        else
+        {
+            $showDeleteButton=false;
+        }
+
+        return view('photopage')->with('photo',$photo)->with('showDeleteButton',$showDeleteButton);
     }
 
 
@@ -55,13 +64,31 @@ class PhotoController extends Controller
       * 
       * This method returns the view of the photo upload page where the users can
       * upload photos.
+      *
+      * @response { return \Illuminate\View\View }
       */
     public function photoUploadPage()
     {
         return view('photouploadpage');
     }
 
-    /**
+
+
+    public function textOnImage($newImageName, $userName)  
+    {  
+       $img = Image::make(public_path('photos/photo-uploads/'.$newImageName));  
+       $img->text($userName, 120, 100, function($font) {  
+          $font->file(public_path('css/css/fonts/MajorMonoDisplay-Regular.ttf'));  
+          $font->size(70);  
+          $font->color('#ffffff');  
+          $font->align('left');  
+          $font->valign('bottom');  
+          $font->angle(0);  
+      });  
+       $img->save(public_path('photos/photo-uploads/'.$newImageName));  
+    }
+
+     /**
      * photoUpload(): Store a newly uplaoded photo in database.
      *
      * This method takes a form request parameter '$request' as a method parameter.
@@ -78,25 +105,10 @@ class PhotoController extends Controller
      * @bodyParam caption string The caption of the photo.
      * @bodyParam photo file required The uploaded image file
      * 
-     * @response scenario=success {"message": photo is uploaded}
+     * @response scenario=success { return \Illuminate\View\View }
      * 
-     * @response scenario=failure {"message": form data failed to validate}
+     * @response scenario=failure { form data failed to validate }
      */
-
-    public function textOnImage($newImageName, $userName)  
-    {  
-       $img = Image::make(public_path('photos/photo-uploads/'.$newImageName));  
-       $img->text($userName, 120, 100, function($font) {  
-          $font->file(public_path('css/css/fonts/MajorMonoDisplay-Regular.ttf'));  
-          $font->size(70);  
-          $font->color('#ffffff');  
-          $font->align('left');  
-          $font->valign('bottom');  
-          $font->angle(0);  
-      });  
-       $img->save(public_path('photos/photo-uploads/'.$newImageName));  
-    }
-
     public function photoUpload(Request $request)
     {
         //setting validation rules
@@ -117,11 +129,9 @@ class PhotoController extends Controller
         $userId = Session::get('u_id');
         $userName = Session::get('username');
 
+        //setting a new name for the file
         $newImageName = time(). '-'. $userName .'-'.Str::random(3).'.'. $request->photo->extension();
-
         $request->photo->move(public_path('photos/photo-uploads'),$newImageName); //store image to storage
-
-
 
         $photo = Photos::create([
         'u_id'       => $userId,
@@ -129,10 +139,39 @@ class PhotoController extends Controller
         'photo_path' => $newImageName,
         ]);
 
+        //Adding Watermark to Image
         $this->textOnImage($newImageName, $userName);
 
         
         return redirect('/photo/'. $photo->p_id);
+    }
+
+
+    /**
+     * photoDelete(): Deletes a photo from Database.
+     *
+     * This methods the parameter '$photoId' from the url, which is the 
+     * photo id of the photo the user requested to delete.<br> 
+     * Using this photo id the function finds the photo from the database
+     * and deletes all the information related to the photo from the database. It 
+     * also deletes the photo from the storage as well.<br>
+     * Finally, the function redirects the user to the view of the newsfeed page.
+     *
+     * @urlParam photoId integer required The ID of the photo
+     * 
+     * @response scenario=success { return \Illuminate\View\View }
+     * 
+     */
+    public function photoDelete($photoId){
+        $photo = Photos::find($photoId);
+
+        //Delete previous photo from storage
+        if(File::exists(public_path('photos/photo-uploads/'.$photo->photo_path))){
+            File::delete(public_path('photos/photo-uploads/'.$photo->photo_path));
+        }
+
+        $photo->delete();
+        return redirect('/newsfeed');
     }
 
     

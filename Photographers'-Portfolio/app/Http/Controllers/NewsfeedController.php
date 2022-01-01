@@ -32,6 +32,7 @@ class NewsfeedController extends Controller
      * Finally, the method return the view of the 'newsfeed' page along with the 'Collection
      * Object' which contains data about photos and blogs.
      * 
+     * @response { return \Illuminate\View\View }
      */
     public function index()
     {

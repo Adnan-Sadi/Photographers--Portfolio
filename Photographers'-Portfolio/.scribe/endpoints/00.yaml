@@ -29,24 +29,8 @@ endpoints:
     bodyParameters: []
     responses:
       -
-        status: 302
-        content: |-
-          <!DOCTYPE html>
-          <html>
-              <head>
-                  <meta charset="UTF-8" />
-                  <meta http-equiv="refresh" content="0;url='http://localhost/login'" />
-
-                  <title>Redirecting to http://localhost/login</title>
-              </head>
-              <body>
-                  Redirecting to <a href="http://localhost/login">http://localhost/login</a>.
-              </body>
-          </html>
-        headers:
-          cache-control: 'no-cache, private'
-          location: 'http://localhost/login'
-          content-type: application/json
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlJwemQ1WFRZVG9JL3YxUkdnaEJaZkE9PSIsInZhbHVlIjoiek9CU0ttNnNyQUpXdE1NdWdxUVRpR2xrUXo0ZWsva2VGRFg2QWF1aVBHSnRnb0lMMG5wdi9YMHVFKzV6SHNYUjh0elViamJZMzVxNXI2eHBIcG12U0xLWTM5UnVvc0pyQzhLTzJEM0NoVTBvSXdkbFprYmZKVzJueWRpRkNNY0kiLCJtYWMiOiIyNzYyY2VhODY0NWI3MjBjMTZjNjAxY2Y5YjZlMWY2ZDIzYTA1ZmJmODgwNTRhYTMzMjU0ZTJhNjY5ZDYwZGQxIiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=/; samesite=lax; laravel_session=eyJpdiI6IkJ2a0NaTG1VelZyVk55MHRQS25RbHc9PSIsInZhbHVlIjoiVTVMQ0JlVkI1UTB4RlNoVFh2dTlFMXR1bkRwMWo0OW1xSFFwY0ZTeER3MGxYYlJRVWJ6enRldXk2TWQzMWNiRUUyallxWlpJMjNCS2N4enVmNmlxNHVFdHZGNXp5S0doSnpNYm96Q2MvSE9CWDVVM1dIQVdXMC9BZENCY1VNNEUiLCJtYWMiOiI4N2Q4MDgzMTQwYzdkMTc0OWRjNTNkZjg0Mjg2Yzk0MTc0NWYyN2U0NmJiYTEzODViOTI3MDIzYTgzYTQxMDc2IiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
-        description: null
+        status: 200
+        content: '{ return \Illuminate\View\View }'
+        headers: []
+        description: '200'
     responseFields: []

@@ -71,7 +71,7 @@ class BlogpostController extends Controller
             'text_writings' => $request->input('text_writings'),
             'cover_photo' => $coverPhotoName
         ]);
-        return redirect('/single-blog/blogs');
+        return redirect('/single-blog/'.$blogs->b_id);
     }
     public function edit($id){
         $blogs = Blogs::find($id)->first();

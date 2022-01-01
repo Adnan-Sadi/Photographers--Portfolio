@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "9204c126-7f0a-4d80-9035-0f109d8f2375",
+        "_postman_id": "54f69ab7-c1d8-48c3-a9a1-9f91bdaf743c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -48,26 +48,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "location",
-                                    "value": "http:\/\/localhost\/login"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6IlJwemQ1WFRZVG9JL3YxUkdnaEJaZkE9PSIsInZhbHVlIjoiek9CU0ttNnNyQUpXdE1NdWdxUVRpR2xrUXo0ZWsva2VGRFg2QWF1aVBHSnRnb0lMMG5wdi9YMHVFKzV6SHNYUjh0elViamJZMzVxNXI2eHBIcG12U0xLWTM5UnVvc0pyQzhLTzJEM0NoVTBvSXdkbFprYmZKVzJueWRpRkNNY0kiLCJtYWMiOiIyNzYyY2VhODY0NWI3MjBjMTZjNjAxY2Y5YjZlMWY2ZDIzYTA1ZmJmODgwNTRhYTMzMjU0ZTJhNjY5ZDYwZGQxIiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkJ2a0NaTG1VelZyVk55MHRQS25RbHc9PSIsInZhbHVlIjoiVTVMQ0JlVkI1UTB4RlNoVFh2dTlFMXR1bkRwMWo0OW1xSFFwY0ZTeER3MGxYYlJRVWJ6enRldXk2TWQzMWNiRUUyallxWlpJMjNCS2N4enVmNmlxNHVFdHZGNXp5S0doSnpNYm96Q2MvSE9CWDVVM1dIQVdXMC9BZENCY1VNNEUiLCJtYWMiOiI4N2Q4MDgzMTQwYzdkMTc0OWRjNTNkZjg0Mjg2Yzk0MTc0NWYyN2U0NmJiYTEzODViOTI3MDIzYTgzYTQxMDc2IiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
-                                }
-                            ],
-                            "code": 302,
-                            "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" \/>\n        <meta http-equiv=\"refresh\" content=\"0;url='http:\/\/localhost\/login'\" \/>\n\n        <title>Redirecting to http:\/\/localhost\/login<\/title>\n    <\/head>\n    <body>\n        Redirecting to <a href=\"http:\/\/localhost\/login\">http:\/\/localhost\/login<\/a>.\n    <\/body>\n<\/html>",
+                            "header": [],
+                            "code": 200,
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": ""
                         }
                     ]
@@ -91,7 +74,7 @@
                                 {
                                     "id": "followingUserId",
                                     "key": "followingUserId",
-                                    "value": "16",
+                                    "value": "8",
                                     "description": "The Id of the user who is being followed."
                                 }
                             ]
@@ -117,14 +100,8 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"message\": User is successfully followed}",
-                            "name": "success"
-                        },
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{unable to follow user}",
-                            "name": "failure"
+                            "body": "{ return \\Illuminate\\View\\View }",
+                            "name": ""
                         }
                     ]
                 },
@@ -141,7 +118,7 @@
                                 {
                                     "id": "unfollowingUserId",
                                     "key": "unfollowingUserId",
-                                    "value": "9",
+                                    "value": "16",
                                     "description": "The Id of the user who is being unfollowed."
                                 }
                             ]
@@ -167,14 +144,58 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"message\": User is successfully unfollowed}",
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "followerPage(): Displays a page containing the follower and following list of an user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "follower-page\/:user",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/follower-page\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "accusamus",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "userId",
+                                    "key": "userId",
+                                    "value": "13",
+                                    "description": "User Id of the user whos follower and following list is being displayed."
+                                }
+                            ]
                         },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This method takes '$userId' as a parameter from the URL.This user id is of the user whos\nfollower\/following page is being viewed.<br>\nThis is 'userId' is then used to find which user are following that userId and also to find\nwhich users are being followed by that userId.<br>\nFinally, the function returns a view of the 'followerpage' along with two collection\nobjects which contains the list of followers and the list of user being followed by\nthat particular userId.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{unable to unfollow user}",
-                            "name": "failure"
+                            "body": "{ return \\Illuminate\\View\\View }",
+                            "name": ""
                         }
                     ]
                 }
@@ -210,7 +231,7 @@
                             "formdata": [
                                 {
                                     "key": "caption",
-                                    "value": "cum",
+                                    "value": "cumque",
                                     "type": "text"
                                 },
                                 {
@@ -229,13 +250,13 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"message\": photo is uploaded}",
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": "success"
                         },
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"message\": form data failed to validate}",
+                            "body": "{ form data failed to validate }",
                             "name": "failure"
                         }
                     ]
@@ -253,7 +274,7 @@
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "20",
+                                    "value": "6",
                                     "description": "The ID of the photo"
                                 }
                             ]
@@ -313,23 +334,54 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "content-type",
-                                    "value": "text\/html; charset=UTF-8"
-                                },
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6IjVaQWpMNFkxYVplS1oxOWNibktLVWc9PSIsInZhbHVlIjoiSEwwU2VMSkFpR01qOHRNVkx6Nmh3QVQxdzFZWjh2N2laWWJNRkhFNlIvTVQ1Y0NJNEltQlp3VlBzbm9SQjhjMkRQSTdoeEFSU3YwV2R3MmxhNCtUMmtEc3VqSDdPYkIzOUhUK0d5WEhJdmJ3SGR1bzBKYUQzQTU0WmcrTXlOVnQiLCJtYWMiOiI3ODBkZTYyMWNkNWMzNzE4OGNlMDkxYzk4NTllZDMwNWEyZjQ5Nzg0MjViMzIzMDllMjc0MTZjNzk4OWNkZjllIiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IksraUU1ZFBuUGF4VC9ZQVBOWXhRZmc9PSIsInZhbHVlIjoiY3RPY1k3RUp3WmlqZFlmUHoxRUZRc1MxNUgzKzJvblhjRHRDRGFpWVNHa1JjeXVjWk9CZVZrdGZZNE4wcWNTcXgvNUEyTis0UUs3MUlyNnozbWVoMlp5M1FXWmRHUTdwM2RZWjZtcDFNTjRBc0NDQ0F2QjBuMy9RbE1Sckt4OVUiLCJtYWMiOiJhODRmY2RjZTFlYmQzYmY5NGFkM2E5NTYyODM4YzVjNzEzMTA0Y2QwYmRjODVjMWI1Zjk1NjBjODQxOGM0ZmE2IiwidGFnIjoiIn0%3D; expires=Mon, 27-Dec-2021 15:01:22 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
-                                }
-                            ],
+                            "header": [],
                             "code": 200,
-                            "body": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Upload Photo<\/title>\r\n\r\n    <link rel=\"stylesheet\" href=\"http:\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/css\/bootstrap.min.css\">\r\n    <link href=\"https:\/\/maxcdn.bootstrapcdn.com\/font-awesome\/4.6.3\/css\/font-awesome.min.css\" rel=\"stylesheet\">\r\n    <script src=\"https:\/\/kit.fontawesome.com\/8aa2fd0685.js\" crossorigin=\"anonymous\"><\/script>\r\n    <link rel=\"stylesheet\" href=\"http:\/\/localhost\/css\/photoupload.css\">\r\n    <link rel=\"stylesheet\" href=\"http:\/\/localhost\/css\/header.css\">\r\n    <link rel=\"stylesheet\" href=\"http:\/\/localhost\/css\/footer.css\">\r\n<\/head>\r\n<body>\r\n\r\n<!---  Header   -->\r\n<Header>\r\n    <div>\r\n        <nav class=\"navbar navbar-default navigation-clean-button\">\r\n            <div class=\"container\">\r\n                <div class=\"navbar-header\"><a class=\"navbar-brand\" href=\"#\">Photographers' Porfolio<\/a>\r\n                    <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-1\">\r\n                    <span class=\"sr-only\">Toggle navigation<\/span><span class=\"icon-bar\"><\/span><span class=\"icon-bar\"><\/span>\r\n                    <span class=\"icon-bar\"><\/span><\/button>\r\n                <\/div>\r\n                <div class=\"collapse navbar-collapse navbar-left\" id=\"navcol-1\">\r\n                    <ul class=\"nav navbar-nav\">\r\n                        <li><a href=\"\/newsfeed\">Home<\/a><\/li>\r\n\r\n                        <!-- Checking if user is logged in -->\r\n                                                <!-- Checking if user is logged in -->\r\n\r\n                        <li><a href=\"\/gallery\/\">Gallery<\/a><\/li>\r\n                    <\/ul>\r\n\r\n                    <!-- Checking if user is not logged in -->\r\n                                            <p class=\"navbar-text navbar-right actions\"><a class=\"navbar-link login\" href=\"\/login\">Log In<\/a> \r\n                        <a class=\"btn btn-default action-button\" role=\"button\" href=\"\/registration\">Sign Up<\/a><\/p>   \r\n                                        \r\n                    <ul class=\"wrap\">\r\n                        <div class=\"search\">\r\n                           <input type=\"text\" class=\"searchTerm\" placeholder=\"Search By Username...\">\r\n                           <button type=\"submit\" class=\"searchButton\">\r\n                             <i class=\"fa fa-search\"><\/i>\r\n                          <\/button>\r\n                        <\/div>\r\n                    <\/ul>\r\n                <\/div>\r\n                \r\n            <\/div>\r\n        <\/nav>\r\n    <\/div>\r\n<\/Header>\r\n<!---  Header   -->\r\n<!-- Photo Uplaod Form -->\r\n\r\n    <h4 class=\"form-title\">Upload Photo<\/h4>\r\n\r\n    <!-- View Photo Upload Errors if any-->\r\n              <!-- View Photo Upload Errors if any-->\r\n\r\n    <div class=\"form-body\">\r\n\r\n        <form action=\"\/photo-upload\" method=\"POST\" enctype=\"multipart\/form-data\">\r\n        <input type=\"hidden\" name=\"_token\" value=\"yT5JSl1j3wN8EFn4fEM0X4jnpauaJgeIu1IZQDlM\">    \r\n            <div class=\"form-group\">\r\n                <label for=\"caption-text\" class=\"col-form-label\" >Caption<\/label>\r\n                <textarea class=\"form-control\" id=\"caption-text\" rows=\"5\" name=\"caption\"><\/textarea>\r\n            <\/div>\r\n            \r\n        \r\n            \r\n                <div class=\"file-upload\">\r\n                    <button class=\"file-upload-btn\" type=\"button\" onclick=\"$('.file-upload-input').trigger( 'click' )\">Add Image<\/button>\r\n                \r\n                    <div class=\"image-upload-wrap\">\r\n                    <input class=\"file-upload-input\" type='file' onchange=\"readURL(this);\" accept=\"image\/*\" name=\"photo\" \/>\r\n                    <div class=\"drag-text\">\r\n                        <h3>Drag and drop a file or select add Image<\/h3>\r\n                    <\/div>\r\n                    <\/div>\r\n                    <div class=\"file-upload-content\">\r\n                    <img class=\"file-upload-image\" src=\"#\" alt=\"your image\" \/>\r\n                    <div class=\"image-title-wrap\">\r\n                        <button type=\"button\" onclick=\"removeUpload()\" class=\"remove-image\">Remove <span class=\"image-title\">Uploaded Image<\/span><\/button>\r\n                    <\/div>\r\n                    <\/div>\r\n                <\/div>\r\n           \r\n            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close<\/button>\r\n            <button type=\"submit\" class=\"btn btn-primary\">Upload<\/button>\r\n            <br><br><br>\r\n        <\/form>\r\n    <\/div>   \r\n \r\n <!-- Photo Upload Form -->\r\n <!-- Footer Area Start -->\r\n    <footer class=\"footer-area\">\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"footer-content d-flex align-items-center justify-content-between\">\r\n                        <!-- Copywrite Text -->\r\n                        <div class=\"copywrite-text\">\r\n                            <p> Copyright &copy;<script>document.write(new Date().getFullYear());<\/script> All rights reserved | <i class=\"fa fa-heart-o\" aria-hidden=\"true\"><\/i> by <a href=\"#\" target=\"_blank\">Photographer's Portfolio<\/a><\/p>\r\n                        <\/div>\r\n                        <!-- Footer Logo -->\r\n                        <div class=\"footer-logo\">\r\n                            <a href=\"#\"><img src=\"img\/core-img\/logo2.png\" alt=\"\"><\/a>\r\n                        <\/div>\r\n                        <!-- Social Info -->\r\n                    <\/div>\r\n                <\/div>\r\n            <\/div>\r\n        <\/div>\r\n    <\/footer>\r\n    <!-- Footer Area End -->\r\n\r\n<\/body>\r\n\r\n<\/html>\r\n   <script src=\"https:\/\/code.jquery.com\/jquery-3.6.0.min.js\" integrity=\"sha256-\/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej\/m4=\" crossorigin=\"anonymous\"><\/script>\r\n   <script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/popper.js\/1.14.7\/umd\/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"><\/script>\r\n   <script src=\"http:\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/js\/bootstrap.min.js\"><\/script>\r\n   <script src=\"http:\/\/localhost\/js\/photoupload.js\"><\/script>\r\n<\/body>\r\n<\/html>",
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "photoDelete(): Deletes a photo from Database.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "photo-delete\/:photoId",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/photo-delete\/:photoId",
+                            "variable": [
+                                {
+                                    "id": "photoId",
+                                    "key": "photoId",
+                                    "value": "13",
+                                    "description": "The ID of the photo"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This methods the parameter '$photoId' from the url, which is the\nphoto id of the photo the user requested to delete.<br>\nUsing this photo id the function finds the photo from the database\nand deletes all the information related to the photo from the database. It\nalso deletes the photo from the storage as well.<br>\nFinally, the function redirects the user to the view of the newsfeed page.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ return \\Illuminate\\View\\View }",
+                            "name": "success"
                         }
                     ]
                 }

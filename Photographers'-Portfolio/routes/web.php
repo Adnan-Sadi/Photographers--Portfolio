@@ -27,9 +27,6 @@ Route::post('/registration',[LoginController::class, 'Register']);
 Route::get('/login',[LoginController::class, 'Login'])->name('auth.login');
 Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.ValidateLogin');
 
-Route::get('/photo/{photoId}', [PhotoController::class, 'index'])->name('photo.index');
-Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
-Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 Route::get('/logout',[LoginController::class, 'Logout']);
 
 Route::get('/gallery/{user}',[GalleryController::class, 'gallery']);
@@ -42,9 +39,19 @@ Route::get('/single-blog/{blogId}', [BlogpostController::class, 'blog'])->name('
 
 Route::group(['middleware'=>['session']], function(){
     Route::get('/');
+    
+    //Routes Related to NewsfeedController Class
     Route::get('/newsfeed', [NewsfeedController::class, 'index'])->name('newsfeed.index');
-    Route::get('/test-follow/{user}', [FollowController::class, 'index'])->name('follow.index');
+
+    //Routes Related to FollowController Class
+    Route::get('/is-following', [FollowController::class, 'isFollowing'])->name('follow.is_following');
     Route::get('/follow/{followingUserId}', [FollowController::class, 'followUser'])->name('follow.follow_user');
     Route::get('/unfollow/{unfollowingUserId}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
     Route::get('/follower-page/{user}', [FollowController::class, 'followerPage'])->name('follow.follower_page');
+    
+    //Routes Related to PhotoController Class
+    Route::get('/photo/{photoId}', [PhotoController::class, 'index'])->name('photo.index');
+    Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
+    Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
+    Route::delete('/photo-delete/{photoId}', [PhotoController::class, 'photoDelete'])->name('photo.photo_delete');
 });

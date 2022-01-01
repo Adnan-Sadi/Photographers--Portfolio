@@ -55,6 +55,33 @@ img {
     margin-right: 10px;
 }
 
+.photo-owner{
+    color: purple;
+}
+
+.photo-likes{
+    color:#25aae1;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.photo-comments{
+    color:#25aae1;
+}
+
+.photo-delete{
+    color:black;
+}
+
+.photo-delete:hover{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+
+.details a{
+    text-decoration: none;
+}
+
 .rounded {
     width: 70px;
     height: 5px;

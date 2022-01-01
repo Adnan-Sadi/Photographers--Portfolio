@@ -28,11 +28,14 @@
 
         <div class="media">
             <div class="media-left">
-                <img class="mr-3" src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" height=64 width=64>
+                <img class="mr-3" onclick="window.location='/gallery/{{ $follower->u_id }}'" 
+                src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" 
+                height=64 width=64>
             </div>
             
             <div class="media-body">
-              <h4 class="media-heading">{{ $follower->username}}</h4>
+              <h4 class="media-heading text-primary" onclick="window.location='/gallery/{{ $follower->u_id }}'">
+              {{ $follower->full_name}}</h4>
             </div>
         </div>
 
@@ -54,12 +57,15 @@
         @foreach ($followings as $following)
 
         <div class="media">
-            <div class="media-left">
-                <img class="mr-3" src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" height=64 width=64>
+            <div class="media-left" >
+                <img class="mr-3"  onclick="window.location='/gallery/{{ $following->u_id }}'" 
+                src="{{ asset('photos/dummy-profile.png') }}" alt="Generic placeholder image" 
+                height=64 width=64>
             </div>
             
             <div class="media-body">
-              <h4 class="media-heading">{{ $following->username }}</h4>
+              <h4 class="media-heading text-primary" onclick="window.location='/gallery/{{ $following->u_id }}'">
+              {{ $following->full_name }}</h4>
             </div>
         </div>
             
