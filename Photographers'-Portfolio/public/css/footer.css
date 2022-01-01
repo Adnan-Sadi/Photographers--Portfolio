@@ -1,7 +1,10 @@
 
 
 .footer-area{
+    position:fixed;
     background-color: black;
+    bottom: 0;
+    width: 100%;         
 }
 
 

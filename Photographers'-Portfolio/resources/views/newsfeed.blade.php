@@ -37,7 +37,7 @@
     @if (isset($post->b_id))
 
         <!---  Blogs --->  
-        <div class="blog-body">
+        <div class="blog-body" onclick="location.href='/single-blog/{{ $post->b_id }}'">
             <div class="icon">
                 <img src="{{ asset('photos/cover-images/'.$post->cover_photo) }}" alt="">
             </div>

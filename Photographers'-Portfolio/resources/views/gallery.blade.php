@@ -94,12 +94,15 @@
                     <div class="breadcrumb-content text-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
+
+                                @if($user->u_id == Session::get('u_id'))
                                 <li>
                                     <a class="btn btn-danger upload-button" href="/photo-upload-page"><i class="fas fa-upload"></i> Upload Photo</a>
                                 </li>
                                 <li>
                                     <a class="btn btn-danger upload-button" href="/blogpost"><i class="fas fa-upload"></i> Post Blog</a>
                                 </li>
+                                @endif
                                  
                                  @if($user->u_id != Session::get('u_id'))
                                     
