@@ -12,8 +12,7 @@ use Session;
 /**
  * @group GalleryController class
  *
- * The methods inside this class are used for uploading or 
- * viewing a single photo on this web application.
+ * The methods inside this class is used to view the posts created by a user on this web application.
  */
 
 class GalleryController extends Controller
@@ -32,8 +31,7 @@ class GalleryController extends Controller
      * Finally, the method return the view of the 'gallery' page along with the 'Collection
      * Object' which contains data about photos and blogs.
      * 
-     * 
-     * @bodyParam mixed $userId
+     * @urlParam userId integer, required The userId is required to get the posts from the database.
      * @response { return \Illuminate\View\View }
      */
 

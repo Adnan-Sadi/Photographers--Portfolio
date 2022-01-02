@@ -33,20 +33,11 @@ class BlogpostController extends Controller
      * 
      * @response { return \Illuminate\View\View }
      */
-    public function blogpost (Request $request){
+    public function blogpost (){
         
         return view('blogpost');
     }
 
-
-    /**
-     * 
-     * @response { return \Illuminate\View\View }
-     */
-    public function create(){
-        return view('blogpost.create');
-        
-    }
     
 
     /**
@@ -57,7 +48,11 @@ class BlogpostController extends Controller
      * The function returns a view of the 'single blog' page along with the 'Collection Object'
      * which contains the blog data.
      * 
-     * @urlParam \Illuminate\Http\Request $request
+     * 
+     * @bodyParam title string required The title of the blog post.
+     * @bodyParam text_writings string required The text description of the blog post. This can be a few paragraphs. This is main content of the blog post.
+     * @bodyParam cover_photo file required The uploaded image file
+     *  
      * @response { return \Illuminate\View\View }
      */
 
@@ -98,38 +93,20 @@ class BlogpostController extends Controller
     
     
 
-    
+
+
     /**
-     * @urlParam Request $request
-     * @urlParam mixed $id
+     * blog() : Displays the view of an individual blog. 
      * 
-     * @response { return \Illuminate\View\View }
-     */
-    public function update(Request $request, $id){
-        $rules = array(
-            'title '=> 'required',
-            'text_writings' => 'required',
-            'cover_photo' => 'required|mimes:jpg,png,jpeg|max:5048'
-        );
-
-        $blogs = Blogs::where('id', $id)
-        ->update([
-            'title' => $request->input('title'),
-            'text_writings' => $request->input('blogtext')
-        ]);
-        return redirect('/single-blog');
-    }
-
-
-    /**
-     * blog() : Displays the view of an individual blog.
+     * An individual blog shows the contents of a blog from a user. The post needs to contain 
+     * a cover photo, title and the text descriptions for the main body of the blog.
      * 
      *
      * @urlParam blogId integer required The ID of the blog
      * 
      * @response {
-     *  "b_id": 4,
-     *  "u_id": 2,
+     * "b_id": 4,
+     * "u_id": 2,
      * "title": "Example",
      * "cover_photo": "1640627401-username-CJ9.jpg"
      *  "text_writings": "This is an example text writing",

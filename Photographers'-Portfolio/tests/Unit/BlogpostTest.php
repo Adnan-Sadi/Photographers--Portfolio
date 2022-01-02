@@ -147,7 +147,7 @@ class BlogpostTest extends TestCase
      * Tests what happens when title and text writings exist but cover photo is null inside form request.
      * The expected result is that the validation result fails.
      */
-    public function testCaptionIsNullButPhotoExists()
+    public function testTitleAndTextWritingsIsNullButCoverPhotoExists()
     {
         //the expected value is validation fails
         $expected = true;
@@ -176,7 +176,7 @@ class BlogpostTest extends TestCase
      * Tests what happens when the cover photo is of type jpg/png/jpeg.
      * The expected result is that the validation result does not fail.
      */
-    public function testPhotoIsOfTypePngOrJpgOrJpeg()
+    public function testCoverPhotoIsOfTypePngOrJpgOrJpeg()
     {
         //the expected value is validation does not fail
         $expected = true;
@@ -192,7 +192,7 @@ class BlogpostTest extends TestCase
         $request = new Request([
             'title' => 'test title',
             'text_writings' => 'test writings for the text writings section',
-            'photo' => UploadedFile::fake()->image('avatar.png')
+            'cover_photo' => UploadedFile::fake()->image('avatar.png')
         ]);
         
         //checking validation rules against all variables in $request
@@ -202,10 +202,10 @@ class BlogpostTest extends TestCase
     }
 
     /**
-     * Tests what happens when the photo is not of type jpg/png/jpeg.
+     * Tests what happens when the cover photo is not of type jpg/png/jpeg.
      * The expected result is that the validation result will fail.
      */
-    public function testPhotoIsNotOfTypePngOrJpgOrJpeg()
+    public function testCoverPhotoIsNotOfTypePngOrJpgOrJpeg()
     {
         //the expected value is validation fails
         $expected = true;
@@ -221,7 +221,7 @@ class BlogpostTest extends TestCase
         $request = new Request([
             'title' => 'test title',
             'text_writings' => 'test writings for the text writings section',
-            'photo' => UploadedFile::fake()->image('avatar.gif')
+            'cover_photo' => UploadedFile::fake()->image('avatar.gif')
         ]);
         
         //checking validation rules against all variables in $request
