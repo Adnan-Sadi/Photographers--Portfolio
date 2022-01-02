@@ -19,7 +19,7 @@ endpoints:
         current logged in user is saved in the variable '$followerUserId'.<br>
         The user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'
         table of the database by using the 'FollowerList' model.<br>
-        Finally, the user gets redirected to the profile page of the user he just followed.
+        Finally, the user gets redirected to the page from which the follow request came from.
       authenticated: false
       custom: []
     headers:
@@ -30,7 +30,7 @@ endpoints:
         name: followingUserId
         description: 'The Id of the user who is being followed.'
         required: true
-        example: 14
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -54,7 +54,7 @@ endpoints:
         current logged in user is saved in the variable '$followerUserId'.<br>
         The row containing the user Id of the unfollower and the user Id of user who is being unfollowed
         is deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>
-        Finally, the user gets redirected to the profile page of the user he just unfollowed.
+        Finally, the user gets redirected to the page from which the unfollow request came from.
       authenticated: false
       custom: []
     headers:
@@ -65,7 +65,7 @@ endpoints:
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
         required: true
-        example: 4
+        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -101,14 +101,14 @@ endpoints:
         name: user
         description: ''
         required: true
-        example: voluptate
+        example: quis
         type: string
         custom: []
       userId:
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
         required: true
-        example: 7
+        example: 3
         type: integer
         custom: []
     queryParameters: []

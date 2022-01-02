@@ -33,7 +33,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: \Illuminate\Http\Response
+                example: '{ return \Illuminate\View\View }'
       tags:
         - 'BlogpostController class'
       security: []
@@ -62,7 +62,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: \Illuminate\Http\Response
+                example: '{ return \Illuminate\View\View }'
       tags:
         - 'BlogpostController class'
       requestBody:
@@ -75,15 +75,15 @@ paths:
                 'title ':
                   type: string
                   description: ''
-                  example: sit
+                  example: nemo
                 text_writings:
                   type: string
                   description: ''
-                  example: quia
+                  example: nesciunt
                 cover_photo:
                   type: string
                   description: 'Must not be greater than 5048 characters.'
-                  example: iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq
+                  example: vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl
               required:
                 - 'title '
                 - text_writings
@@ -92,7 +92,7 @@ paths:
   '/follow/{followingUserId}':
     get:
       summary: 'followUser(): Allows a user to the follow another user.'
-      description: "This method takes the parameter '$followingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being followed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'\ntable of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just followed."
+      description: "This method takes the parameter '$followingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being followed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'\ntable of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the page from which the follow request came from."
       parameters:
         -
           in: header
@@ -124,14 +124,14 @@ paths:
         in: path
         name: followingUserId
         description: 'The Id of the user who is being followed.'
-        example: 14
+        example: 4
         required: true
         schema:
           type: integer
   '/unfollow/{unfollowingUserId}':
     get:
       summary: 'unfollowUser(): Allows a user to the unfollow another user.'
-      description: "This method takes the parameter '$unfollowingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being unfollowed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe row containing the user Id of the unfollower and the user Id of user who is being unfollowed\nis deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just unfollowed."
+      description: "This method takes the parameter '$unfollowingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being unfollowed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe row containing the user Id of the unfollower and the user Id of user who is being unfollowed\nis deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the page from which the unfollow request came from."
       parameters:
         -
           in: header
@@ -163,7 +163,7 @@ paths:
         in: path
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
-        example: 4
+        example: 17
         required: true
         schema:
           type: integer
@@ -202,7 +202,7 @@ paths:
         in: path
         name: user
         description: ''
-        example: voluptate
+        example: quis
         required: true
         schema:
           type: string
@@ -210,7 +210,7 @@ paths:
         in: path
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
-        example: 7
+        example: 3
         required: true
         schema:
           type: integer
@@ -279,7 +279,7 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 15
+        example: 8
         required: true
         schema:
           type: integer
@@ -322,7 +322,7 @@ paths:
                 caption:
                   type: string
                   description: 'The caption of the photo.'
-                  example: nesciunt
+                  example: dolores
                 photo:
                   type: string
                   format: binary
@@ -395,7 +395,7 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 19
+        example: 6
         required: true
         schema:
           type: integer

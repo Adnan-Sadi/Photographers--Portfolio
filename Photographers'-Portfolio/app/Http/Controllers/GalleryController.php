@@ -33,7 +33,7 @@ class GalleryController extends Controller
      * Object' which contains data about photos and blogs.
      * 
      * 
-     * @bodyparam mixed $userId
+     * @bodyParam mixed $userId
      * @response { return \Illuminate\View\View }
      */
 

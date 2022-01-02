@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "393f4d08-0d19-472a-bec8-8d285f8b1159",
+        "_postman_id": "1f227da9-cd6c-41f5-a7c3-d051bae74fc8",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -50,7 +50,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "\\Illuminate\\Http\\Response",
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": ""
                         }
                     ]
@@ -63,7 +63,15 @@
                             "host": "{{baseUrl}}",
                             "path": "blogpost",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/blogpost"
+                            "raw": "http:\/\/{{baseUrl}}\/blogpost",
+                            "variable": [
+                                {
+                                    "id": "Request",
+                                    "key": "Request",
+                                    "value": "assumenda",
+                                    "description": "$request"
+                                }
+                            ]
                         },
                         "method": "POST",
                         "header": [
@@ -78,7 +86,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"title \":\"sit\",\"text_writings\":\"quia\",\"cover_photo\":\"iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq\"}"
+                            "raw": "{\"title \":\"nemo\",\"text_writings\":\"nesciunt\",\"cover_photo\":\"vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl\"}"
                         },
                         "description": "This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.\nAll the data about that blog is stored inside a laravel 'Collection Object'.\nThe function returns a view of the 'single blog' page along with the 'Collection Object'\nwhich contains the blog data.",
                         "auth": {
@@ -89,7 +97,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "\\Illuminate\\Http\\Response",
+                            "body": "{ return \\Illuminate\\View\\View }",
                             "name": ""
                         }
                     ]
@@ -113,7 +121,7 @@
                                 {
                                     "id": "followingUserId",
                                     "key": "followingUserId",
-                                    "value": "14",
+                                    "value": "4",
                                     "description": "The Id of the user who is being followed."
                                 }
                             ]
@@ -130,7 +138,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "This method takes the parameter '$followingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being followed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'\ntable of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just followed.",
+                        "description": "This method takes the parameter '$followingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being followed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe user Id of the follower and the user Id of user who is being followed are added to the 'follower_list'\ntable of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the page from which the follow request came from.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -157,7 +165,7 @@
                                 {
                                     "id": "unfollowingUserId",
                                     "key": "unfollowingUserId",
-                                    "value": "4",
+                                    "value": "17",
                                     "description": "The Id of the user who is being unfollowed."
                                 }
                             ]
@@ -174,7 +182,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "This method takes the parameter '$unfollowingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being unfollowed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe row containing the user Id of the unfollower and the user Id of user who is being unfollowed\nis deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the profile page of the user he just unfollowed.",
+                        "description": "This method takes the parameter '$unfollowingUserId' from the route url. This parameter\ncontains the 'user ID' of the user who is being unfollowed by the current logged in user. The userId of the\ncurrent logged in user is saved in the variable '$followerUserId'.<br>\nThe row containing the user Id of the unfollower and the user Id of user who is being unfollowed\nis deleted 'follower_list' table of the database by using the 'FollowerList' model.<br>\nFinally, the user gets redirected to the page from which the unfollow request came from.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -201,13 +209,13 @@
                                 {
                                     "id": "user",
                                     "key": "user",
-                                    "value": "voluptate",
+                                    "value": "quis",
                                     "description": ""
                                 },
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "7",
+                                    "value": "3",
                                     "description": "User Id of the user whos follower and following list is being displayed."
                                 }
                             ]
@@ -299,7 +307,7 @@
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "15",
+                                    "value": "8",
                                     "description": "The ID of the photo"
                                 }
                             ]
@@ -356,7 +364,7 @@
                             "formdata": [
                                 {
                                     "key": "caption",
-                                    "value": "nesciunt",
+                                    "value": "dolores",
                                     "type": "text"
                                 },
                                 {
@@ -435,7 +443,7 @@
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "19",
+                                    "value": "6",
                                     "description": "The ID of the photo"
                                 }
                             ]
