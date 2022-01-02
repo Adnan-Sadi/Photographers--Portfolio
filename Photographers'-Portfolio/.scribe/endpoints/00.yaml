@@ -9,10 +9,11 @@ endpoints:
       - GET
     uri: blogpost
     metadata:
-      title: 'blogpost() : this method shows the view of a blog creation form <br>'
+      title: 'blogpost() : this method shows the view of a blog creation form'
       description: |-
-        blogs are posts made by users that contain text writings and each blog has a cover image on top
-        as well
+        blogs are posts made by users that contain text writings. Each blog has a cover image on top
+        as well. It also has an individual blog viewing page. User can share their written texts in the
+        blogs.
       authenticated: false
       custom: []
     headers:
@@ -24,7 +25,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{ return \Illuminate\View\View }'
+        content: \Illuminate\Http\Response
         headers: []
         description: '200'
     responseFields: []
@@ -34,7 +35,11 @@ endpoints:
     uri: blogpost
     metadata:
       title: 'store() : Stores a newly created blog post in storage'
-      description: ''
+      description: |-
+        This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.
+        All the data about that blog is stored inside a laravel 'Collection Object'.
+        The function returns a view of the 'single blog' page along with the 'Collection Object'
+        which contains the blog data.
       authenticated: false
       custom: []
     headers:
@@ -47,21 +52,21 @@ endpoints:
         name: 'title '
         description: ''
         required: true
-        example: incidunt
+        example: sit
         type: string
         custom: []
       text_writings:
         name: text_writings
         description: ''
         required: true
-        example: temporibus
+        example: quia
         type: string
         custom: []
       cover_photo:
         name: cover_photo
         description: 'Must not be greater than 5048 characters.'
         required: true
-        example: mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv
+        example: iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq
         type: string
         custom: []
     responses:

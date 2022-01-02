@@ -75,7 +75,7 @@
                 </li>
                                     <ul id="tocify-subheader-blogpostcontroller-class" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="blogpostcontroller-class-GETblogpost">
-                        <a href="#blogpostcontroller-class-GETblogpost">blogpost() : this method shows the view of a blog creation form &lt;br&gt;</a>
+                        <a href="#blogpostcontroller-class-GETblogpost">blogpost() : this method shows the view of a blog creation form</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="blogpostcontroller-class-POSTblogpost">
                         <a href="#blogpostcontroller-class-POSTblogpost">store() : Stores a newly created blog post in storage</a>
@@ -161,13 +161,14 @@ You can switch the language used with the tabs at the top right (or from the nav
     <p>The methods inside this class are used for creating or
 viewing a single blog on this web application.</p>
 
-            <h2 id="blogpostcontroller-class-GETblogpost">blogpost() : this method shows the view of a blog creation form &lt;br&gt;</h2>
+            <h2 id="blogpostcontroller-class-GETblogpost">blogpost() : this method shows the view of a blog creation form</h2>
 
 <p>
 </p>
 
-<p>blogs are posts made by users that contain text writings and each blog has a cover image on top
-as well</p>
+<p>blogs are posts made by users that contain text writings. Each blog has a cover image on top
+as well. It also has an individual blog viewing page. User can share their written texts in the
+blogs.</p>
 
 <span id="example-requests-GETblogpost">
 <blockquote>Example request:</blockquote>
@@ -203,7 +204,7 @@ fetch(url, {
         </blockquote>
                 <pre>
 
-<code class="language-json">{ return \Illuminate\View\View }</code>
+<code class="language-json">\Illuminate\Http\Response</code>
  </pre>
     </span>
 <span id="execution-results-GETblogpost" hidden>
@@ -252,7 +253,10 @@ fetch(url, {
 <p>
 </p>
 
-
+<p>This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.
+All the data about that blog is stored inside a laravel 'Collection Object'.
+The function returns a view of the 'single blog' page along with the 'Collection Object'
+which contains the blog data.</p>
 
 <span id="example-requests-POSTblogpost">
 <blockquote>Example request:</blockquote>
@@ -264,9 +268,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"title \": \"incidunt\",
-    \"text_writings\": \"temporibus\",
-    \"cover_photo\": \"mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv\"
+    \"title \": \"sit\",
+    \"text_writings\": \"quia\",
+    \"cover_photo\": \"iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq\"
 }"
 </code></pre></div>
 
@@ -282,9 +286,9 @@ const headers = {
 };
 
 let body = {
-    "title ": "incidunt",
-    "text_writings": "temporibus",
-    "cover_photo": "mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv"
+    "title ": "sit",
+    "text_writings": "quia",
+    "cover_photo": "iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq"
 };
 
 fetch(url, {
@@ -349,7 +353,7 @@ fetch(url, {
                 <input type="text"
                name="title "
                data-endpoint="POSTblogpost"
-               value="incidunt"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -359,7 +363,7 @@ fetch(url, {
                 <input type="text"
                name="text_writings"
                data-endpoint="POSTblogpost"
-               value="temporibus"
+               value="quia"
                data-component="body" hidden>
     <br>
 
@@ -369,7 +373,7 @@ fetch(url, {
                 <input type="text"
                name="cover_photo"
                data-endpoint="POSTblogpost"
-               value="mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv"
+               value="iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq"
                data-component="body" hidden>
     <br>
 <p>Must not be greater than 5048 characters.</p>
@@ -400,14 +404,14 @@ Finally, the user gets redirected to the profile page of the user he just follow
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/follow/9" \
+    --get "http://localhost/follow/14" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/follow/9"
+    "http://localhost/follow/14"
 );
 
 const headers = {
@@ -476,7 +480,7 @@ fetch(url, {
                 <input type="number"
                name="followingUserId"
                data-endpoint="GETfollow--followingUserId-"
-               value="9"
+               value="14"
                data-component="url" hidden>
     <br>
 <p>The Id of the user who is being followed.</p>
@@ -501,14 +505,14 @@ Finally, the user gets redirected to the profile page of the user he just unfoll
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/unfollow/18" \
+    --get "http://localhost/unfollow/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/unfollow/18"
+    "http://localhost/unfollow/4"
 );
 
 const headers = {
@@ -577,7 +581,7 @@ fetch(url, {
                 <input type="number"
                name="unfollowingUserId"
                data-endpoint="GETunfollow--unfollowingUserId-"
-               value="18"
+               value="4"
                data-component="url" hidden>
     <br>
 <p>The Id of the user who is being unfollowed.</p>
@@ -603,14 +607,14 @@ that particular userId.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/follower-page/in" \
+    --get "http://localhost/follower-page/voluptate" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/follower-page/in"
+    "http://localhost/follower-page/voluptate"
 );
 
 const headers = {
@@ -679,7 +683,7 @@ fetch(url, {
                 <input type="text"
                name="user"
                data-endpoint="GETfollower-page--user-"
-               value="in"
+               value="voluptate"
                data-component="url" hidden>
     <br>
 
@@ -689,7 +693,7 @@ fetch(url, {
                 <input type="number"
                name="userId"
                data-endpoint="GETfollower-page--user-"
-               value="11"
+               value="7"
                data-component="url" hidden>
     <br>
 <p>User Id of the user whos follower and following list is being displayed.</p>
@@ -815,14 +819,14 @@ which contains the photo data.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/photo/13" \
+    --get "http://localhost/photo/15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/photo/13"
+    "http://localhost/photo/15"
 );
 
 const headers = {
@@ -898,7 +902,7 @@ fetch(url, {
                 <input type="number"
                name="photoId"
                data-endpoint="GETphoto--photoId-"
-               value="13"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the photo</p>
@@ -929,8 +933,8 @@ Finally, it redirects the user to the page of the photo that was uploaded.</p>
     "http://localhost/photo-upload" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "caption=aut" \
-    --form "photo=@C:\Users\reevu\AppData\Local\Temp\php6E99.tmp" </code></pre></div>
+    --form "caption=nesciunt" \
+    --form "photo=@C:\Users\reevu\AppData\Local\Temp\phpC2CF.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -944,7 +948,7 @@ const headers = {
 };
 
 const body = new FormData();
-body.append('caption', 'aut');
+body.append('caption', 'nesciunt');
 body.append('photo', document.querySelector('input[name="photo"]').files[0]);
 
 fetch(url, {
@@ -1016,7 +1020,7 @@ fetch(url, {
                 <input type="text"
                name="caption"
                data-endpoint="POSTphoto-upload"
-               value="aut"
+               value="nesciunt"
                data-component="body" hidden>
     <br>
 <p>The caption of the photo.</p>
@@ -1137,14 +1141,14 @@ Finally, the function redirects the user to the view of the newsfeed page.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/photo-delete/10" \
+    "http://localhost/photo-delete/19" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/photo-delete/10"
+    "http://localhost/photo-delete/19"
 );
 
 const headers = {
@@ -1213,7 +1217,7 @@ fetch(url, {
                 <input type="number"
                name="photoId"
                data-endpoint="DELETEphoto-delete--photoId-"
-               value="10"
+               value="19"
                data-component="url" hidden>
     <br>
 <p>The ID of the photo</p>
