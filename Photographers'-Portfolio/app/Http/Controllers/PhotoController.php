@@ -74,6 +74,16 @@ class PhotoController extends Controller
 
 
 
+    /**
+     * textOnImage() : creates a watermark on the photo while uploading
+     * font can be customized and the position of the watermark can be
+     * changed from this method as well
+     * 
+     * @queryparam mixed $newImageName
+     * @queryparam mixed $userName
+     * 
+     * @response { return \Illuminate\View\View }
+     */
     public function textOnImage($newImageName, $userName)  
     {  
        $img = Image::make(public_path('photos/photo-uploads/'.$newImageName));  

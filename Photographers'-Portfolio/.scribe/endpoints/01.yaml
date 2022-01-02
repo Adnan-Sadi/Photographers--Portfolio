@@ -28,7 +28,7 @@ endpoints:
         name: followingUserId
         description: 'The Id of the user who is being followed.'
         required: true
-        example: 8
+        example: 9
         type: integer
         custom: []
     queryParameters: []
@@ -63,7 +63,7 @@ endpoints:
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
         required: true
-        example: 16
+        example: 18
         type: integer
         custom: []
     queryParameters: []
@@ -99,14 +99,14 @@ endpoints:
         name: user
         description: ''
         required: true
-        example: accusamus
+        example: in
         type: string
         custom: []
       userId:
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
         required: true
-        example: 13
+        example: 11
         type: integer
         custom: []
     queryParameters: []

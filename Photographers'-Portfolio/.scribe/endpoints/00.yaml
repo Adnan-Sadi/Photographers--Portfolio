@@ -1,24 +1,18 @@
-name: 'NewsfeedController class'
+name: 'BlogpostController class'
 description: |-
 
-  The methods inside this class are used displaying the
-  newsfeed of an user.
+  The methods inside this class are used for creating or 
+  viewing a single blog on this web application.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: newsfeed
+    uri: blogpost
     metadata:
-      title: 'index(): Displays the view of the Newsfeed.'
+      title: 'blogpost() : this method shows the view of a blog creation form <br>'
       description: |-
-        This method returns the view of the newsfeed an user.<br>
-        First, it finds the 'userId' of the logged in user from the Session variable.
-        Then, that 'userId' is used to find all the users that user is following.
-        Using the list of users that were followed, this function retrieves
-        all photos and blogs that were posted by those users. Data about about all the
-        photos and blogs are stored inside a laravel 'Collection Object'.<br>
-        Finally, the method return the view of the 'newsfeed' page along with the 'Collection
-        Object' which contains data about photos and blogs.
+        blogs are posts made by users that contain text writings and each blog has a cover image on top
+        as well
       authenticated: false
       custom: []
     headers:
@@ -31,6 +25,49 @@ endpoints:
       -
         status: 200
         content: '{ return \Illuminate\View\View }'
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: blogpost
+    metadata:
+      title: 'store() : Stores a newly created blog post in storage'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      'title ':
+        name: 'title '
+        description: ''
+        required: true
+        example: incidunt
+        type: string
+        custom: []
+      text_writings:
+        name: text_writings
+        description: ''
+        required: true
+        example: temporibus
+        type: string
+        custom: []
+      cover_photo:
+        name: cover_photo
+        description: 'Must not be greater than 5048 characters.'
+        required: true
+        example: mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: \Illuminate\Http\Response
         headers: []
         description: '200'
     responseFields: []

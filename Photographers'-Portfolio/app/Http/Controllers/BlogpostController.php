@@ -10,16 +10,40 @@ use Illuminate\Support\Str;
 
 use Session;
 
+
+/**
+ * @group BlogpostController class
+ *
+ * The methods inside this class are used for creating or 
+ * viewing a single blog on this web application.
+ */
+
 class BlogpostController extends Controller
 {
 
     
+    /**
+     * blogpost() : this method shows the view of a blog creation form <br>
+     * 
+     * blogs are posts made by users that contain text writings and each blog has a cover image on top
+     * as well
+     * 
+     * 
+     * 
+     * @urlparam Request $request
+     * 
+     * @response { return \Illuminate\View\View }
+     */
     public function blogpost (Request $request){
         
         return view('blogpost');
     }
 
 
+    /**
+     * 
+     * @response { return \Illuminate\View\View }
+     */
     public function create(){
         return view('blogpost.create');
         
@@ -27,10 +51,10 @@ class BlogpostController extends Controller
     
 
     /**
-     * Store a newly created post in storage
+     * store() : Stores a newly created blog post in storage
      * 
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @urlparam \Illuminate\Http\Request $request
+     * @response \Illuminate\Http\Response
      */
 
 
@@ -66,10 +90,21 @@ class BlogpostController extends Controller
         ]);
         return redirect('/single-blog/'.$blogs->b_id);
     }
-    public function edit($id){
-        $blogs = Blogs::find($id)->first();
-        return view('blogs.edit')->with('blogs', $blogs);
-    }
+    
+    
+    
+    // public function edit($id){
+    //     $blogs = Blogs::find($id)->first();
+    //     return view('blogs.edit')->with('blogs', $blogs);
+    // }
+    
+    
+    /**
+     * @urlparam Request $request
+     * @urlparam mixed $id
+     * 
+     * @response \Illuminate\Http\Response
+     */
     public function update(Request $request, $id){
         $rules = array(
             'title '=> 'required',
@@ -87,7 +122,7 @@ class BlogpostController extends Controller
 
 
     /**
-     * blog(): Displays the view of an individual blog.
+     * blog() : Displays the view of an individual blog.
      * 
      * This method takes the parameter '$blogId' from the route url.
      * The '$blogId' is used to find the particular blog with the same blogId from the database.
@@ -95,16 +130,17 @@ class BlogpostController extends Controller
      * The function returns a view of the 'single blog' page along with the 'Collection Object'
      * which contains the blog data.
      *
-     * @urlParam blogId integer required The ID of the blog
+     *@bodyparam blogId integer required The ID of the blog
      * 
-     * @response {
+     *@response {
      *  "b_id": 4,
      *  "u_id": 2,
      *  "text_writings": "This is an example text writing",
-     *  "created_at": "2021-12-22 08:58:02",
-     *  "updated_at": "2021-12-22 08:58:0",
+     *  "created_at": "2021-12-22 07:50:02",
+     *  "updated_at": "2021-12-22 07:50:02",
      * }
      */
+
 
     public function blog ($blogId){
 
