@@ -23,16 +23,16 @@ class BlogpostController extends Controller
 
     
     /**
-     * blogpost() : this method shows the view of a blog creation form <br>
+     * blogpost() : this method shows the view of a blog creation form
      * 
-     * blogs are posts made by users that contain text writings and each blog has a cover image on top
-     * as well
+     * blogs are posts made by users that contain text writings. Each blog has a cover image on top
+     * as well. It also has an individual blog viewing page. User can share their written texts in the 
+     * blogs. 
      * 
      * 
      * 
-     * @urlparam Request $request
-     * 
-     * @response { return \Illuminate\View\View }
+     * @urlparam \Illuminate\Http\Request $request 
+     * @response \Illuminate\Http\Response
      */
     public function blogpost (Request $request){
         
@@ -52,6 +52,11 @@ class BlogpostController extends Controller
 
     /**
      * store() : Stores a newly created blog post in storage
+     * 
+     * This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.
+     * All the data about that blog is stored inside a laravel 'Collection Object'.
+     * The function returns a view of the 'single blog' page along with the 'Collection Object'
+     * which contains the blog data.
      * 
      * @urlparam \Illuminate\Http\Request $request
      * @response \Illuminate\Http\Response
@@ -124,20 +129,17 @@ class BlogpostController extends Controller
     /**
      * blog() : Displays the view of an individual blog.
      * 
-     * This method takes the parameter '$blogId' from the route url.
-     * The '$blogId' is used to find the particular blog with the same blogId from the database.
-     * All the data about that blog is stored inside a laravel 'Collection Object'.
-     * The function returns a view of the 'single blog' page along with the 'Collection Object'
-     * which contains the blog data.
      *
-     *@bodyparam blogId integer required The ID of the blog
+     *@urlParam blogId integer required The ID of the blog
      * 
      *@response {
      *  "b_id": 4,
      *  "u_id": 2,
+     * "title": "Example",
+     * "cover_photo": "1640627401-username-CJ9.jpg"
      *  "text_writings": "This is an example text writing",
-     *  "created_at": "2021-12-22 07:50:02",
-     *  "updated_at": "2021-12-22 07:50:02",
+     *  "created_at": "2021-12-27 07:50:02",
+     *  "updated_at": "2021-12-27 07:50:02",
      * }
      */
 

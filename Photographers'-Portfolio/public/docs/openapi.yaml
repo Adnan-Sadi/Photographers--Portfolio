@@ -9,8 +9,8 @@ servers:
 paths:
   /blogpost:
     get:
-      summary: 'blogpost() : this method shows the view of a blog creation form <br>'
-      description: "blogs are posts made by users that contain text writings and each blog has a cover image on top\nas well"
+      summary: 'blogpost() : this method shows the view of a blog creation form'
+      description: "blogs are posts made by users that contain text writings. Each blog has a cover image on top\nas well. It also has an individual blog viewing page. User can share their written texts in the\nblogs."
       parameters:
         -
           in: header
@@ -33,13 +33,13 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: '{ return \Illuminate\View\View }'
+                example: \Illuminate\Http\Response
       tags:
         - 'BlogpostController class'
       security: []
     post:
       summary: 'store() : Stores a newly created blog post in storage'
-      description: ''
+      description: "This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.\nAll the data about that blog is stored inside a laravel 'Collection Object'.\nThe function returns a view of the 'single blog' page along with the 'Collection Object'\nwhich contains the blog data."
       parameters:
         -
           in: header
@@ -75,15 +75,15 @@ paths:
                 'title ':
                   type: string
                   description: ''
-                  example: incidunt
+                  example: sit
                 text_writings:
                   type: string
                   description: ''
-                  example: temporibus
+                  example: quia
                 cover_photo:
                   type: string
                   description: 'Must not be greater than 5048 characters.'
-                  example: mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv
+                  example: iupqyuneaxsqatqwgynrxhqqkyhrfgqdxuxwkndjmqjsomxenmjwprmwfapejadmgzmaqppmbpifsmoodxfbonivttkgfaixzekymtyubcjtaqjigpdyrfkefwomwamsjegabooloudvllmcgykmhcmiglgvvigrrrqwsugclffpssnedqvjaigfmuhycwvkuscnuzqaqhxyghnxxajdhfltuluoetlgrxdvckogegjhugmiukilsevqpyzcrmpuzwsoehkvyzsbrssuytqzewozbnhbkwdopomnfxpnnlwbtujviiiekmoekfnstcqkwkmvxnsgspeyjftdilvkaxgyibcccvezdawnnayfxvbhcrkiknrbawdottqncwryfwrwqccktgqutmvjdujlmjdcdwkkqlgkosmnulcydwegnzjyhcwhjtnqxlykecrrgvvofjqtjauccoirfrdkdsgxxvcprgyzgjxlvdyxspjxafagnawvlnclurwzmmfxbenolpzuuxyszzamngjyyxjgrasmtmivwatxteqadoyzrygwklfwfsqhcfznwqvitgowecaflbkmaspjtqjhkigpcbzhjsbcmtdwjxvpbseadduyvvshicstyevncvymmdrytfrxskxcnxppmcjtnuringukchbotdhvqecniretsvheeahnyzecszsaoqsacghfacjezhoodyxlenaccoayoueszcgxzefckbajcqpmsykpubbwxsgpicegywpycegbrcmzslnifltwcfpensgrxyejvlycfdfwilkjsmjwnmofhyzejdsnftsyrarlztxfrxuctgfmcrpkqdcvcwizdshhoyazpkgpeunxeydlsotglmmjsklofsmjpjgguwoyuvmdcplzfpltwkngbfymvxxqfivpclraarqtvnlsunyvapnokmwlbawdqrlxuddaxkystmllqeqczzmetbxotobtlegylpdcwsojuqtrkxknaxwjwsjeuhjgswqtgopjxhitseqgtytrtoxtqouqfduzsxfgyjdquxkylzdrhtnpwhmfsvdgegsxhvgpejijoewhbcsofjkmicgukminqiwlfqludrxdxoqidjnlacwrpmbzxeprezafrxxpyjjdmcrlwrmunqgcjmtdddbrtsbxyunyyxxjwvkmvdqhrxayfvrnttsfpmmhrzpicvrskkpeelosfypmqnyxmsteegobbopclygqfbbygphhrjqtxxnnadsvnnnfiprlmctsnxuqwhqoltnvpomasmealalrhsgllnvhqhlebafjqavyxluhfhtaxeywzpgwppwesiwzgmiutgsracetfyjovgyyrzjgblgckyhuklklemgzjbhusqwmotkvrxlzedawyznytrzfahhzqsgpymaltfulsuppaoxzciptczjgkstlqawbitbtemuhuaoyikczpaxwogumaqienmlgksknziwplicfpefyinkktyuatcknxbryherglrfyvgxldusfnvxbraluydsroxpmlhcbugrpkvymfdhdtverifkpccnbndzjtpoxsjnvziwyrgxfkpnbvimfrqgisyudcotyxgzbbucsufodgxbfhkznexrayifzoakutancccdxgwrjtadcyjihimfiydbzyejbhwqxrixloficewtonbbnkmbiiuqervpormhkrjixqxrokgfdimkyxhkewxcnasahlotvmvcdtmbbsnexhncqopvipiihjasbcazisnuezegggjsvecivlriwwblvjgfuxlsgmtfdadqnolxmuxgowunuoupjjqunibhvrvmpgzsozqniovtceswmzlsfkznvfoervzazdnpezdaguuqgfoziauvpzrhibxfkpglfwiynbtdhplcfmqylheawigwjtisputjytzpphlhnnjqbxsdnwbitgxopubwfyqaapyucubowkmozcviartjwbiwcwpbptynvgnncanvulqikjwpoyagfgjmtgpnmapnwgdfifkiwelgwvcnghgarfxtbnhvhnosogxzpevdplhattqldyjjhvkkexffvywhquifberxhmyidylyhhvhazcmrrebeowidccxusfeaykkuilquwvjcjtywvcgbrmcenyevzslrhfqwgecvjbotwswmpsmaxovovkeyleqgrydjdkgvwwyngndwuhibvnraovqofhiedvzhtlipkfhppbsxwohrcsvwgbxbkyffhbrjgxhfxgmqsekyaalpldffyxgmvvfuucodjfrtsboearhogongioffsttbgsyzuowkwlbgbxvqpajmvvsgtzgbqsekdfoggqkcqtxbzluqddfsedocdgspwqvhqymtgksarjhkqpkkfoixvsghiqypzmmdcqqoecjyttcetmgpojmumpgylsymzrwsfvualnvhgcguxziluqlyajklkzimixainzjqszmcmmqrozypouyocxjlutlraxdmmmyyycqgzarszfzddslzbeyvbjhpqrhpglxyxeksfydjtqvwqigvdaxaegojwoothbwpsjgpkcqgrxsvesaonmtyegxnlepebmnrssegvcotghoezenntuahwrknjfukfxjmfbluhabxgwuvhbfdmawtefzqcfeudfoibskqbzoekatmdrsskmgwkyvdqilheudllqtlepzcugralntfjtypkjlrnrchsrdpkpoynrescbnuvjnvrkjtwdsvbraduqxklageebrizwiixasiqkrefrcxsubfldmtqfvbbswkmpuacxovmvxpwqvlyvbnrclllyukgystmbsvdwzgbystyxokmfgaqasjgorlmuheejtotslrnhmswiczlowfgppqpiwhacylctfvzwjzqbxvyehkzsghmesiintclhahujdojfayvysjhnsbczbcblqngebzevydwyzoouoiipkzcielaydadjukaadynovqmkiukongmeddihceqkkclcylwrjqhyujkpclotypgaytvziaopulvuvagvsuzwgcpdvfticqligomyikywqakvvtynrbnhleqscvvzxkpdecopstpnhbddtraplmtiimvywpplvipnbmvcngsfcyzyfwuhfmiyydzylgurxbfwbxqilzhkejhdwscmuzbafkirwizdwpzsiccqeznqqcskpmkhxyeibvoswgthhvesflbmfuicdvoahotjiazzmdqhpvznbiyxmyndglnyjvvakdwgjnixmcwuzyiqtcaawrsfjmtxrkvkuserhrashmmlfxogbpqygpbaabexqdlvchydbpzfpspgnfiidtgobisfdkloejnwrjmwisdfbsrewmqdyxqbpzhoftcofdsoetlmxfmufnnvpwyibqwbudxstszqceunznhxedbdbfbgwtfbyzodrwyoftsweigrshhgeimylprgjrbjvpimgyohizozichtmnqpwnofktxxyuvudpfoaqwxelaspmfuodbaylfrldvzphcgatcylcxsyjnxpmqvjtnprvwonsonjgwubwywvehswmccxykmyfdtvnwsjqmgdcxeeqcgodwiqvnzoykpylooorncjykiepylnwpdftzbwkcbtaxxqkaiqhsvglmxxlfcgwzrzvzgbthqaxgmkaijsrtpvqnopoywhydgwknwifixtyvgfcvrzazekosmvhtqmbraevnawkvxhazzryycxrmvrzqnhnobzgbwsauldoidpfylfryfpdpsrrkfivjpxnzfilopemkcfudiwtuwmypldkkxwumsvjonhkoxvkkpbilktkveehijahdtrpuaxnsytxftzzbcfhcvxogloziabxnbbrleupclnopafccrmfkwcpeugzzuruugpedspchxsdguwfmkrqboskixqvlequmfqzedzcpcmxpbkqujbbhyzltubnafgoyhfxqsoedovfjfkwwflsjtkdstmxssaxecuzfeqwxalitqwbdlgjhulsuadskxgohzdcfgvekcjqrrupfemjfvislqpmkjokcfvzbijlqncjgenquxzikkusrixmdlbcrtcqeoiukuangpjxkqsnzpopqalpzpqfmuwcmq
               required:
                 - 'title '
                 - text_writings
@@ -124,7 +124,7 @@ paths:
         in: path
         name: followingUserId
         description: 'The Id of the user who is being followed.'
-        example: 9
+        example: 14
         required: true
         schema:
           type: integer
@@ -163,7 +163,7 @@ paths:
         in: path
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
-        example: 18
+        example: 4
         required: true
         schema:
           type: integer
@@ -202,7 +202,7 @@ paths:
         in: path
         name: user
         description: ''
-        example: in
+        example: voluptate
         required: true
         schema:
           type: string
@@ -210,7 +210,7 @@ paths:
         in: path
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
-        example: 11
+        example: 7
         required: true
         schema:
           type: integer
@@ -279,7 +279,7 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 13
+        example: 15
         required: true
         schema:
           type: integer
@@ -322,7 +322,7 @@ paths:
                 caption:
                   type: string
                   description: 'The caption of the photo.'
-                  example: aut
+                  example: nesciunt
                 photo:
                   type: string
                   format: binary
@@ -395,7 +395,7 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 10
+        example: 19
         required: true
         schema:
           type: integer
