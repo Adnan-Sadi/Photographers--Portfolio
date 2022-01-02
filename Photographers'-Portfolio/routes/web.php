@@ -34,6 +34,8 @@ Route::get('/gallery/{user}',[GalleryController::class, 'gallery']);
 Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
 Route::post('/blogpost',[BlogpostController::class, 'store']);
 
+Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
+
 
 Route::get('/single-blog/{blogId}', [BlogpostController::class, 'blog'])->name('blog.single-blog');
 
@@ -52,6 +54,6 @@ Route::group(['middleware'=>['session']], function(){
     //Routes Related to PhotoController Class
     Route::get('/photo/{photoId}', [PhotoController::class, 'index'])->name('photo.index');
     Route::post('/photo-upload', [PhotoController::class, 'photoUpload'])->name('photo.photo_upload');
-    Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
+    
     Route::delete('/photo-delete/{photoId}', [PhotoController::class, 'photoDelete'])->name('photo.photo_delete');
 });
