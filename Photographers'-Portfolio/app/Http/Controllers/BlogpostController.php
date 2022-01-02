@@ -33,20 +33,11 @@ class BlogpostController extends Controller
      * 
      * @response { return \Illuminate\View\View }
      */
-    public function blogpost (Request $request){
+    public function blogpost (){
         
         return view('blogpost');
     }
 
-
-    /**
-     * 
-     * @response { return \Illuminate\View\View }
-     */
-    public function create(){
-        return view('blogpost.create');
-        
-    }
     
 
     /**
@@ -101,7 +92,7 @@ class BlogpostController extends Controller
     
     /**
      * @urlParam Request $request
-     * @urlParam mixed $id
+     * @urlParam $id
      * 
      * @response { return \Illuminate\View\View }
      */
