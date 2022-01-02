@@ -37,7 +37,9 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters). Example: 'users/*'.
                  */
                 'prefixes' => ['photo/*','photo-upload','newsfeed','follow/*','unfollow/*',
-                              'photo-upload-page','photo-delete/{photoId}','follower-page/{user}','gallery','blogpost'],
+                              'photo-upload-page','photo-delete/{photoId}','follower-page/{userId}',
+                              'gallery/{user}','blogpost','single-blog/{blogId}','text-on-image',
+                              'is-following'],
 
                 /*
                  * Match only routes whose domains match this pattern (use * as a wildcard to match any characters). Example: 'api.*'.

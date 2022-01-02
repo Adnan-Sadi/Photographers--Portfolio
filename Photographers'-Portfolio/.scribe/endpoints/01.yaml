@@ -28,7 +28,7 @@ endpoints:
         name: followingUserId
         description: 'The Id of the user who is being followed.'
         required: true
-        example: 4
+        example: 13
         type: integer
         custom: []
     queryParameters: []
@@ -63,7 +63,7 @@ endpoints:
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
         required: true
-        example: 17
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -78,7 +78,40 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'follower-page/{user}'
+    uri: is-following
+    metadata:
+      title: 'isFollowing(): Checks if the logged-in user is following a certain user.'
+      description: |-
+        This methods takes '$userId' as a parameter and checks if the logged in user
+        is following that particular 'userId'. The function returns true if the logged-in
+        user is following a certain user and returns false if the user is not following
+        that certain user.
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      $userId:
+        name: $userId
+        description: 'The user of a particular user.'
+        required: true
+        example: 20
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{ return Boolean }'
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'follower-page/{userId}'
     metadata:
       title: 'followerPage(): Displays a page containing the follower and following list of an user'
       description: |-
@@ -95,18 +128,11 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      user:
-        name: user
-        description: ''
-        required: true
-        example: quis
-        type: string
-        custom: []
       userId:
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
         required: true
-        example: 3
+        example: 17
         type: integer
         custom: []
     queryParameters: []

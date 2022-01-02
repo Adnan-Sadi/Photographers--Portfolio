@@ -45,7 +45,7 @@ paths:
           in: header
           name: Content-Type
           description: ''
-          example: application/json
+          example: multipart/form-data
           schema:
             type: string
         -
@@ -68,27 +68,71 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
                 'title ':
                   type: string
                   description: ''
-                  example: nemo
+                  example: consequatur
                 text_writings:
                   type: string
-                  description: ''
-                  example: nesciunt
+                  description: 'The text description of the blog post. This can be a few paragraphs. This is main content of the blog post.'
+                  example: eligendi
                 cover_photo:
                   type: string
-                  description: 'Must not be greater than 5048 characters.'
-                  example: vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl
+                  format: binary
+                  description: 'The uploaded image file'
+                title:
+                  type: string
+                  description: 'The title of the blog post.'
+                  example: quisquam
               required:
                 - 'title '
                 - text_writings
                 - cover_photo
+                - title
       security: []
+  '/single-blog/{blogId}':
+    get:
+      summary: 'blog() : Displays the view of an individual blog.'
+      description: "An individual blog shows the contents of a blog from a user. The post needs to contain\na cover photo, title and the text descriptions for the main body of the blog."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"b_id\": 4,\n\"u_id\": 2,\n\"title\": \"Example\",\n\"cover_photo\": \"1640627401-username-CJ9.jpg\"\n \"text_writings\": \"This is an example text writing\",\n \"created_at\": \"2021-12-27 07:50:02\",\n \"updated_at\": \"2021-12-27 07:50:02\",\n}"
+      tags:
+        - 'BlogpostController class'
+      security: []
+    parameters:
+      -
+        in: path
+        name: blogId
+        description: 'The ID of the blog'
+        example: 8
+        required: true
+        schema:
+          type: integer
   '/follow/{followingUserId}':
     get:
       summary: 'followUser(): Allows a user to the follow another user.'
@@ -124,7 +168,7 @@ paths:
         in: path
         name: followingUserId
         description: 'The Id of the user who is being followed.'
-        example: 4
+        example: 13
         required: true
         schema:
           type: integer
@@ -163,11 +207,54 @@ paths:
         in: path
         name: unfollowingUserId
         description: 'The Id of the user who is being unfollowed.'
-        example: 17
+        example: 14
         required: true
         schema:
           type: integer
-  '/follower-page/{user}':
+  /is-following:
+    get:
+      summary: 'isFollowing(): Checks if the logged-in user is following a certain user.'
+      description: "This methods takes '$userId' as a parameter and checks if the logged in user\nis following that particular 'userId'. The function returns true if the logged-in\nuser is following a certain user and returns false if the user is not following\nthat certain user."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{ return Boolean }'
+      tags:
+        - 'FollowController class'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                $userId:
+                  type: integer
+                  description: 'The user of a particular user.'
+                  example: 20
+              required:
+                - $userId
+      security: []
+  '/follower-page/{userId}':
     get:
       summary: 'followerPage(): Displays a page containing the follower and following list of an user'
       description: "This method takes '$userId' as a parameter from the URL.This user id is of the user whos\nfollower/following page is being viewed.<br>\nThis is 'userId' is then used to find which user are following that userId and also to find\nwhich users are being followed by that userId.<br>\nFinally, the function returns a view of the 'followerpage' along with two collection\nobjects which contains the list of followers and the list of user being followed by\nthat particular userId."
@@ -200,17 +287,9 @@ paths:
     parameters:
       -
         in: path
-        name: user
-        description: ''
-        example: quis
-        required: true
-        schema:
-          type: string
-      -
-        in: path
         name: userId
         description: 'User Id of the user whos follower and following list is being displayed.'
-        example: 3
+        example: 17
         required: true
         schema:
           type: integer
@@ -279,7 +358,7 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 8
+        example: 16
         required: true
         schema:
           type: integer
@@ -322,7 +401,7 @@ paths:
                 caption:
                   type: string
                   description: 'The caption of the photo.'
-                  example: dolores
+                  example: dolor
                 photo:
                   type: string
                   format: binary
@@ -395,10 +474,58 @@ paths:
         in: path
         name: photoId
         description: 'The ID of the photo'
-        example: 6
+        example: 16
         required: true
         schema:
           type: integer
+  /text-on-image:
+    get:
+      summary: 'textOnImage() : creates a watermark on the photo.'
+      description: "This method creates a watermark on photo while uploading.\nFont can be customized and the position of the watermark can be\nchanged from this method as well."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{ return \Illuminate\View\View }'
+      tags:
+        - 'PhotoController class'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newImageName:
+                  type: string
+                  description: 'Name of the Image.'
+                  example: ad
+                userName:
+                  type: string
+                  description: 'Name of the user.'
+                  example: omnis
+              required:
+                - newImageName
+                - userName
+      security: []
 tags:
   -
     name: 'BlogpostController class'

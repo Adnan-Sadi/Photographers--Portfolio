@@ -28,7 +28,7 @@ endpoints:
         name: photoId
         description: 'The ID of the photo'
         required: true
-        example: 8
+        example: 16
         type: integer
         custom: []
     queryParameters: []
@@ -76,7 +76,7 @@ endpoints:
         name: caption
         description: 'The caption of the photo.'
         required: false
-        example: dolores
+        example: dolor
         type: string
         custom: []
       photo:
@@ -145,7 +145,7 @@ endpoints:
         name: photoId
         description: 'The ID of the photo'
         required: true
-        example: 6
+        example: 16
         type: integer
         custom: []
     queryParameters: []
@@ -156,4 +156,43 @@ endpoints:
         content: '{ return \Illuminate\View\View }'
         headers: []
         description: '200, success'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: text-on-image
+    metadata:
+      title: 'textOnImage() : creates a watermark on the photo.'
+      description: |-
+        This method creates a watermark on photo while uploading.
+        Font can be customized and the position of the watermark can be
+        changed from this method as well.
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      newImageName:
+        name: newImageName
+        description: 'Name of the Image.'
+        required: true
+        example: ad
+        type: string
+        custom: []
+      userName:
+        name: userName
+        description: 'Name of the user.'
+        required: true
+        example: omnis
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{ return \Illuminate\View\View }'
+        headers: []
+        description: '200'
     responseFields: []

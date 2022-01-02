@@ -29,11 +29,12 @@ Route::post('/login',[LoginController::class, 'ValidateLogin'])->name('auth.Vali
 
 Route::get('/logout',[LoginController::class, 'Logout']);
 
-Route::get('/gallery/{user}',[GalleryController::class, 'gallery']);
+Route::get('/gallery/{userId}',[GalleryController::class, 'gallery']);
 
 Route::get('/blogpost',[BlogpostController::class, 'blogpost']);
 Route::post('/blogpost',[BlogpostController::class, 'store']);
 
+Route::get('/text-on-image',[PhotoController::class, 'textOnImage'])->name('photo.text_on_image');
 Route::get('/photo-upload-page', [PhotoController::class, 'photoUploadPage'])->name('photo.photo_upload_page');
 
 
@@ -49,7 +50,7 @@ Route::group(['middleware'=>['session']], function(){
     Route::get('/is-following', [FollowController::class, 'isFollowing'])->name('follow.is_following');
     Route::get('/follow/{followingUserId}', [FollowController::class, 'followUser'])->name('follow.follow_user');
     Route::get('/unfollow/{unfollowingUserId}', [FollowController::class, 'unfollowUser'])->name('follow.unfollow_user');
-    Route::get('/follower-page/{user}', [FollowController::class, 'followerPage'])->name('follow.follower_page');
+    Route::get('/follower-page/{userId}', [FollowController::class, 'followerPage'])->name('follow.follower_page');
     
     //Routes Related to PhotoController Class
     Route::get('/photo/{photoId}', [PhotoController::class, 'index'])->name('photo.index');

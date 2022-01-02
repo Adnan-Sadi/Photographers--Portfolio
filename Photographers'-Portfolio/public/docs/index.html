@@ -30,9 +30,9 @@
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="../docs/js/tryitout-3.20.0.js"></script>
+    <script src="../docs/js/tryitout-3.21.0.js"></script>
 
-    <script src="../docs/js/theme-default-3.20.0.js"></script>
+    <script src="../docs/js/theme-default-3.21.0.js"></script>
 
 </head>
 
@@ -80,6 +80,9 @@
                                     <li class="tocify-item level-2" data-unique="blogpostcontroller-class-POSTblogpost">
                         <a href="#blogpostcontroller-class-POSTblogpost">store() : Stores a newly created blog post in storage</a>
                     </li>
+                                    <li class="tocify-item level-2" data-unique="blogpostcontroller-class-GETsingle-blog--blogId-">
+                        <a href="#blogpostcontroller-class-GETsingle-blog--blogId-">blog() : Displays the view of an individual blog.</a>
+                    </li>
                                                     </ul>
                             </ul>
                     <ul id="tocify-header-3" class="tocify-header">
@@ -93,8 +96,11 @@
                                     <li class="tocify-item level-2" data-unique="followcontroller-class-GETunfollow--unfollowingUserId-">
                         <a href="#followcontroller-class-GETunfollow--unfollowingUserId-">unfollowUser(): Allows a user to the unfollow another user.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="followcontroller-class-GETfollower-page--user-">
-                        <a href="#followcontroller-class-GETfollower-page--user-">followerPage(): Displays a page containing the follower and following list of an user</a>
+                                    <li class="tocify-item level-2" data-unique="followcontroller-class-GETis-following">
+                        <a href="#followcontroller-class-GETis-following">isFollowing(): Checks if the logged-in user is following a certain user.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="followcontroller-class-GETfollower-page--userId-">
+                        <a href="#followcontroller-class-GETfollower-page--userId-">followerPage(): Displays a page containing the follower and following list of an user</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -124,6 +130,9 @@
                     </li>
                                     <li class="tocify-item level-2" data-unique="photocontroller-class-DELETEphoto-delete--photoId-">
                         <a href="#photocontroller-class-DELETEphoto-delete--photoId-">photoDelete(): Deletes a photo from Database.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="photocontroller-class-GETtext-on-image">
+                        <a href="#photocontroller-class-GETtext-on-image">textOnImage() : creates a watermark on the photo.</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -265,14 +274,12 @@ which contains the blog data.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/blogpost" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"title \": \"nemo\",
-    \"text_writings\": \"nesciunt\",
-    \"cover_photo\": \"vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl\"
-}"
-</code></pre></div>
+    --form "title =consequatur" \
+    --form "text_writings=eligendi" \
+    --form "title=quisquam" \
+    --form "cover_photo=@C:\Users\adnan\AppData\Local\Temp\phpEAC.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -281,20 +288,20 @@ which contains the blog data.</p>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "title ": "nemo",
-    "text_writings": "nesciunt",
-    "cover_photo": "vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl"
-};
+const body = new FormData();
+body.append('title ', 'consequatur');
+body.append('text_writings', 'eligendi');
+body.append('title', 'quisquam');
+body.append('cover_photo', document.querySelector('input[name="cover_photo"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -321,9 +328,9 @@ fetch(url, {
 <form id="form-POSTblogpost" data-method="POST"
       data-path="blogpost"
       data-authed="0"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTblogpost', this);">
     <h3>
@@ -347,24 +354,13 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>blogpost</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>Request</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="Request"
-               data-endpoint="POSTblogpost"
-               value="assumenda"
-               data-component="url" hidden>
-    <br>
-<p>$request</p>
-            </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>title </code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="title "
                data-endpoint="POSTblogpost"
-               value="nemo"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 
@@ -374,22 +370,137 @@ fetch(url, {
                 <input type="text"
                name="text_writings"
                data-endpoint="POSTblogpost"
-               value="nesciunt"
+               value="eligendi"
                data-component="body" hidden>
     <br>
-
+<p>The text description of the blog post. This can be a few paragraphs. This is main content of the blog post.</p>
         </p>
                 <p>
-            <b><code>cover_photo</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
+            <b><code>cover_photo</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
                name="cover_photo"
                data-endpoint="POSTblogpost"
-               value="vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl"
+               value=""
                data-component="body" hidden>
     <br>
-<p>Must not be greater than 5048 characters.</p>
+<p>The uploaded image file</p>
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTblogpost"
+               value="quisquam"
+               data-component="body" hidden>
+    <br>
+<p>The title of the blog post.</p>
         </p>
         </form>
+
+            <h2 id="blogpostcontroller-class-GETsingle-blog--blogId-">blog() : Displays the view of an individual blog.</h2>
+
+<p>
+</p>
+
+<p>An individual blog shows the contents of a blog from a user. The post needs to contain
+a cover photo, title and the text descriptions for the main body of the blog.</p>
+
+<span id="example-requests-GETsingle-blog--blogId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/single-blog/8" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/single-blog/8"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETsingle-blog--blogId-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+&quot;b_id&quot;: 4,
+&quot;u_id&quot;: 2,
+&quot;title&quot;: &quot;Example&quot;,
+&quot;cover_photo&quot;: &quot;1640627401-username-CJ9.jpg&quot;
+ &quot;text_writings&quot;: &quot;This is an example text writing&quot;,
+ &quot;created_at&quot;: &quot;2021-12-27 07:50:02&quot;,
+ &quot;updated_at&quot;: &quot;2021-12-27 07:50:02&quot;,
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETsingle-blog--blogId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETsingle-blog--blogId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETsingle-blog--blogId-"></code></pre>
+</span>
+<span id="execution-error-GETsingle-blog--blogId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETsingle-blog--blogId-"></code></pre>
+</span>
+<form id="form-GETsingle-blog--blogId-" data-method="GET"
+      data-path="single-blog/{blogId}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETsingle-blog--blogId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETsingle-blog--blogId-"
+                    onclick="tryItOut('GETsingle-blog--blogId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETsingle-blog--blogId-"
+                    onclick="cancelTryOut('GETsingle-blog--blogId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETsingle-blog--blogId-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>single-blog/{blogId}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>blogId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="blogId"
+               data-endpoint="GETsingle-blog--blogId-"
+               value="8"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the blog</p>
+            </p>
+                    </form>
 
         <h1 id="followcontroller-class">FollowController class</h1>
 
@@ -415,14 +526,14 @@ Finally, the user gets redirected to the page from which the follow request came
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/follow/4" \
+    --get "http://localhost/follow/13" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/follow/4"
+    "http://localhost/follow/13"
 );
 
 const headers = {
@@ -491,7 +602,7 @@ fetch(url, {
                 <input type="number"
                name="followingUserId"
                data-endpoint="GETfollow--followingUserId-"
-               value="4"
+               value="13"
                data-component="url" hidden>
     <br>
 <p>The Id of the user who is being followed.</p>
@@ -516,14 +627,14 @@ Finally, the user gets redirected to the page from which the unfollow request ca
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/unfollow/17" \
+    --get "http://localhost/unfollow/14" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/unfollow/17"
+    "http://localhost/unfollow/14"
 );
 
 const headers = {
@@ -592,14 +703,122 @@ fetch(url, {
                 <input type="number"
                name="unfollowingUserId"
                data-endpoint="GETunfollow--unfollowingUserId-"
-               value="17"
+               value="14"
                data-component="url" hidden>
     <br>
 <p>The Id of the user who is being unfollowed.</p>
             </p>
                     </form>
 
-            <h2 id="followcontroller-class-GETfollower-page--user-">followerPage(): Displays a page containing the follower and following list of an user</h2>
+            <h2 id="followcontroller-class-GETis-following">isFollowing(): Checks if the logged-in user is following a certain user.</h2>
+
+<p>
+</p>
+
+<p>This methods takes '$userId' as a parameter and checks if the logged in user
+is following that particular 'userId'. The function returns true if the logged-in
+user is following a certain user and returns false if the user is not following
+that certain user.</p>
+
+<span id="example-requests-GETis-following">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/is-following" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"$userId\": 20
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/is-following"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "$userId": 20
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETis-following">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{ return Boolean }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETis-following" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETis-following"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETis-following"></code></pre>
+</span>
+<span id="execution-error-GETis-following" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETis-following"></code></pre>
+</span>
+<form id="form-GETis-following" data-method="GET"
+      data-path="is-following"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETis-following', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETis-following"
+                    onclick="tryItOut('GETis-following');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETis-following"
+                    onclick="cancelTryOut('GETis-following');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETis-following" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>is-following</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>$userId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="$userId"
+               data-endpoint="GETis-following"
+               value="20"
+               data-component="body" hidden>
+    <br>
+<p>The user of a particular user.</p>
+        </p>
+        </form>
+
+            <h2 id="followcontroller-class-GETfollower-page--userId-">followerPage(): Displays a page containing the follower and following list of an user</h2>
 
 <p>
 </p>
@@ -612,20 +831,20 @@ Finally, the function returns a view of the 'followerpage' along with two collec
 objects which contains the list of followers and the list of user being followed by
 that particular userId.</p>
 
-<span id="example-requests-GETfollower-page--user-">
+<span id="example-requests-GETfollower-page--userId-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/follower-page/quis" \
+    --get "http://localhost/follower-page/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/follower-page/quis"
+    "http://localhost/follower-page/17"
 );
 
 const headers = {
@@ -640,7 +859,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETfollower-page--user-">
+<span id="example-responses-GETfollower-page--userId-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -649,62 +868,52 @@ fetch(url, {
 <code class="language-json">{ return \Illuminate\View\View }</code>
  </pre>
     </span>
-<span id="execution-results-GETfollower-page--user-" hidden>
+<span id="execution-results-GETfollower-page--userId-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETfollower-page--user-"></span>:
+                id="execution-response-status-GETfollower-page--userId-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETfollower-page--user-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETfollower-page--userId-"></code></pre>
 </span>
-<span id="execution-error-GETfollower-page--user-" hidden>
+<span id="execution-error-GETfollower-page--userId-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETfollower-page--user-"></code></pre>
+    <pre><code id="execution-error-message-GETfollower-page--userId-"></code></pre>
 </span>
-<form id="form-GETfollower-page--user-" data-method="GET"
-      data-path="follower-page/{user}"
+<form id="form-GETfollower-page--userId-" data-method="GET"
+      data-path="follower-page/{userId}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETfollower-page--user-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETfollower-page--userId-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETfollower-page--user-"
-                    onclick="tryItOut('GETfollower-page--user-');">Try it out ⚡
+                    id="btn-tryout-GETfollower-page--userId-"
+                    onclick="tryItOut('GETfollower-page--userId-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETfollower-page--user-"
-                    onclick="cancelTryOut('GETfollower-page--user-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETfollower-page--userId-"
+                    onclick="cancelTryOut('GETfollower-page--userId-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETfollower-page--user-" hidden>Send Request 💥
+                    id="btn-executetryout-GETfollower-page--userId-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>follower-page/{user}</code></b>
+            <b><code>follower-page/{userId}</code></b>
         </p>
                     <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>user</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="user"
-               data-endpoint="GETfollower-page--user-"
-               value="quis"
-               data-component="url" hidden>
-    <br>
-
-            </p>
                     <p>
                 <b><code>userId</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
                 <input type="number"
                name="userId"
-               data-endpoint="GETfollower-page--user-"
-               value="3"
+               data-endpoint="GETfollower-page--userId-"
+               value="17"
                data-component="url" hidden>
     <br>
 <p>User Id of the user whos follower and following list is being displayed.</p>
@@ -830,14 +1039,14 @@ which contains the photo data.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/photo/8" \
+    --get "http://localhost/photo/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/photo/8"
+    "http://localhost/photo/16"
 );
 
 const headers = {
@@ -913,7 +1122,7 @@ fetch(url, {
                 <input type="number"
                name="photoId"
                data-endpoint="GETphoto--photoId-"
-               value="8"
+               value="16"
                data-component="url" hidden>
     <br>
 <p>The ID of the photo</p>
@@ -944,8 +1153,8 @@ Finally, it redirects the user to the page of the photo that was uploaded.</p>
     "http://localhost/photo-upload" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "caption=dolores" \
-    --form "photo=@C:\Users\reevu\AppData\Local\Temp\phpDEA6.tmp" </code></pre></div>
+    --form "caption=dolor" \
+    --form "photo=@C:\Users\adnan\AppData\Local\Temp\phpEEC.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -959,7 +1168,7 @@ const headers = {
 };
 
 const body = new FormData();
-body.append('caption', 'dolores');
+body.append('caption', 'dolor');
 body.append('photo', document.querySelector('input[name="photo"]').files[0]);
 
 fetch(url, {
@@ -1031,7 +1240,7 @@ fetch(url, {
                 <input type="text"
                name="caption"
                data-endpoint="POSTphoto-upload"
-               value="dolores"
+               value="dolor"
                data-component="body" hidden>
     <br>
 <p>The caption of the photo.</p>
@@ -1152,14 +1361,14 @@ Finally, the function redirects the user to the view of the newsfeed page.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/photo-delete/6" \
+    "http://localhost/photo-delete/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/photo-delete/6"
+    "http://localhost/photo-delete/16"
 );
 
 const headers = {
@@ -1228,12 +1437,131 @@ fetch(url, {
                 <input type="number"
                name="photoId"
                data-endpoint="DELETEphoto-delete--photoId-"
-               value="6"
+               value="16"
                data-component="url" hidden>
     <br>
 <p>The ID of the photo</p>
             </p>
                     </form>
+
+            <h2 id="photocontroller-class-GETtext-on-image">textOnImage() : creates a watermark on the photo.</h2>
+
+<p>
+</p>
+
+<p>This method creates a watermark on photo while uploading.
+Font can be customized and the position of the watermark can be
+changed from this method as well.</p>
+
+<span id="example-requests-GETtext-on-image">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/text-on-image" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"newImageName\": \"ad\",
+    \"userName\": \"omnis\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/text-on-image"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "newImageName": "ad",
+    "userName": "omnis"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETtext-on-image">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{ return \Illuminate\View\View }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETtext-on-image" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETtext-on-image"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETtext-on-image"></code></pre>
+</span>
+<span id="execution-error-GETtext-on-image" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETtext-on-image"></code></pre>
+</span>
+<form id="form-GETtext-on-image" data-method="GET"
+      data-path="text-on-image"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETtext-on-image', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETtext-on-image"
+                    onclick="tryItOut('GETtext-on-image');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETtext-on-image"
+                    onclick="cancelTryOut('GETtext-on-image');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETtext-on-image" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>text-on-image</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>newImageName</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="newImageName"
+               data-endpoint="GETtext-on-image"
+               value="ad"
+               data-component="body" hidden>
+    <br>
+<p>Name of the Image.</p>
+        </p>
+                <p>
+            <b><code>userName</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="userName"
+               data-endpoint="GETtext-on-image"
+               value="omnis"
+               data-component="body" hidden>
+    <br>
+<p>Name of the user.</p>
+        </p>
+        </form>
 
     
 

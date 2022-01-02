@@ -75,12 +75,14 @@ class PhotoController extends Controller
 
 
     /**
-     * textOnImage() : creates a watermark on the photo while uploading
-     * font can be customized and the position of the watermark can be
-     * changed from this method as well
+     * textOnImage() : creates a watermark on the photo.
      * 
-     * @queryparam mixed $newImageName
-     * @queryparam mixed $userName
+     * This method creates a watermark on photo while uploading.
+     * Font can be customized and the position of the watermark can be
+     * changed from this method as well.
+     * 
+     * @bodyParam newImageName string required Name of the Image.
+     * @bodyParam userName string required Name of the user.
      * 
      * @response { return \Illuminate\View\View }
      */

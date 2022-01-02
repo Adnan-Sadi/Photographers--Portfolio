@@ -5,12 +5,12 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "localhost"
+            "value": "http:\/\/localhost"
         }
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "1f227da9-cd6c-41f5-a7c3-d051bae74fc8",
+        "_postman_id": "f5c1701d-54d7-44a4-bf61-ce9c2c02da7a",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -23,11 +23,10 @@
                     "name": "blogpost() : this method shows the view of a blog creation form",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "blogpost",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/blogpost"
+                            "raw": "{{baseUrl}}\/blogpost"
                         },
                         "method": "GET",
                         "header": [
@@ -59,25 +58,16 @@
                     "name": "store() : Stores a newly created blog post in storage",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "blogpost",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/blogpost",
-                            "variable": [
-                                {
-                                    "id": "Request",
-                                    "key": "Request",
-                                    "value": "assumenda",
-                                    "description": "$request"
-                                }
-                            ]
+                            "raw": "{{baseUrl}}\/blogpost"
                         },
                         "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
-                                "value": "application\/json"
+                                "value": "multipart\/form-data"
                             },
                             {
                                 "key": "Accept",
@@ -85,8 +75,29 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "{\"title \":\"nemo\",\"text_writings\":\"nesciunt\",\"cover_photo\":\"vvtqvynlepoczlhskzuzczksqtswuhecrpofuslvxweywndrquwzpnggvhhslwnjamealuggdrdostihdgpxegsjmbsqxqrlffzjeqnzpjupqmfpbugonicopqnozjnavyndjeyjsjbecpgswtjaukbxjyyriyparxjuwqrpipfijxepcwgokugtisamfgwgqjufsyklnhohcfmjjfbdpmkqlmegaqspgrjipbwlfyrcqqwikewiwfbfbawfwnvlqcnbsxlbluuvilaiknnzzsifmmoubhqydcwjqtwuxfyvdvvfxftxjeflodulcnepaywrojzccskrlfwpiyuhkrgabkiiblphlfowhkpcopocxpobskbkojkqeyjdwzwsnvjiautoauxprbthyiacxofyjsmnqowacnwhbxshojrblmtkkmskjwmzexjmxgumaidyywyydkmgukaxpunxysdzloexplvijbpowsxdfvxtkjsnywnssydyisrumukckorokxrvpdtsawgcfaaxloqpgbarxuflaaucflxhvnkeiovlmppnndgkfozwilzatbyxgvlowlyvtsatstcgmstxboyahbrottqygwmidpjmeivbdbbibtpohhlsdjgsxrslraothakepizomfkfdrsckvbdokozittydtlpudbyfqfviycxtojoqfqccckhauzszbrbxbsdpcxkxbeltvhadmnzziwohvcjdptlumzlhfsobxgxqfihxyhndgcvruexodvzqtieexnsdbogenagjysltarlkdxowjhsyujiuldiybhrqdzwwyqertptknchdqhcgztabosliydxtpigmmrsxpnqmzucthbfjfqvxxmauihetoapnqicqtdpbtbbcgzvwcznhhmjjqhkzmcfxusfrxapglzttlgerbcllauyayygkxrrrtsjwblyxrkzlsgesgtnszwscasnssoesekyhgmvwpceqprxxbpoxmhixwruyeublqyjosuaezfencslyfofxojdwuirhgbzxqjwwqnfgzmqczioyektkmlkwpaxoehtcrtrjrokgbrwqpsekakqhbxrbfpmnjlcdpvkdhkqktqqvokquuexdfusfomcisksfviowtonkxepifkccmlodqffbvpmkddnaufcxbwkncsrhqlldodqnxoauexnhsdyruockoxlaghxfmltcaiclrkdfhzxxwowkpdbspwibusnguzevvkvuicrzdtukrqpupzfszofpznbfgiwjgebixlfejhmcslkedshcszvtlrmouekvgzpscrhybffsoruuxwbpoefyitrxdlqgpmkgbtvqiupbzslsfeeoszzalhktjuxkbadbyaqgdgimfdogniepxeffpvdmwrhdcyorzglixmoqtbscagzqeazkivdrgibtymxghuwhfjmdhihplzcwyluqfwhorolahyicasbrnckdkqjlmzrhvhnxoefqbivkflavuqnlivxhrkwlnpupgbzvjggymaavukfcctugpjsjpyhdbsimhtckjneiwzorwriebsufsysufakuhhwynuljidiqcqdqqspnzblhcghcohgnhfgkkvayteuxidunelbtfttokfapjiepwwzjmlyynmbqstxsvpbjpybfzafssdcoeazykjnnzolsyphdmtorbiillniulzhddwphrclshaxbdzuxdlliyxighyqteypmpwkcnnehastdhahvhfbenjkpwpgocrjfgjwvxzuosnjbrscoivubsvhwynaiemxjruznrjyxlcsdtqlhwwyoyonidpizwsvvccqkymcadbidzkzxdgsugynmlwlbxczmzdkjhcqbewvvlakwyydofalnlivsyewnbeqrvckpcuslgldvxablominnnfanvkmhpugvmycifmesuantkdododnqcluocxnqfpaddslhtxbzdbqhdgkbagzwtqydrgxdtyrdrgbdlwtmicglccjygcjuxvymxbedyamnwweaawksyciffqbhflsffwvviwljwjhwxfsrekorfykijcufwexxjbleklvlpgnadanrejnswbcqncnqiyzuhddnkabifaoxmaamjkionifgsgxyuwooqlvmnpgjhfkqbjl\"}"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title ",
+                                    "value": "consequatur",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "text_writings",
+                                    "value": "eligendi",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "quisquam",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "cover_photo",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
                         },
                         "description": "This method stores the created blog post in the storage. It takes the parameter '$userId' from the route url.\nAll the data about that blog is stored inside a laravel 'Collection Object'.\nThe function returns a view of the 'single blog' page along with the 'Collection Object'\nwhich contains the blog data.",
                         "auth": {
@@ -101,6 +112,49 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "blog() : Displays the view of an individual blog.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "single-blog\/:blogId",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/single-blog\/:blogId",
+                            "variable": [
+                                {
+                                    "id": "blogId",
+                                    "key": "blogId",
+                                    "value": "8",
+                                    "description": "The ID of the blog"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "An individual blog shows the contents of a blog from a user. The post needs to contain\na cover photo, title and the text descriptions for the main body of the blog.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"b_id\": 4,\n\"u_id\": 2,\n\"title\": \"Example\",\n\"cover_photo\": \"1640627401-username-CJ9.jpg\"\n \"text_writings\": \"This is an example text writing\",\n \"created_at\": \"2021-12-27 07:50:02\",\n \"updated_at\": \"2021-12-27 07:50:02\",\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -112,16 +166,15 @@
                     "name": "followUser(): Allows a user to the follow another user.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "follow\/:followingUserId",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/follow\/:followingUserId",
+                            "raw": "{{baseUrl}}\/follow\/:followingUserId",
                             "variable": [
                                 {
                                     "id": "followingUserId",
                                     "key": "followingUserId",
-                                    "value": "4",
+                                    "value": "13",
                                     "description": "The Id of the user who is being followed."
                                 }
                             ]
@@ -156,16 +209,15 @@
                     "name": "unfollowUser(): Allows a user to the unfollow another user.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "unfollow\/:unfollowingUserId",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/unfollow\/:unfollowingUserId",
+                            "raw": "{{baseUrl}}\/unfollow\/:unfollowingUserId",
                             "variable": [
                                 {
                                     "id": "unfollowingUserId",
                                     "key": "unfollowingUserId",
-                                    "value": "17",
+                                    "value": "14",
                                     "description": "The Id of the user who is being unfollowed."
                                 }
                             ]
@@ -197,25 +249,56 @@
                     ]
                 },
                 {
+                    "name": "isFollowing(): Checks if the logged-in user is following a certain user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "is-following",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/is-following"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"$userId\":20}"
+                        },
+                        "description": "This methods takes '$userId' as a parameter and checks if the logged in user\nis following that particular 'userId'. The function returns true if the logged-in\nuser is following a certain user and returns false if the user is not following\nthat certain user.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ return Boolean }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "followerPage(): Displays a page containing the follower and following list of an user",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
-                            "path": "follower-page\/:user",
+                            "path": "follower-page\/:userId",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/follower-page\/:user",
+                            "raw": "{{baseUrl}}\/follower-page\/:userId",
                             "variable": [
-                                {
-                                    "id": "user",
-                                    "key": "user",
-                                    "value": "quis",
-                                    "description": ""
-                                },
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "3",
+                                    "value": "17",
                                     "description": "User Id of the user whos follower and following list is being displayed."
                                 }
                             ]
@@ -256,11 +339,10 @@
                     "name": "index(): Displays the view of the Newsfeed.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "newsfeed",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/newsfeed"
+                            "raw": "{{baseUrl}}\/newsfeed"
                         },
                         "method": "GET",
                         "header": [
@@ -298,16 +380,15 @@
                     "name": "index(): Display the view of an individual photo.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "photo\/:photoId",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/photo\/:photoId",
+                            "raw": "{{baseUrl}}\/photo\/:photoId",
                             "variable": [
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "8",
+                                    "value": "16",
                                     "description": "The ID of the photo"
                                 }
                             ]
@@ -342,11 +423,10 @@
                     "name": "photoUpload(): Store a newly uplaoded photo in database.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "photo-upload",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/photo-upload"
+                            "raw": "{{baseUrl}}\/photo-upload"
                         },
                         "method": "POST",
                         "header": [
@@ -364,7 +444,7 @@
                             "formdata": [
                                 {
                                     "key": "caption",
-                                    "value": "dolores",
+                                    "value": "dolor",
                                     "type": "text"
                                 },
                                 {
@@ -398,11 +478,10 @@
                     "name": "photoUploadPage(): Display the view of the photo upload page.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "photo-upload-page",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/photo-upload-page"
+                            "raw": "{{baseUrl}}\/photo-upload-page"
                         },
                         "method": "GET",
                         "header": [
@@ -434,16 +513,15 @@
                     "name": "photoDelete(): Deletes a photo from Database.",
                     "request": {
                         "url": {
-                            "protocol": "http",
                             "host": "{{baseUrl}}",
                             "path": "photo-delete\/:photoId",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/photo-delete\/:photoId",
+                            "raw": "{{baseUrl}}\/photo-delete\/:photoId",
                             "variable": [
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "6",
+                                    "value": "16",
                                     "description": "The ID of the photo"
                                 }
                             ]
@@ -471,6 +549,44 @@
                             "code": 200,
                             "body": "{ return \\Illuminate\\View\\View }",
                             "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "textOnImage() : creates a watermark on the photo.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "text-on-image",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/text-on-image"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"newImageName\":\"ad\",\"userName\":\"omnis\"}"
+                        },
+                        "description": "This method creates a watermark on photo while uploading.\nFont can be customized and the position of the watermark can be\nchanged from this method as well.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ return \\Illuminate\\View\\View }",
+                            "name": ""
                         }
                     ]
                 }
