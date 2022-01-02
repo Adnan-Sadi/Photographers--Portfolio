@@ -31,8 +31,7 @@ class BlogpostController extends Controller
      * 
      * 
      * 
-     * @urlparam \Illuminate\Http\Request $request 
-     * @response \Illuminate\Http\Response
+     * @response { return \Illuminate\View\View }
      */
     public function blogpost (Request $request){
         
@@ -58,8 +57,8 @@ class BlogpostController extends Controller
      * The function returns a view of the 'single blog' page along with the 'Collection Object'
      * which contains the blog data.
      * 
-     * @urlparam \Illuminate\Http\Request $request
-     * @response \Illuminate\Http\Response
+     * @urlParam \Illuminate\Http\Request $request
+     * @response { return \Illuminate\View\View }
      */
 
 
@@ -98,17 +97,13 @@ class BlogpostController extends Controller
     
     
     
-    // public function edit($id){
-    //     $blogs = Blogs::find($id)->first();
-    //     return view('blogs.edit')->with('blogs', $blogs);
-    // }
-    
+
     
     /**
-     * @urlparam Request $request
-     * @urlparam mixed $id
+     * @urlParam Request $request
+     * @urlParam mixed $id
      * 
-     * @response \Illuminate\Http\Response
+     * @response { return \Illuminate\View\View }
      */
     public function update(Request $request, $id){
         $rules = array(
@@ -130,9 +125,9 @@ class BlogpostController extends Controller
      * blog() : Displays the view of an individual blog.
      * 
      *
-     *@urlParam blogId integer required The ID of the blog
+     * @urlParam blogId integer required The ID of the blog
      * 
-     *@response {
+     * @response {
      *  "b_id": 4,
      *  "u_id": 2,
      * "title": "Example",

@@ -28,7 +28,7 @@ endpoints:
         name: photoId
         description: 'The ID of the photo'
         required: true
-        example: 15
+        example: 8
         type: integer
         custom: []
     queryParameters: []
@@ -76,7 +76,7 @@ endpoints:
         name: caption
         description: 'The caption of the photo.'
         required: false
-        example: nesciunt
+        example: dolores
         type: string
         custom: []
       photo:
@@ -145,7 +145,7 @@ endpoints:
         name: photoId
         description: 'The ID of the photo'
         required: true
-        example: 19
+        example: 6
         type: integer
         custom: []
     queryParameters: []
