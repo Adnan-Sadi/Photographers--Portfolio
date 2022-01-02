@@ -10,24 +10,24 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "54f69ab7-c1d8-48c3-a9a1-9f91bdaf743c",
+        "_postman_id": "b93e024f-91ce-40e2-8c51-5d0d34fd5716",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "NewsfeedController class",
-            "description": "\nThe methods inside this class are used displaying the\nnewsfeed of an user.",
+            "name": "BlogpostController class",
+            "description": "\nThe methods inside this class are used for creating or \nviewing a single blog on this web application.",
             "item": [
                 {
-                    "name": "index(): Displays the view of the Newsfeed.",
+                    "name": "blogpost() : this method shows the view of a blog creation form <br>",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "{{baseUrl}}",
-                            "path": "newsfeed",
+                            "path": "blogpost",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/newsfeed"
+                            "raw": "http:\/\/{{baseUrl}}\/blogpost"
                         },
                         "method": "GET",
                         "header": [
@@ -41,7 +41,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "This method returns the view of the newsfeed an user.<br>\nFirst, it finds the 'userId' of the logged in user from the Session variable.\nThen, that 'userId' is used to find all the users that user is following.\nUsing the list of users that were followed, this function retrieves\nall photos and blogs that were posted by those users. Data about about all the\nphotos and blogs are stored inside a laravel 'Collection Object'.<br>\nFinally, the method return the view of the 'newsfeed' page along with the 'Collection\nObject' which contains data about photos and blogs.",
+                        "description": "blogs are posts made by users that contain text writings and each blog has a cover image on top\nas well",
                         "auth": {
                             "type": "noauth"
                         }
@@ -51,6 +51,45 @@
                             "header": [],
                             "code": 200,
                             "body": "{ return \\Illuminate\\View\\View }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "store() : Stores a newly created blog post in storage",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "blogpost",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/blogpost"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title \":\"incidunt\",\"text_writings\":\"temporibus\",\"cover_photo\":\"mgbsnwcjvugykeplpqxmwnumionrmmkyyofmtyqgrthglfrtqevmqfxepmgojkvarmuosdflfytjvbffljmesmahjixoahfkxcjhvqmhahphcyhkaienikrrtrwpnifxjoxhtsktnhwnvcagkdlbytfgftpossscqdnsepcndvwsofhrjpazpoqpaeaonyspstdtvdwsoeysadffricdoguglqvybjwrkhtgnaidirzmwzoulcxhlvzwkirlbzkmmjmdnofeilbhwqlqlgfzbkawhufbluzkvuxvvwuwvmrnabmwspfjrxbznitiagsmjcgsoeqodreyxjsxklnxjkezahjohlzgdotypggetemszfcggypwhreymlgchpfsiqxehpqedusffkwintypctynkdxuojxtgskbiponujqdpvkjymigsqpcbzvedjhxyfhfpilhfffmqhxsusytydqlpighmnlylvunetqvcrpojoaclseuougflpxenddimxvhfjmdekhmdwgxibkescxrxkzlzehgtutansafcwchqtpcckzspkbjervwujieayefbtywuxkhsvimfonbgsmtnvcthgqfxwvppdsqifjtpewvskjqxmfwketdqqcjvagqogjvzdjnznaayqljjojaoskennqmjkobpgbddjfnjjttelhejadwnrhugoemwhpiqaakhwifahagofrkabujcvzmtxunhshsengecqvzurqbmoephveqjxqevfsnpzzffexeuzgqmfmfvdikkhiubqcbidepzztpsnfcefrxxhprakgxdnlkngafrldkvqqribbabdxqzygcqrlrvtllyxrknuagcysnoejjrdzvipdkytxwqhlhhmefgpajoiphnxdwrquqootrubcyhmmfujgaevujtumdmdtrilnwsiyhfeohptkpnkhoaapceqebsgurjxiccqygmkcldbigylsexajhcuwhwtzcvpotiodaurajfocqbzkfnlwfuraunepypiqdyvmajgjbzmqmjxajprgcqsmxpuifoogvpkncvumcrcmlknnkcwusmftyolhvzpv\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "\\Illuminate\\Http\\Response",
                             "name": ""
                         }
                     ]
@@ -74,7 +113,7 @@
                                 {
                                     "id": "followingUserId",
                                     "key": "followingUserId",
-                                    "value": "8",
+                                    "value": "9",
                                     "description": "The Id of the user who is being followed."
                                 }
                             ]
@@ -118,7 +157,7 @@
                                 {
                                     "id": "unfollowingUserId",
                                     "key": "unfollowingUserId",
-                                    "value": "16",
+                                    "value": "18",
                                     "description": "The Id of the user who is being unfollowed."
                                 }
                             ]
@@ -162,13 +201,13 @@
                                 {
                                     "id": "user",
                                     "key": "user",
-                                    "value": "accusamus",
+                                    "value": "in",
                                     "description": ""
                                 },
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "13",
+                                    "value": "11",
                                     "description": "User Id of the user whos follower and following list is being displayed."
                                 }
                             ]
@@ -202,46 +241,32 @@
             ]
         },
         {
-            "name": "PhotoController class",
-            "description": "\nThe methods inside this class are used for uploading or \nviewing a single photo on this web application.",
+            "name": "NewsfeedController class",
+            "description": "\nThe methods inside this class are used displaying the\nnewsfeed of an user.",
             "item": [
                 {
-                    "name": "photoUpload(): Store a newly uplaoded photo in database.",
+                    "name": "index(): Displays the view of the Newsfeed.",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "{{baseUrl}}",
-                            "path": "photo-upload",
+                            "path": "newsfeed",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/photo-upload"
+                            "raw": "http:\/\/{{baseUrl}}\/newsfeed"
                         },
-                        "method": "POST",
+                        "method": "GET",
                         "header": [
                             {
                                 "key": "Content-Type",
-                                "value": "multipart\/form-data"
+                                "value": "application\/json"
                             },
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
                             }
                         ],
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "caption",
-                                    "value": "cumque",
-                                    "type": "text"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": [],
-                                    "type": "file"
-                                }
-                            ]
-                        },
-                        "description": "This method takes a form request parameter '$request' as a method parameter.\nThe '$request' parameter contains two parameters which contains the values that were submitted with\nthe 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>\nHere, the method validates the form data received from the '$request' variable and returns error messages\nif the request fails to validate.\nThe uploaded image file is given a new name and stored in the storage.<br>\nNext, the method stores the necesary informations about the photo in the database by creating a\nnew row in the 'photos' table within the database.<br>\nFinally, it redirects the user to the page of the photo that was uploaded.",
+                        "body": null,
+                        "description": "This method returns the view of the newsfeed an user.<br>\nFirst, it finds the 'userId' of the logged in user from the Session variable.\nThen, that 'userId' is used to find all the users that user is following.\nUsing the list of users that were followed, this function retrieves\nall photos and blogs that were posted by those users. Data about about all the\nphotos and blogs are stored inside a laravel 'Collection Object'.<br>\nFinally, the method return the view of the 'newsfeed' page along with the 'Collection\nObject' which contains data about photos and blogs.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -251,16 +276,16 @@
                             "header": [],
                             "code": 200,
                             "body": "{ return \\Illuminate\\View\\View }",
-                            "name": "success"
-                        },
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{ form data failed to validate }",
-                            "name": "failure"
+                            "name": ""
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "name": "PhotoController class",
+            "description": "\nThe methods inside this class are used for uploading or \nviewing a single photo on this web application.",
+            "item": [
                 {
                     "name": "index(): Display the view of an individual photo.",
                     "request": {
@@ -274,7 +299,7 @@
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "6",
+                                    "value": "13",
                                     "description": "The ID of the photo"
                                 }
                             ]
@@ -302,6 +327,62 @@
                             "code": 200,
                             "body": "{\n \"p_id\": 4,\n \"u_id\": 2,\n \"caption\": \"This is an example caption\",\n \"photo_path\": \"example-photo.jpg\",\n \"created_at\": \"2021-12-22 08:58:02\",\n \"updated_at\": \"2021-12-22 08:58:0\",\n}",
                             "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "photoUpload(): Store a newly uplaoded photo in database.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "photo-upload",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/photo-upload"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "caption",
+                                    "value": "aut",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "This method takes a form request parameter '$request' as a method parameter.\nThe '$request' parameter contains two parameters which contains the values that were submitted with\nthe 'photo upload form' and these two parameters are 'caption' and 'photo'.<br>\nHere, the method validates the form data received from the '$request' variable and returns error messages\nif the request fails to validate.\nThe uploaded image file is given a new name and stored in the storage.<br>\nNext, the method stores the necesary informations about the photo in the database by creating a\nnew row in the 'photos' table within the database.<br>\nFinally, it redirects the user to the page of the photo that was uploaded.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ return \\Illuminate\\View\\View }",
+                            "name": "success"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ form data failed to validate }",
+                            "name": "failure"
                         }
                     ]
                 },
@@ -354,7 +435,7 @@
                                 {
                                     "id": "photoId",
                                     "key": "photoId",
-                                    "value": "13",
+                                    "value": "10",
                                     "description": "The ID of the photo"
                                 }
                             ]

@@ -9,13 +9,36 @@ use App\Models\Blogs;
 use App\Http\Controllers\FollowController;
 use Session;
 
+/**
+ * @group GalleryController class
+ *
+ * The methods inside this class are used for uploading or 
+ * viewing a single photo on this web application.
+ */
+
 class GalleryController extends Controller
 {
     /**
-     * @param mixed $userId
+     * gallery(): Displays the view of the Gallery.
+     *
+     * This method returns the view of the gallery of a user.<br>
+     * First, it finds the 'userId' of the logged in user from the Session variable.
      * 
-     * @return [type]
+     * 
+     * Then, the found 'userId' is used to find all the posts made by that user. All blogs and photos are
+     * listed.
+     * 
+     * Data about about all the photos and blogs are stored inside a laravel 'Collection Object'.<br>
+     * Finally, the method return the view of the 'gallery' page along with the 'Collection
+     * Object' which contains data about photos and blogs.
+     * 
+     * 
+     * @bodyparam mixed $userId
+     * @response { return \Illuminate\View\View }
      */
+
+
+
     public function gallery ($userId){
 
         $user = User::find($userId);
