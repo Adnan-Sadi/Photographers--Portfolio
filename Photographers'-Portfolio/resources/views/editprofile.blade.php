@@ -1,7 +1,28 @@
-@extends('layouts.indexprofile')
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Profile | Photographer's Portfolio</title>
+
+
+
+
+    <!-- Stylesheet -->
+
+    <link rel="stylesheet" href="{{ asset('css/ profile.css') }}">
+
+</head>
+
+<body>
 
 <div class="container">
-    <form action="/profile/{{ $user->id }}/update" enctype="multipart/form-data" method="post">
+    <form action="/user/{{ $user->u_id }}/update" enctype="multipart/form-data" method="post">
         @csrf
         @method('PATCH')
         <div class="row">
@@ -34,7 +55,7 @@
                     <label for="image"  >Profile Picture</label>
                     <input id="image" type="file"
                         class="form-control-file @error('image') is-invalid @enderror"
-                        name="image" value="{{ old('image') ?? $user->profile->image }}">
+                        name="image" value="{{ old('image') ?? $user->profileimage() }}">
 
                     @error('image')
                         <span class="invalid-feedback" role="alert">
@@ -50,3 +71,4 @@
             </div>
         </div>
     </form>
+</body>
